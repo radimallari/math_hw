@@ -42,17 +42,18 @@ Suppose $P\in\mathcal{L}(V)$ is such that $P^{2}=P$. Prove that $P$ is an orthog
 Prove that if $T$ is normal, then $\text{range }T=\text{range }T^{*}$
 
 \begin{proof}
-
+    Since $T$ is normal we know that
+    $$\text{range }T=(\text{null }T^{*})^{\perp}=(\text{null }T)^{\perp}=\text{range }T^{*}$$.
 \end{proof}
 
 
 \section{Problem 4}
 Prove that if $T$ is normal, then
-$$\text{null }T^{k}=\text{null }(T)\quad \text{and}\quad \text{range }T^{k}=\text{range }T$$
+$$\text{null }T^{k}=\text{null }T\quad \text{and}\quad \text{range }T^{k}=\text{range }T$$
 for every positive integer $k$.
 
 \begin{proof}
-
+    If $k=1$, then this is trivial, and now since $k$ is a positive integer, we consider $k\geq 2$. For the first, we know that if $v\in\text{null }T$, then $T^{k}v=T^{k-1}(Tv)=T^{k-1}0=0$.
 \end{proof}
 
 
@@ -81,7 +82,7 @@ Suppose $F=\C$. Prove that a normal operator on $V$ is self-adjoint if and only 
 
 
 \section{Problem 8}
-Suppose $F=\C$ and $T$ is a normal operator on $V$. PRove that there is a $S\in\mathcal{L}(V)$ such that $T=S^{2}$.
+Suppose $F=\C$ and $T$ is a normal operator on $V$. Prove that there is a $S\in\mathcal{L}(V)$ such that $T=S^{2}$.
 
 \begin{proof}
 

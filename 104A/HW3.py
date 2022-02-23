@@ -3,6 +3,7 @@
 evaluate the corresponding interpolation polynomial at an arbitrary point x. 
 Test your code and turn in a run of your test. 
 """
+import math
 from typing import List
 
 
@@ -13,10 +14,7 @@ def newton_coefficients(x: List[int], f_x: List[float]):
     :return: List of coefficients used for Newton's interpolation polynomial.
     """
     n = len(x)
-    c = []
-    for i in range(n):
-        c.append(f_x[i])
-
+    c = f_x
     for k in range(1, n):
         for j in range(n - 1, k - 1, -1):
             c[j] = (c[j] - c[j - 1]) / (x[j] - x[j - k])
@@ -30,27 +28,33 @@ def interpolation_polynomial(x: float, x_j: List[int], c: List[float]):
     :param c: List of polynomial coefficients
     :return:
     """
-    """
-    The evaluation of the interpolation polynomial in Newton's form can be done
-    with the Horner-like scheme seen in class:
-
-    p=c_n
-    for j=n-1,n-2,...,0
-        p=c_j+(x-x_j)*p;
-    end
-    """
     n = len(c) - 1
-    p = c[n] + (x - x_j[n])
-    for j in range(n - 1, -1, -1):
-        p = (x - x_j[j]) * p + c[j]
+    p = c[n]
+
+    for j in range(n, 0, -1):
+        p = (x - x_j[j - 1]) * p + c[j - 1]
     return p
 
 
+def func_to_interpolate(x):
+    return x * math.e ** ((-x) ** 2)
+
+
 def main():
-    x = [5, 6, 9, 11]
-    y = [12, 13, 14, 16]
+    x = [1, 2, 3, 4]
+    y = [1, 8, 27, 64]
+
     coeffs = newton_coefficients(x, y)
+    print(coeffs)
     print(interpolation_polynomial(7, x, coeffs))
+
+    """
+    consider f(x) = xe^{-x^{2}} for x in [-1, 1] 
+    with nodes x_j = -1 + j(2/10) for j = 0, 1, ..., 100
+    """
+    # evaluate p_10(x) at points x^{bar} = -1 + j(2/10) for j = 0, 1, ..., 100
+
+    # plot error f(x) - p_10(x)
 
 
 main()

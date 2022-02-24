@@ -100,14 +100,5 @@ def main():
           \ 3x-5 for 2<x<=3
     """)
 
-    """
-    4.) Write a code to compute a natural spline S(x) which interpolates a 
-    collection of given points (x0, y0),(x1, y1), ··· ,(xn, yn) where
-    x0 < x1 < ··· < xn (do not assume they are equidistributed). Your code 
-    should have a  triadiagonal solver for the resulting linear system of 
-    equations (you’re not allowed to use Matlab’s operator to solve the linear
-    system).
-    """
-
 
 main()

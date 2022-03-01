@@ -28,19 +28,27 @@ $$\frac{1}{2i}\int_{C}\bar{z}dz=\text{area enclosed by }C$$
 
 \begin{proof}
     Since $\bar{z}=x-iy$, this is equivalent to
-    $$\frac{1}{2i}\int_{C}(x-iy)(dx+idy)=\frac{1}{2i}\left [\int_{C}(xdx+ydy)+i\int_{C}(xdy-ydx)\right ]$$
-    Where $D$ is the area boundead by $C$. Now using Green's Theorem, twice we have that
+    $$\frac{1}{2i}\int_{C}(x-iy)(dx+idy)=\frac{1}{2i}\left
+    [\int_{C}(xdx+ydy)+i\int_{C}(xdy-ydx)\right ]$$ Where $D$ is the area
+    boundead by $C$. Now using Green's Theorem, twice we have that
     $$\frac{1}{2i}\left[\iint_{D}(0-0)dxdy+i\iint_{D}(1-(-1))dxdy\right]$$
-    $$=\iint_{D}dxdy$$
-    Which after evaluating the integrals is exactly the area enclosed by $C$.
+    $$=\iint_{D}dxdy$$ Which after evaluating the integrals is exactly the area
+    enclosed by $C$.
 \end{proof}
 
 
 \section{Problem 2}
-Consider the function $f(z)=(z+1)^{2}$ and the region $R$ bounded by the triangle with vertices $0,2,i$ (its boundary and interior). Find the points where $\left |f(z)\right |$ reaches its maximum and minimum value of $R$.
+Consider the function $f(z)=(z+1)^{2}$ and the region $R$ bounded by the
+triangle with vertices $0,2,i$ (its boundary and interior). Find the points
+where $\left |f(z)\right |$ reaches its maximum and minimum value of $R$.
 
 \begin{proof}
-
+    By the Maximum Modulus Theorem, we know that
+    $\left|f(z)\right|=\left|z+1\right|^2$. Then the minimum would be at the
+    boundary where $\left|f(z)\right|$ is the closest to $-1$ and maximum is the
+    furthest. Then we know that since $\left|f(z)\right|=1$ at $z=0$, then this
+    is the minimum, and since $\left|f(z)\right|=9$ at $z=2$, then this is the
+    maximum.
 \end{proof}
 
 
@@ -48,7 +56,26 @@ Consider the function $f(z)=(z+1)^{2}$ and the region $R$ bounded by the triangl
 Find the maximum of $\left |\sin(z)\right |$ on $[0,2\pi]\times[0,2\pi]$.
 
 \begin{proof}
-
+    We can rewrite $\sin(z)$ as:
+    \begin{equation}
+        \begin{split}
+            \sin(z)&=\frac{e^{iz}-e^{-iz}}{2i}=\frac{e^{x+iy}-e^{-i(x+iy)}}{2i}\\
+            &=\frac{e^{ix}e^{-y}-e^{-ix}e^{y}}{2i}\\
+            &=\frac{(\cos x+i\sin x)e^{y}-(\cos x-i\sin x)e^{y}}{2i}\\
+            &=-\frac{1}{i}\cos (x)\left(\frac{e^{-y}-e^{y}}{2}\right)+\sin (x)\left(\frac{e^{y}+e^{-y}}{2}\right)\\
+            &=i\cos(x)\sinh(y)+\sin(x)\cosh(y)
+        \end{split}
+    \end{equation}
+    And using Maximum Modulus Theorem, and \textbf{(1)}, we have that:
+    $$\left|\sin(z)\right|^{2}=\cos^{2}(x)\sinh^{2}(y)+\sin^{2}(x)\cosh^{2}(y)$$
+    Using the identities that states $\cosh^{2}(y)-\sinh^{2}(y)=1$ and
+    $\cos^{2}(x)+\sin^{2}(x)=1$, we can rewrite this as:
+    $$\left|\sin(z)\right|^{2}=\cos^{x}\sinh^{2}(y)+\sin^{2}(x)\cdot(1+\sinh^{2}(y))$$
+    Leaving us with
+    $$\left|\sin(z)\right|^{2}=\sinh^{2}(y)+\sin^{2}(x)$$ We know that that
+    maximum of $\sin^{2}(x)=1$ which is at $x=\frac{\pi}{2}$ and
+    $x=\frac{3\pi}{2}$, meanwhile the maximum of $\sinh^{2}(y)$ is located at
+    $y=2\pi$. Therefore, out maximum is at the boundaries $2\pi$.
 \end{proof}
 
 
@@ -63,8 +90,30 @@ Calculate:
 
 \begin{proof}
     \begin{enumerate}[label=\textbf{(\alph*)}]
-        \item
-        \item
+        \item By the hint, we work backwards and get 
+        $$\int_{0}^{2\pi}\frac{d\theta}{a+b\left(\frac{e^{i\theta}+e^{-i\theta}}{2}\right)}$$
+        Factoring out a $2$ gives us
+        $$2\int_{0}^{2\pi}\frac{d\theta}{2a+b\left(e^{i\theta}+e^{-i\theta}\right)}$$
+        Letting $z(\theta)=e^{i\theta}$, where $z:[0,2\pi]\to\C$, implies
+        $d\theta=\frac{dz}{iz}$ and our line integral becomes
+        $$I=\frac{2}{i}\oint_{\left|z\right|=1}\frac{dz}{bz^{2}+2az+b}$$ Here
+        our $f(z)=\frac{1}{bz^{2}+2az+b}$ is analytic except at
+        $\frac{a\pm\sqrt{a^{2}-b^{2}}}{b}$. These two points are:
+        $$z_{1}=\frac{a+a\sqrt{1-\frac{b^{2}}{a^{2}}}}{b}\quad\text{and}\quad
+        z_{2}=\frac{a-a\sqrt{1-\frac{b^{2}}{a^{2}}}}{b}$$ By our condition that
+        $0<b<a$, we know $z_{2}$ must be outside our $z$, therefore letting
+        $h(z)=\frac{1}{z-\left(\frac{a-a\sqrt{1-\frac{b^{2}}{a^{2}}}}{b}\right)}$
+        and by Cauchy Theorem we get
+        $$I=\frac{2}{i}\oint_{\left|z\right|=1}\frac{h(z_{2})dz}{z-\left(\frac{a+a\sqrt{1-\frac{b^{2}}{a^{2}}}}{b}\right)}=\frac{2\pi
+        b}{\sqrt{a^{2}-b^{2}}}$$
+        \item Similarly, letting $\cos(\theta)=\frac{e^{i\theta}+e^{-\theta}}{2}$ yields
+        $$\int_{0}^{2\pi}\frac{d\theta}{\left(a+b\left(\frac{e^{i\theta}+e^{-\theta}}{2}\right)\right)^{2}}$$
+        Then letting $z(\theta)=e^{i\theta}$, $d\theta=\frac{dz}{iz}$, we get
+        $$\frac{4}{i}\oint_{\left|z\right|=1}\frac{zdz}{(bz^{2}+2az+b)^{2}}$$
+        Our singularities here are the same as \textbf{(a)} which are
+        $$z_{1}=\frac{a+a\sqrt{1-\frac{b^{2}}{a^{2}}}}{b}\quad\text{and}\quad
+        z_{2}=\frac{a-a\sqrt{1-\frac{b^{2}}{a^{2}}}}{b}$$
+        But $z_{1}$ in this case is outside of $\left|z\right|=1$.
         \item
     \end{enumerate}
 \end{proof}
@@ -76,7 +125,14 @@ $$\lim_{\left |z\right |\to\infty}\frac{\left |f(z)\right |}{\left |z\right |^{n
 then $f$ is a polynomial of degree at most $n$.
 
 \begin{proof}
-
+Since $f$ is analytic, by a theorem in \textbf{Lecture 16} which states that $f$ has a
+power series expansion in the neighborhood of analyticity that is
+$$f(z_{0})=\sum_{n=0}^{\infty}(z_{0}-z_{1})^{n}\left(\frac{f^{n}(z_{1})}{n!}\right)$$
+In our case, $z_{1}=0$ so this becomes
+$$f(z_{0})=\sum_{n=0}^{\infty}(z_{0})^{n}\left(\frac{f^{n}(0)}{n!}\right)$$\
+By \textbf{Section 49} of the book, we get
+$$\left|f^{n}(0)\right|\leq \frac{n! M_{R}}{R^{n}}$$
+Where $M_{R}$ denotes the maximum value of $\left|f(z)\right|$.
 \end{proof}
 
 

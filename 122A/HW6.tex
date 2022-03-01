@@ -27,7 +27,12 @@ Let $C$ be a closed, positive, and simple curve. Using Green's Theorem prove tha
 $$\frac{1}{2i}\int_{C}\bar{z}dz=\text{area enclosed by }C$$
 
 \begin{proof}
-
+    Since $\bar{z}=x-iy$, this is equivalent to
+    $$\frac{1}{2i}\int_{C}(x-iy)(dx+idy)=\frac{1}{2i}\left [\int_{C}(xdx+ydy)+i\int_{C}(xdy-ydx)\right ]$$
+    Where $D$ is the area boundead by $C$. Now using Green's Theorem, twice we have that
+    $$\frac{1}{2i}\left[\iint_{D}(0-0)dxdy+i\iint_{D}(1-(-1))dxdy\right]$$
+    $$=\iint_{D}dxdy$$
+    Which after evaluating the integrals is exactly the area enclosed by $C$.
 \end{proof}
 
 
@@ -51,17 +56,17 @@ Find the maximum of $\left |\sin(z)\right |$ on $[0,2\pi]\times[0,2\pi]$.
 Calculate:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $$\int_{0}^{2\pi}\frac{d\theta}{a+b\cos(\theta)},\quad 0<b<a$$
-    HINT: Work backwards using $\cos(\theta)=\frac{e^{i\theta}+e^{-i\theta}}{2}$ to convert the integral into a complex integral along the curve $\left |z\right |=1$
+          HINT: Work backwards using $\cos(\theta)=\frac{e^{i\theta}+e^{-i\theta}}{2}$ to convert the integral into a complex integral along the curve $\left |z\right |=1$
     \item $$\int_{0}^{2\pi}\frac{d\theta}{(a+b\cos(\theta))^{2}}$$
     \item $$\int_{0}^{2\pi}\frac{\sin(\theta)d\theta}{(a+b\cos(\theta))^{2}},\quad 0<b<a$$
 \end{enumerate}
 
 \begin{proof}
-\begin{enumerate}[label=\textbf{(\alph*)}]
-    \item
-    \item
-    \item
-\end{enumerate}
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item
+        \item
+        \item
+    \end{enumerate}
 \end{proof}
 
 

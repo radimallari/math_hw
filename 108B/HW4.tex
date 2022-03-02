@@ -30,11 +30,24 @@ For all problems:
     \item $V,T,S,N\in\mathcal{L}(V)$
     \item $N\in\mathcal{L}(V)$ is nilpotent if $N^{k}=0$ for some $k>0$.
 \end{itemize}
+
 \section{Problem 1}
 Prove that if $T^{m-1}x\neq 0$, $T^{m}x=0$, then the set $\set{x,Tx,...,T^{m-1}x}$ is linearly independent.
 
 \begin{proof}
-
+Taking $a_{0},a_{1},...,a_{m-1}\in F$, where 
+\begin{equation}
+    a_{0}x+a_{1}Tx+a_{2}T^{2}v+...+a_{m-1}T^{m-1}x=0
+\end{equation}
+Due to our assumption that $T^{m-1}\neq0$ we can apply it to both sides of (1). This gives us a $T^{m}x$ for all the terms except for the first and by the second assumption that we are left with:
+$$T^{m-1}a_{0}x=0$$
+Again, since $T^{m-1}x\neq0$, we can deduce that $a_{0}=0$ which allows us to rewrite (1) as:
+\begin{equation}
+    a_{1}Tx+a_{2}T^{2}x+...+a_{m-1}T^{m-1}x=0
+\end{equation}
+Similarly, applying $T^{m-2}$ leaves a $T^{m}$ for every term except for the first giving us
+$$T^{m-1}a_{1}x=0$$
+Therefore, $a_{1}\neq0$ by the same argument as before. We can repeat this process until the last term allowing us to conclude that $a_{0}=a_{1}=a_{2}=...=a_{m-1}=0$. Since we only have the trivial solution, we know that the set $\set{x,Tx,T^{2}x,...,T^{m-1}x}$ is linearly independent.
 \end{proof}
 
 
@@ -42,7 +55,10 @@ Prove that if $T^{m-1}x\neq 0$, $T^{m}x=0$, then the set $\set{x,Tx,...,T^{m-1}x
 Prove that if $ST$ is nilpotent, then $TS$ is nilpotent.
 
 \begin{proof}
-
+We begin with our assumption that $ST$ is nilpotent, there must be some $k>0$ such that $(ST)^{n}0$. Now letting $(TS)^{n+1}=(TS)(TS)...(TS)=T(ST)(ST)...(ST)S=T(ST)^{n}S$
+Then we see that the multiplier in the center is $0$ by our assumption and we're left with
+$$(TS)^{n+1}=T(0)S=0$$
+Therefore, $TS$ is nilpotent as well.
 \end{proof}
 
 
@@ -50,7 +66,7 @@ Prove that if $ST$ is nilpotent, then $TS$ is nilpotent.
 Prove that if $N$ is nilpotent, then $0$ is the only eigenvalue of $N$.
 
 \begin{proof}
-
+Suppose that $\lambda$ is an eigenvalue of $N$, then by definition, we have a nonzero vector $x\in V$ such that $\lambda x=Nx$. Applying $N$ until $k$ where $k>0$, we have that $\lambda^{k}x=N^{k}x$. Since we aassumed that $N$ is nilpotent, then with $\lambda^{k}x=0$. Furthermore, we know $x\neq0$ so we conclude that $\lambda=0$.
 \end{proof}
 
 
@@ -58,7 +74,9 @@ Prove that if $N$ is nilpotent, then $0$ is the only eigenvalue of $N$.
 Prove that if $\text{null }N^{n-1}\neq\text{null }N^{n}$, then $N$ is nilpotent.
 
 \begin{proof}
-
+\textbf{Proposition 8.5} in the book tells us that if $n$ is a nonnegative integer such that $\text{null }T^{n}=\text{null }T^{n+1}$, then 
+$$\text{null }T^{0}\subset\text{null }T^{1}\subset...\subset\text{null }T^{m}=\text{null }T^{n+1}=\text{null }T^{n+2}=...$$ 
+Therefore by our assumption that $\text{null }N^{n-1}\neq\text{null }N^{n}$, we can infer that $\text{null }N^{n-1}\neq \text{null }N^{n}$ for $0\leq n\leq\text{dim }V$. Therefore, $\set{0}=\text{null }N^{0}\subsetneq\text{null }N^{1}\subsetneq...\subsetneq\text{null }N^{n-1}\subsetneq\text{null }N^{n}$. By \textbf{Proposition 8.6} $n$ must increment by $1$, in other words letting some $n=\dim V$ yields $\dim\text{null }N^{n}=n$. We can conclude that $\text{null }N^{n}=V$ which implies that $N^{n}=0$, and finally $N$ is nilpotent.
 \end{proof}
 
 
@@ -66,7 +84,7 @@ Prove that if $\text{null }N^{n-1}\neq\text{null }N^{n}$, then $N$ is nilpotent.
 Prove that if $\text{null }N^{n-2}\neq\text{null }N^{n-1}$, then $N$ has at most two distinct eigenvalues.
 
 \begin{proof}
-
+Similar to \textbf{(4)} by \textbf{Proposition 8.6} $\dim\text{null }T^{n}>\dim\text{null }T^{n-1}$ by at least $1$ for $n=1,...,n-1$. From this we know that $\dim\text{null }^{n-1}\geq n-1$ which implies that $0$ is an eigenvalue of $T$ with multiplicity of at least $n-1$. Since $V$ is a complex vector space and $T\in\mathcal{L}(V)$, then the sum of multiplicities of all eigenvalues of $T=\dim V$ by \text{Proposition 8.18}. Therefore, we can conclude that $T$ can have at most one extra eigenvalue.
 \end{proof}
 
 
@@ -75,7 +93,11 @@ Prove that for any $T$,
 $$\text{null }T^{n}\cap\text{range }T^{n}=\set{0}$$
 
 \begin{proof}
-
+We begin by choosing some $v\in\text{null }T^{n}\cap\text{range }T^{n}$. Then for some $a\in T$, $T^{n}a=v$. Now by \textbf{Proposition 8.6} we know that:
+$$\text{null }T^{n}=\text{null }T^{n+1}=\text{null }T^{n+2}=...$$ 
+and similarly, by \textbf{Proposition 8.9},
+$$\text{range }T^{n}=\text{range }T^{n+1}=\text{range }T^{n+2}=...$$ 
+which implies that $T^{n+1}a=T^{n}a=0$ since $v\in\dim\text{null }T$. We know that $a\in\text{null }T^{2}$, and since $T^{n+1}=T^{n}$ by \textbf{8.6}, we deduce $T^{n}a=v=0$ from which we can conclude that $\text{null }T^{n}\cap\text{range }T^{n}=\set{0}$.
 \end{proof}
 
 
@@ -100,7 +122,17 @@ Find a $4\times4$ matrix whose minimimal polynomial is $z(z-1)^{2}$.
 Suppose $T$ is invertible. Prove that there is a polynomial $p$ such that $T^{-1}=p(T)$.
 
 \begin{proof}
-
+Letting $a_{0}+a_{1}z+...+a_{m-1}z^{z-1}+z^{m}$ be the minimal polynomial of $T$, then
+$$a_{0}I+a_{1}T+...+a_{m-1}T^{m-1}+T^{m}=0$$
+We know that $a_{0}\neq0$ since if it is, we can multiply both sides by $T^{-1}$ and get
+$$a_{1}I+a_{2}T+...+a_{m-1}T^{m-2}+T^{m-1}=0$$
+which suggests that we have a monic polynomial that has a smaller degree contradicting the definition of minimal polynomial. This allows us to solve for the identity operator which is given by:
+$$I=-\frac{a_{1}}{a_{0}}T-...-\frac{a_{m-1}}{a_{0}}T^{m-1}-\frac{1}{a_{0}}T^{m}$$
+Multiplying both sides by $T^{-1}$ yields
+$$T^{-1}=-\frac{a_{1}}{a_{0}}I-...-\frac{a_{m-1}}{a_{0}}T^{m-2}-\frac{1}{a_{0}}T^{m-1}$$
+So our polynomial is 
+$$p(z)=-\frac{a_{1}}{a_{0}}-...-\frac{a_{m-1}}{a_{0}}z^{m-2}-\frac{1}{a_{0}}z^{m-1}$$
+From which we can conclude that $T^{-1}=P(T)$.
 \end{proof}
 
 
@@ -108,7 +140,7 @@ Suppose $T$ is invertible. Prove that there is a polynomial $p$ such that $T^{-1
 Prove that $V$ has a basis consisting of eigenvectors of $T$ if and only if the minimal polynomial of $T$ has no repeated roots.
 
 \begin{proof}
-
+We begin with a basis $(v_{1},...,v_{n})$ of $V$ with eigenvectors of $T$.
 \end{proof}
 
 
@@ -116,7 +148,11 @@ Prove that $V$ has a basis consisting of eigenvectors of $T$ if and only if the 
 Suppose $x\neq 0$. Let $p$ be the monic polynomial of the smallest degree such that $p(T)x=0$. Prove that $p$ divides the minimal polynomial of $T$.
 
 \begin{proof}
-
+Letting $q$ be the minimal polynomial of $T$, then there exists $s,r\in \mathcal{P}(F)$, where $q=sp+r$ and the degree of $r$ is less than degree of $p$. Then we have that
+$$q(T)x=s(T)p(T)v+r(T)x$$
+By definition of minimal polynomial $q(T)=0$ and $p(T)x=0$ by our assumption. This results in $r(T)x=0\implies r=0$, so the equation $q=sp+r$ becomes
+$$q=sp$$
+Here it's clear that $p\div q$, which is the minimal polynomial of $T$.
 \end{proof}
 
 

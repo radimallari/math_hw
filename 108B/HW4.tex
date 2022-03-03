@@ -70,6 +70,7 @@ Suppose that $\lambda$ is an eigenvalue of $N$, then by definition, we have a no
 \end{proof}
 
 
+\newpage
 \section{Problem 4}
 Prove that if $\text{null }N^{n-1}\neq\text{null }N^{n}$, then $N$ is nilpotent.
 
@@ -88,6 +89,7 @@ Similar to \textbf{(4)} by \textbf{Proposition 8.6} $\dim\text{null }T^{n}>\dim\
 \end{proof}
 
 
+\newpage
 \section{Problem 6}
 Prove that for any $T$,
 $$\text{null }T^{n}\cap\text{range }T^{n}=\set{0}$$
@@ -105,19 +107,31 @@ which implies that $T^{n+1}a=T^{n}a=0$ since $v\in\dim\text{null }T$. We know th
 Find a $3\times3$ matrix whose minimal polynomial is $z^{2}$.
 
 \begin{proof}
-
+Since $V\in\C$, we take $T\in\mathcal{L}(\C^{3})$ such that $T(z_{1},z_{2},z_{3})=(z_{2},0,0)$. By our construction, $T^{2}(z_{1},z_{2},z_{3})=T(z_{2},0,0)=(0,0,0)$. Our candidates therefore are: $1,z,z^{2}$ by \textbf{Theorem 8.34}. Applying our candidates shows us that 
+$$p(1)=1\neq0$$ 
+$$p(z)=z\implies p(T)=T\neq0$$
+$$p(z)=z^{2}\implies p(T)=T^{2}=0$$
+Since $z^{2}$ is the least monic polynomial where $p(T)=0$, our minimal polynomial is $z^{2}$. 
 \end{proof}
 
 
-
+\newpage
 \section{Problem 8}
 Find a $4\times4$ matrix whose minimimal polynomial is $z(z-1)^{2}$.
 
 \begin{proof}
-
+Similar to \textbf{Problem 7}, we want a matrix $T$ such that $p(T)=T(T-1)^{2}=0$, where $p(z)=z(z-1)^{2}$. Therefore, we consider
+$$T(z_{1},z_{2},z_{3},z_{4})=(0,z_{2}+z_{4},z_{3},z_{4})$$
+Subtracting $I(z_{1},z_{2},z_{3},z_{4})$ to both sides yields:
+$$T(z_{1},z_{2},z_{3},z_{4})-I(z_{1},z_{2},z_{3},z_{4})=(0,z_{2}+z_{4},z_{3},z_{4})-(z_{1},z_{2},z_{3},z_{4})$$
+$$(T-I)(z_{1},z_{2},z_{3},z_{4})=(-z_{1},z_{4},0,0)$$
+Applying this again we have that
+$$(T-I)^{2}(z_{1},z_{2},z_{3},z_{4})=(z_{1},0,0,0)\implies T(T-I)^{2}=0$$
+Since we want our minimal polynomial to be $z(z-1)^{2}$, which have the roots $0,1\text{ (multiplicity }2)$, therefore the only monic polynomials that have the same roots are $z(z-1)$ and $z(z-1)^{2}$. Applying $T$ to the former candidate, we have $T(T-1)=T(-z_{1},z_{4},0,0)=(0,z_{4},0,0)\neq0$, therefore $z(z-1)^{2}$ is the minimal polynomial of the $4\times4$ matrix $T$.
 \end{proof}
 
 
+\newpage
 \section{Problem 9}
 Suppose $T$ is invertible. Prove that there is a polynomial $p$ such that $T^{-1}=p(T)$.
 
@@ -136,14 +150,29 @@ From which we can conclude that $T^{-1}=P(T)$.
 \end{proof}
 
 
+\newpage
 \section{Problem 10}
 Prove that $V$ has a basis consisting of eigenvectors of $T$ if and only if the minimal polynomial of $T$ has no repeated roots.
 
 \begin{proof}
-We begin with a basis $(v_{1},...,v_{n})$ of $V$ with eigenvectors of $T$.
+For one direction, we begin with that we have a basis $(v_{1},...,v_{n})$ of $V$ consisting of $T$, where  $\lambda_{1},...,\lambda_{k}$ are distinct eigenvalues. Then by our assumptions, using \textbf{Theorem 8.36}, we can construct a minimal polynomial where $p(z)=(z-\lambda_{1})...(z-\lambda_{k})$. Since our $\lambda_{1},...,\lambda_{k}$ are distinct eigenvalues, $p(z)$ must have distinct, i.e. non-repeating roots, thereby proving this direction.
+
+On the other hand, we begin with the assumption that we have we minimal polynomial with distinct roots where our polynomial is defined as:
+$$p(z)=(z-\lambda_{1})...(z-\lambda_{k})$$
+Furthermore, we can let $\lambda_{1}...\lambda_{k}$ be the distinct eigenvalues of $T$. Then by definition of minimal polynomial, we have the following:
+$$(T-\lambda_{1}I)...(T-\lambda_{k}I))=0$$
+Letting $U_{k}$ be the corresponding subspaces of generalized eigenvectors for each $\lambda_{k}$, we can take a $v\in U_{k}$ where $u=(T-\lambda_{k}I)v\implies u\in U_{k}$. Furthermore, by definition, we know
+\begin{equation}
+\begin{split}
+(T\mid_{U_{m}}-\lambda_{1}I)...(T\mid_{U_{m}}-\lambda_{m-1}I)u&=(T-\lambda_{1}I)...(T-\lambda_{m}I)v\\
+&=0
+\end{split}    
+\end{equation}
+By \textbf{Theorem 8.23(c)}, $(T-\lambda_{m}I)\mid_{U_{m}}$ is nilpotent, and it's eigenvalue is only $0$. Therefore, $T\mid_{U_{m}}-\lambda_{k}I$ is invertible in $U_{m}$ for $k=1,...,m-1$, and (3) implies that $u=0$. We can then conclude that $v$ is an eigenvector $T$. Since $v$ is some eigenvector of $T$ with eigenvalue of $\lambda_{m}$ is an eigenvector of $T$, we know that generalized $v$'s of $T$ is an eigenvector of $T$. Therefore, we have a basis of generalized eigenvectors of $T$ which implies that there is a of $V$ consisting of generalized eigenvectors of $T$ by \textbf{Corollary 8.25}. This is the result proves the other direction of proof.
 \end{proof}
 
 
+\newpage
 \section{Problem 11}
 Suppose $x\neq 0$. Let $p$ be the monic polynomial of the smallest degree such that $p(T)x=0$. Prove that $p$ divides the minimal polynomial of $T$.
 
@@ -152,7 +181,7 @@ Letting $q$ be the minimal polynomial of $T$, then there exists $s,r\in \mathcal
 $$q(T)x=s(T)p(T)v+r(T)x$$
 By definition of minimal polynomial $q(T)=0$ and $p(T)x=0$ by our assumption. This results in $r(T)x=0\implies r=0$, so the equation $q=sp+r$ becomes
 $$q=sp$$
-Here it's clear that $p\div q$, which is the minimal polynomial of $T$.
+Here it's clear that $p\mid q$, which is the minimal polynomial of $T$.
 \end{proof}
 
 

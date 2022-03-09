@@ -29,7 +29,13 @@ $$f^{(n)}(z_{0})=g^{(n)}(z_{0}),\quad n=0,1,2,3,...$$
 then $f(z)=g(z)$, $\forall z\in D_{1}(z_{0})$.
 
 \begin{proof}
-
+By our given, we know there is a Taylor Series expansion of $f(z)$ and $g(z)$ centered around $z_{0}$ such that
+$$f(z)=\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{f^{(n)}(z_{0})}{n!} \quad\text{and}\quad g(z)=\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{g^{(n)}(z_{0})}{n!}$$
+where $n=0,1,2,3,...$ therefore, equating the two we have that
+$$\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{f^{(n)}(z_{0})}{n!}=\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{g^{(n)}(z_{0})}{n!}$$
+This reduces to
+$$f^{(n)}(z_{0})=g^{(n)}(z_{0})$$
+Which is exactly what we want.
 \end{proof}
 
 
@@ -45,18 +51,29 @@ $$f(z_{0})=f'(z_{0})=...=f^{N-1}(z_{0})=0,\quad f^{n}(z_{0})\neq0$$
 
 \begin{proof}
     \begin{enumerate}[label=\textbf{(\roman*)}]
-        \item
-        \item
+        \item Since we are given that
+        $$f(z_{0})=f'(z_{0})=...=f^{N-1}(z_{0})=0,\quad f^{n}(z_{0})\neq0$$
+        and letting $z_{0} =0$, we know that we can Taylor expand $f(z)$ such that:
+        $$f(z)=\underbrace{\sum_{n=0}^{N-1}\frac{f^{(n)}(z_{0})}{n!}(z-z_{0})^{n}}_\text{=0 (by definition)}+\sum_{k=N}^{\infty}\frac{f^{(k)}(z_{0})}{k!}(z-z_{0})^{k}$$
+        where the remaining nonzero sum terms consists of analytic functions. Factoring out a $(z-z_{0})^{N}$ yields:
+        $$f(z)=(z-z_{0})^{N}\cdot\sum_{k=0}^{\infty}\frac{f^{(k)}(z_{0})}{k!}(z-z_{0})^{k}$$
+        Finally, letting $g(z)=\sum_{k=0}^{\infty}\frac{f^{(k)}(z_{0})}{k!}(z-z_{0})^{k}$ we conclude:
+        $$f(z)=(z-z_{0})^{N}\cdot g(z_{0})$$
+        \item Taking $f(z)$ in \textbf{Problem 2(i)}, we know that after the first zero terms of the Taylor expansion, we have 
+        $$f(z)=(z-z_{0})^{N}\cdot g(z_{0})$$
+        Clearly, the first term of $g(0)\neq 0$ and is a constant and the following terms are nonzero by definition. So, it follows that there must exist a nonzero $\delta>0$ such that $\left|z-z_{0}\right|<\delta$ which implies that $\left|g(z)\right|\neq0$. Clearly, $(z-z_{0})^{N}\neq0$ so the zeros of a non-trivial analytic function are isolated.
     \end{enumerate}
 \end{proof}
 
 
 \newpage
 \section{Problem 3}
-Let $f(z)=\sin(\frac{\pi}{2})$. Thus $f(\frac{1}{n})=0$. Does this contradict the result in \textbf{Problem 2}?
+Let $f(z)=\sin(\frac{\pi}{z})$. Thus $f(\frac{1}{n})=0$. Does this contradict the result in \textbf{Problem 2}?
 
 \begin{proof}
-
+We notice that for all possible of $\frac{1}{n}$, $n\in\N$, we have $f(\frac{1}{n})=\sin(n\pi)$ which is $0$ for all $n$. Furthermore as the limit approaches infinity, $\frac{1}{n}$ approaches $0$, and therefore $f(\frac{1}{n})=\sin(0)=0\Rightarrow f(\frac{1}{n})=f'(\frac{1}{n})=...=f^{n}(\frac{1}{n})=0$. This fails our assumption that 
+$$f(z_{0})=f'(z_{0})=...=f^{N-1}(z_{0})=0,\quad f^{n}(z_{0})\neq0$$
+and so this does not contradict the result of \textbf{Problem 2}.
 \end{proof}
 
 
@@ -70,17 +87,29 @@ Find the order of each of the zeros of the given functions:
 \end{enumerate}
 
 \begin{proof}
+    Functions $f$ that are analytic at a point $z_{0}$ has a zero of order $m$ at $z_{0}$ if and only if there is a function $g$, which is analytic and nonzero at $z_{0}$ such that
+    $$f(z)=(z-z_{0})^{m}g(z)$$
     \begin{enumerate}[label=\textbf{(\alph*)}]
-        \item
-        \item
-        \item
+        \item Therefore, we can factor simplify this to get
+        $$((z-2)^{2})^{2}=(z-2)^{4}$$
+        which makes it clear that we have a $g(z)=0$ and $z_{0}=2$, from which we can conlude we have a zero $m=4$.
+        \item Using the Taylor exapnsion of $\cos z$ about $z_{0}=0$, we have that:
+        \begin{equation}
+        \begin{split}
+        z^{2}(1-\cos(z))&=z^{2}\left[1-\left(1-\frac{z^{2}}{2!}+\frac{z^{4}}{4!}-\frac{z^{6}}{6!}+...\right)\right]\\
+        &=z^{2}\left(\frac{z^{2}}{2!}-\frac{z^{4}}{4!}+\frac{z^{6}}{6!}+...\right)\\
+        &=z^{4}\left(\frac{1}{2!}-\frac{z^{2}}{4!}+\frac{z^{4}}{6!}+...\right)\quad\text{(factoring out a }z^{2}\text{)}
+        \end{split}
+        \end{equation}
+        From here, we have the form we wanted where we let our multiplicand be $(z-z_{0})=(z-0)^{4}$, and letting $g(z)$ be the multiplier which is $\frac{1}{2!}$ when $z_{0}=0$, i.e. nonzero. Therefore, our $m$ or the order of zero is $4$.
+        \item Similar to \textbf{(a)}, we can factor this to get $(e^{z}-4)(e^{z}-1)$. Now, similar to \textbf{(b)}, we Taylor expand our $e^{z}$ to get:
     \end{enumerate}
 \end{proof}
 
 
 \newpage
 \section{Problem 5}
-Locate the isolated singularity of the given function and tell whether it is a removeable singularity, a pole, or an essential singularity.
+Locate the isolated singularity of the given function and tell whether it is a removable singularity, a pole, or an essential singularity.
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item
           \begin{flushleft}
@@ -110,7 +139,9 @@ Locate the isolated singularity of the given function and tell whether it is a r
 
 \begin{proof}
     \begin{enumerate}[label=\textbf{(\alph*)}]
-        \item
+        \item We know that if $f(z)=\frac{e^{z}-1}{z}$ has a Laurent series representation such as:
+        $$f(z)=\sum_{n=0}^{\infty}a_{n}(z-z_{0})^{n}+\frac{b_{1}}{z-z_{0}}+\frac{b_{2}}{(z-z_{0})^{2}}+...+\frac{b_{n}}{(z-z_{0})^{n}}+...$$
+        in a $0<\left|z-z_{0}\right|<R_{2}$, and every $b_{n}$ is zero, then we have a removable singular point.
         \item
         \item
         \item

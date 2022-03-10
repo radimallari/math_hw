@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 \usepackage{amssymb}
 \usepackage{amscd}
 \usepackage{amsxtra}
@@ -29,13 +29,13 @@ $$f^{(n)}(z_{0})=g^{(n)}(z_{0}),\quad n=0,1,2,3,...$$
 then $f(z)=g(z)$, $\forall z\in D_{1}(z_{0})$.
 
 \begin{proof}
-By our given, we know there is a Taylor Series expansion of $f(z)$ and $g(z)$ centered around $z_{0}$ such that
-$$f(z)=\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{f^{(n)}(z_{0})}{n!} \quad\text{and}\quad g(z)=\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{g^{(n)}(z_{0})}{n!}$$
-where $n=0,1,2,3,...$ therefore, equating the two we have that
-$$\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{f^{(n)}(z_{0})}{n!}=\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{g^{(n)}(z_{0})}{n!}$$
-This reduces to
-$$f^{(n)}(z_{0})=g^{(n)}(z_{0})$$
-Which is exactly what we want.
+    By our given, we know there is a Taylor Series expansion of $f(z)$ and $g(z)$ centered around $z_{0}$ such that
+    $$f(z)=\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{f^{(n)}(z_{0})}{n!} \quad\text{and}\quad g(z)=\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{g^{(n)}(z_{0})}{n!}$$
+    where $n=0,1,2,3,...$ therefore, equating the two we have that
+    $$\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{f^{(n)}(z_{0})}{n!}=\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{g^{(n)}(z_{0})}{n!}$$
+    This reduces to
+    $$f^{(n)}(z_{0})=g^{(n)}(z_{0})$$
+    Which is exactly what we want.
 \end{proof}
 
 
@@ -52,16 +52,16 @@ $$f(z_{0})=f'(z_{0})=...=f^{N-1}(z_{0})=0,\quad f^{n}(z_{0})\neq0$$
 \begin{proof}
     \begin{enumerate}[label=\textbf{(\roman*)}]
         \item Since we are given that
-        $$f(z_{0})=f'(z_{0})=...=f^{N-1}(z_{0})=0,\quad f^{n}(z_{0})\neq0$$
-        and letting $z_{0} =0$, we know that we can Taylor expand $f(z)$ such that:
-        $$f(z)=\underbrace{\sum_{n=0}^{N-1}\frac{f^{(n)}(z_{0})}{n!}(z-z_{0})^{n}}_\text{=0 (by definition)}+\sum_{k=N}^{\infty}\frac{f^{(k)}(z_{0})}{k!}(z-z_{0})^{k}$$
-        where the remaining nonzero sum terms consists of analytic functions. Factoring out a $(z-z_{0})^{N}$ yields:
-        $$f(z)=(z-z_{0})^{N}\cdot\sum_{k=0}^{\infty}\frac{f^{(k)}(z_{0})}{k!}(z-z_{0})^{k}$$
-        Finally, letting $g(z)=\sum_{k=0}^{\infty}\frac{f^{(k)}(z_{0})}{k!}(z-z_{0})^{k}$ we conclude:
-        $$f(z)=(z-z_{0})^{N}\cdot g(z_{0})$$
-        \item Taking $f(z)$ in \textbf{Problem 2(i)}, we know that after the first zero terms of the Taylor expansion, we have 
-        $$f(z)=(z-z_{0})^{N}\cdot g(z_{0})$$
-        Clearly, the first term of $g(0)\neq 0$ and is a constant and the following terms are nonzero by definition. So, it follows that there must exist a nonzero $\delta>0$ such that $\left|z-z_{0}\right|<\delta$ which implies that $\left|g(z)\right|\neq0$. Clearly, $(z-z_{0})^{N}\neq0$ so the zeros of a non-trivial analytic function are isolated.
+              $$f(z_{0})=f'(z_{0})=...=f^{N-1}(z_{0})=0,\quad f^{n}(z_{0})\neq0$$
+              and letting $z_{0} =0$, we know that we can Taylor expand $f(z)$ such that:
+              $$f(z)=\underbrace{\sum_{n=0}^{N-1}\frac{f^{(n)}(z_{0})}{n!}(z-z_{0})^{n}}_\text{=0 (by definition)}+\sum_{k=N}^{\infty}\frac{f^{(k)}(z_{0})}{k!}(z-z_{0})^{k}$$
+              where the remaining nonzero sum terms consists of analytic functions. Factoring out a $(z-z_{0})^{N}$ yields:
+              $$f(z)=(z-z_{0})^{N}\cdot\sum_{k=0}^{\infty}\frac{f^{(k)}(z_{0})}{k!}(z-z_{0})^{k}$$
+              Finally, letting $g(z)=\sum_{k=0}^{\infty}\frac{f^{(k)}(z_{0})}{k!}(z-z_{0})^{k}$ we conclude:
+              $$f(z)=(z-z_{0})^{N}\cdot g(z_{0})$$
+        \item Taking $f(z)$ in \textbf{Problem 2(i)}, we know that after the first zero terms of the Taylor expansion, we have
+              $$f(z)=(z-z_{0})^{N}\cdot g(z_{0})$$
+              Clearly, the first term of $g(0)\neq 0$ and is a constant and the following terms are nonzero by definition. So, it follows that there must exist a nonzero $\delta>0$ such that $\left|z-z_{0}\right|<\delta$ which implies that $\left|g(z)\right|\neq0$. Clearly, $(z-z_{0})^{N}\neq0$ so the zeros of a non-trivial analytic function are isolated.
     \end{enumerate}
 \end{proof}
 
@@ -71,9 +71,9 @@ $$f(z_{0})=f'(z_{0})=...=f^{N-1}(z_{0})=0,\quad f^{n}(z_{0})\neq0$$
 Let $f(z)=\sin(\frac{\pi}{z})$. Thus $f(\frac{1}{n})=0$. Does this contradict the result in \textbf{Problem 2}?
 
 \begin{proof}
-We notice that for all possible of $\frac{1}{n}$, $n\in\N$, we have $f(\frac{1}{n})=\sin(n\pi)$ which is $0$ for all $n$. Furthermore as the limit approaches infinity, $\frac{1}{n}$ approaches $0$, and therefore $f(\frac{1}{n})=\sin(0)=0\Rightarrow f(\frac{1}{n})=f'(\frac{1}{n})=...=f^{n}(\frac{1}{n})=0$. This fails our assumption that 
-$$f(z_{0})=f'(z_{0})=...=f^{N-1}(z_{0})=0,\quad f^{n}(z_{0})\neq0$$
-and so this does not contradict the result of \textbf{Problem 2}.
+    We notice that for all possible of $\frac{1}{n}$, $n\in\N$, we have $f(\frac{1}{n})=\sin(n\pi)$ which is $0$ for all $n$. Furthermore as the limit approaches infinity, $\frac{1}{n}$ approaches $0$, and therefore $f(\frac{1}{n})=\sin(0)=0\Rightarrow f(\frac{1}{n})=f'(\frac{1}{n})=...=f^{n}(\frac{1}{n})=0$. This fails our assumption that
+    $$f(z_{0})=f'(z_{0})=...=f^{N-1}(z_{0})=0,\quad f^{n}(z_{0})\neq0$$
+    and so this does not contradict the result of \textbf{Problem 2}.
 \end{proof}
 
 
@@ -91,17 +91,17 @@ Find the order of each of the zeros of the given functions:
     $$f(z)=(z-z_{0})^{m}g(z)$$
     \begin{enumerate}[label=\textbf{(\alph*)}]
         \item Therefore, we can factor simplify this to get
-        $$((z-2)^{2})^{2}=(z-2)^{4}$$
-        which makes it clear that we have a $g(z)=0$ and $z_{0}=2$, from which we can conlude we have a zero $m=4$.
+              $$((z-2)^{2})^{2}=(z-2)^{4}$$
+              which makes it clear that we have a $g(z)=0$ and $z_{0}=2$, from which we can conlude we have a zero $m=4$.
         \item Using the Taylor exapnsion of $\cos z$ about $z_{0}=0$, we have that:
-        \begin{equation}
-        \begin{split}
-        z^{2}(1-\cos(z))&=z^{2}\left[1-\left(1-\frac{z^{2}}{2!}+\frac{z^{4}}{4!}-\frac{z^{6}}{6!}+...\right)\right]\\
-        &=z^{2}\left(\frac{z^{2}}{2!}-\frac{z^{4}}{4!}+\frac{z^{6}}{6!}+...\right)\\
-        &=z^{4}\left(\frac{1}{2!}-\frac{z^{2}}{4!}+\frac{z^{4}}{6!}+...\right)\quad\text{(factoring out a }z^{2}\text{)}
-        \end{split}
-        \end{equation}
-        From here, we have the form we wanted where we let our multiplicand be $(z-z_{0})=(z-0)^{4}$, and letting $g(z)$ be the multiplier which is $\frac{1}{2!}$ when $z_{0}=0$, i.e. nonzero. Therefore, our $m$ or the order of zero is $4$.
+              \begin{equation}
+                  \begin{split}
+                      z^{2}(1-\cos(z))&=z^{2}\left[1-\left(1-\frac{z^{2}}{2!}+\frac{z^{4}}{4!}-\frac{z^{6}}{6!}+...\right)\right]\\
+                      &=z^{2}\left(\frac{z^{2}}{2!}-\frac{z^{4}}{4!}+\frac{z^{6}}{6!}+...\right)\\
+                      &=z^{4}\left(\frac{1}{2!}-\frac{z^{2}}{4!}+\frac{z^{4}}{6!}+...\right)\quad\text{(factoring out a }z^{2}\text{)}
+                  \end{split}
+              \end{equation}
+              From here, we have the form we wanted where we let our multiplicand be $(z-z_{0})=(z-0)^{4}$, and letting $g(z)$ be the multiplier which is $\frac{1}{2!}$ when $z_{0}=0$, i.e. nonzero. Therefore, our $m$ or the order of zero is $4$.
         \item Similar to \textbf{(a)}, we can factor this to get $(e^{z}-4)(e^{z}-1)$. Now, similar to \textbf{(b)}, we Taylor expand our $e^{z}$ to get:
     \end{enumerate}
 \end{proof}
@@ -138,12 +138,42 @@ Locate the isolated singularity of the given function and tell whether it is a r
 \end{enumerate}
 
 \begin{proof}
+    If a function $f$ has an isolated singular point at $z_{0}$, then it's Laurent series form is:
+    $$f(z)=\sum_{n=0}^{\infty}a_{n}(z-z_{0})+\frac{b_{1}}{z-z_{0}}+\frac{b_{2}}{(z-z_{0})^{2}}+....+\frac{b_{n}}{(z-z_{0})^{n}}+...$$
+    When all $b_{n}=0$, then we have a removable singular point $z_{0}$. If we have $n\geq1$, where the $b_{n}$ terms are nonzero, and $n$ is finite, then we have a pole of order $n$. Finally if we have an infinite number of $b_{n}$, which are nonzero, then $z_{0}$ is an essential singular point of $f$.
     \begin{enumerate}[label=\textbf{(\alph*)}]
-        \item We know that if $f(z)=\frac{e^{z}-1}{z}$ has a Laurent series representation such as:
-        $$f(z)=\sum_{n=0}^{\infty}a_{n}(z-z_{0})^{n}+\frac{b_{1}}{z-z_{0}}+\frac{b_{2}}{(z-z_{0})^{2}}+...+\frac{b_{n}}{(z-z_{0})^{n}}+...$$
-        in a $0<\left|z-z_{0}\right|<R_{2}$, and every $b_{n}$ is zero, then we have a removable singular point.
-        \item
-        \item
+        \item This has a singularity at $z_{0}=0$, therefore taking the Taylor expansion of $e^{z}$ about $z_{0}$ gives:
+              \begin{equation}
+                  \begin{split}
+                      \frac{e^{z}-1}{z}&=\frac{\left(1+z+\frac{z^{2}}{2!}+\frac{z^{3}}{3!}+...\right)-1}{z}\quad\text{(subtracting $1$)}
+                      \\
+                      &=\frac{z+\frac{z^{2}}{2!}+\frac{z^{3}}{3!}+...}{z}\quad\text{(dividing by $z$)}
+                      \\
+                      &=1+\frac{z}{2!}+\frac{z^{2}}{3!}+\frac{z^{3}}{4}+...
+                  \end{split}
+              \end{equation}
+              Here it's clear that we do not have $b$ terms since we do not have terms where $(z-z_{0})$ is the denominator. Therefore, $z_{0}=0$ is a removable singular point.
+        \item We know that $\sin(z)=0$ for $z_{0}=\pi k$ where $k\in\Z$. Therefore, expanding about $z_{0}$, we get
+              \begin{equation}
+                  \begin{split}
+                      \frac{z^{2}}{\sin(z)}&=\frac{z^{2}}{z-\frac{z^{3}}{3!}+\frac{z^{5}}{5!}-...}\\
+                      &=\frac{z^{2}}{z\left(1-\frac{z^{2}}{3!}+\frac{z^{4}}{5!}-...\right)}\quad\text{(factoring a $z$ in the denominator)}\\
+                      &=z\cdot \frac{1}{\left(1-\frac{z^{2}}{3!}+\frac{z^{4}}{5!}-...\right)}\\
+                      &=z\cdot (1+\frac{z^{2}}{3!}+\frac{z^{4}}{5!}+...)\\
+                      &=z+\frac{z^{2}}{3!}+\frac{z^{4}}{5!}+...
+                  \end{split}
+              \end{equation}
+              And again, since the our Laurent expansion contains no $b_{n}$ terms where $(z-z_{0})$ is in the denominator, $z=\pi n$ is a a removable singular point.
+        \item For this, we have an isolated singularity for when $e^{2z}-1=0$. To find these points, we rewrite $e^{2z}$ as
+              $$e^{2x+2iy}=e^{2x}\cdot e^{2iy}=e^{2x}\left(\cos(2y)+i\sin(2y)\right)$$
+              $e^{2x}\left(\cos(2y)+i\sin(2y)\right)=1$ is true for when $x=0$, and $2y=2\pi k$ where $k\in\Z$ which implies that we have singularties for $z=x+iy=i\pi k$. Now Taylor expanding $e^{z}$:
+              \begin{equation}
+                  \begin{split}
+                      \frac{e^{z}-1}{e^{2z}-1}&=\frac{\left(1+z+\frac{z^{2}}{2!}+\frac{z^{3}}{3!}+...\right)-1}{\left(1+2z+\frac{2^{2}z^{2}}{2!}+\frac{2^{3}z^{3}}{3!}+...\right)-1}\\
+                      &=\frac{z+\frac{z^{2}}{2!}+\frac{z^{3}}{3!}+...}{2z+\frac{2^{2}z^{2}}{2!}+\frac{2^{3}z^{3}}{3!}+...}\quad\text{(after the $\pm 1$ cancel)}
+                      &=\frac{z}{}
+                  \end{split}
+              \end{equation}
         \item
     \end{enumerate}
 \end{proof}

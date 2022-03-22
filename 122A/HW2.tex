@@ -1,0 +1,132 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsxtra}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\set}[1]{\left\{ #1\right\}}
+\newenvironment{proof}{\noindent{\bf Proof.}}{\hfill $\square$\medskip}
+
+\usepackage[utf8]{inputenc}
+
+
+\title{Math 122A Homework 2}
+\author{Rad Mallari}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+Consider $f:\C\rightarrow\C$ defined as $f(z)=z^{2}$, i.e. $(x,y)\rightarrow(u(x,y),v(x,y))$ with
+$$u(x,y)=\mathfrak{R} f(z)=\text{ (Real part of }f(z))=x^{2}-y^{2}$$
+and
+$$v(x,y)=\mathfrak{F} f(z)=\text{ (Imaginary part of }f(z))=2xy$$
+Prove that $f:\C\sim\R^{2}\rightarrow\C\sim\R^{2}$
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item maps the line $x=a_{0}$ (constant) onto the parabola $u=a_{0}^{2}-\frac{v^{2}}{4a_{0}^{2}}$.
+    \item maps the line $y=b_{0}$ (constant) onto the parabola $u=-b_{0}^{2}+\frac{v^{2}}{4b_{0}^{2}}$.
+    \item maps the hyperbola $x^{2}-y^{2}=c_{0}$ (constant) onto the line $u=c_{0}$.
+    \item maps the hyperbola $xy=d_{0}$ (constant) onto the line $v=2d_{0}$.
+\end{enumerate}
+
+\begin{proof}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Since $(x,y)\rightarrow(u(x,y),v(x,y))$ we have that $u=a_{0}^{2}-y^{2}$ where we can find $y$ by setting $v=2xy=2a_{0}y\Rightarrow y=\frac{v}{2a_{0}}$. Therefore, $u=a_{0}^{2}-(\frac{v}{2_{0}})^{2}=a_{0}^{2}-\frac{v^{2}}{4a_{0}^{2}}$
+    \item Similarly to \textbf{(a)}, we have that $u=x^{2}-{b_{0}}^{2}$ where we can find using $v=2xy=2xb_{0}\Rightarrow x=\frac{v}{2b_{0}}$. Therefore, $u=\frac{v^{2}}{4b_{0}^{2}}-b_{0}^{2}=-b_{0}^{2}+\frac{v^{2}}{4b_{0}^{2}}$
+    \item Letting $u=c_{0}$, we have that $u(x,y)=c_{0}=x^{2}-y^{2}$
+    \item Similarly to \textbf{(c)}, letting $v(x,y)=2d_{0}$ then dividing by $2$ to both sides we have that $v=2d_{0}=2xy\Rightarrow v=xy$.
+\end{enumerate}
+\end{proof}
+
+
+\section{Problem 2}
+Using that lines and circles in $\R^{2}$ are given by the equation
+$$Ax+By+C(x^{2}+y^{2})=D,\qquad A,B,C,D\in\R$$
+Prove that the function $f:\C-\set{0}\rightarrow\C$ defined as $f(z)=\frac{1}{z}$ maps any line and any circle onto a line or a circle.
+
+\begin{proof}
+Letting the equation of a line be $y=mx+b$ implies that $mx-y=-b$. Now letting $C=0$, $B=-1$, $A=m$, and $D=-b$, we have $(m)x+(-1)y+0\cdot(x^{2}+y^{2})=-b\Rightarrow mx-y=-b\Rightarrow y=mx+b$. Now for the circle, we begin with the circle equation $(x-x_{0})^{2}+(y-y_{0}^{2})=r^{2}$ where $x_{0},y_{0}$ are the center and $r\geq 0$ is the radius. Expanding this equation we have that $x^{2}-2x_{0}x+x_{0}^{2}+y^{2}-2y_{0}y+y_{0}^{2}=r^{2}$. Moving the constants to the right side yields, $x^{2}-2x_{0}x+y_{2}-2y_{0}y=r^{2}-x_{0}^{2}-y_{0}^{2}$. Here the right side of the equation be $D$, $A=-2x_{0}$, $B=-2y_{0}$, $C=1$. Now letting $f=\frac{1}{z}$ where $f:\C-\set{0}\rightarrow\C$, we can multiply with the conjugate to get $f=\frac{1}{z}\cdot\frac{\overline{z}}{\overline{z}}=\frac{x-iy}{x^{2}+y^{2}}$. Splitting the terms we have that
+
+$$f(z)=\underbrace{\frac{x}{x^{2}+y^{2}}}_{u}+\underbrace{i\frac{-y}{x^{2}+y^{2}}}_{v}$$
+Now suppose $(x,y)$ satisfy $$Ax+By+C(x^{2}+y^{2})=D,\qquad A,B,C,D\in\R$$
+and we let $\Omega=\set{(x,y): Ax+By+C(x^{2}+y^{2})=D}$. Then there exists $f(\Omega)=\set{(x,y): A'u+B'v+C'(u^{2}+v^{2})=D'}$. Now plugging in an arbitrary element of $\Omega$ we get that:
+$$A'\frac{x}{x^{2}+y^{2}}+B'\frac{-y}{x^{2}+y^{2}}+C'(\frac{x^{2}}{x^{2}+y^{2}}+\frac{y^{2}}{x^{2}+y^{2}})=D'$$
+$$A'\frac{x}{x^{2}+y^{2}}+B'\frac{-y}{x^{2}+y^{2}}+C'(\frac{1}{x^{2}+y^{2}})=D'$$
+This implies
+$$A'x-B'y+C'=D'(x^{2}+y^{2})$$ and we see that $A'=A$, $B'=-B$, $C'=-D$, $D'=-C$.
+\end{proof}
+
+
+\section{Problem 3}
+Prove:
+$$\text{(a) }\lim_{z\to0}\frac{\overline{z}}{z} \textit{ does not exist}\quad and \quad \text{(b) }\lim_{z\to0}\frac{\overline{z}\overline{z}}{z}=0$$
+
+\begin{proof}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Letting $z=x+iy$, we have that $$\lim_{x+iy\to0}\frac{x-iy}{x+iy}$$
+    Splitting into two cases, for $x\to0$, we have that $\lim_{x\to 0}\frac{0-iy}{0-iy}=-1$, meanwhile for $y\to0$, we have that $\lim_{y\to0}\frac{x-i0}{x+i0}=1$. Since we have two different limits, the limit cannot exist.
+    \item Similarly, letting $z=x+iy$, we have
+    $$\lim_{x+iy\to0}{\frac{(x-iy)(x-iy)}{x+iy}}$$
+    $$\lim_{x+iy\to0}{\frac{(x-y)^{2}-2ixy}{x+iy}}$$
+    Now taking the limit for the real part, we have
+    $$\lim_{x\to0}{\frac{y^{2}-0}{0-iy}}=0$$
+    And for the imaginary term, we have
+    $$\lim_{x\to0}{\frac{x^{2}-0}{x+0}}=0$$
+    Therefore, $\lim_{z\to0}\frac{\overline{z}\overline{z}}{z}=0$.
+\end{enumerate}
+\end{proof}
+
+
+\section{Problem 4}
+Using induction and limit properties, prove:
+$$\lim_{z\to w}z^{n}=w^{n},\quad\forall n\in\N$$
+
+\begin{proof}
+By way of induction, we proceed with checking the base case $n=1$. This gives us that
+$$\lim_{z\to w}z=w,\quad\forall n\in\N$$
+Using delta-epsilon definition of limits, we take some function $f(z)$ where $\lim_{z\to w}f(z)=L$. Then for some $\epsilon>0$, there exists $\delta$ such that $L|z-w|<\delta$ implying $|f(z)-L|<\epsilon$ where $f(z)=z$ and $L=w$ which proves our case for $n=1$. Now for inductive step, we assume that $n$ holds, and we now check for
+$$\lim_{n\to\infty}z^{n+1}=w^{n+1}$$
+We can split this to be $\lim_{z\to w}z^{n}\cdot \lim_{z\to w}z$. From this we see that the multiplicand is our assumption, meanwhile the multiplier is our base case, thereby proving that
+$$\lim_{z\to w}z^{n}=w^{n},\quad\forall n\in\N$$
+using induction.
+\end{proof}
+
+
+\newpage
+\section{Problem 5}
+For any $a,b,c,d\in \C$ and $ad-bc\neq 0$. Define
+$$T_{A}:\C-\set{-\frac{d}{c}}\rightarrow\C\textit{ if }c\neq 0,\quad T_{A}:\C\rightarrow\C\textit{ if }c=0$$
+with
+$$(1)\qquad\qquad T_{A}(z)=\frac{az+b}{cz+d},\qquad A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$$
+Prove:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item If $c\neq 0$, then
+    $$\lim_{z\to\infty}T_{A}(z)=\frac{a}{c},\qquad \lim_{z\to-\frac{d}{c}}T_{A}(z)=\infty$$
+    \item $T_{A}:\C\cup\set{\infty}\rightarrow\C\cup\set{\infty}$ is one-to-one and onto.
+    \item $(T_{A})^{-1}=T_{A^{-1}}$
+    \item $T_{A}T_{B}=T_{AB}$
+    \item $T_{A}$ maps circles and lines onto circles or lines.
+\end{enumerate}
+HINT: Prove that $T_{A}=T_{4}T_{3}T_{2}T_{1}$, where
+$$T_{1}(z)=z+\frac{d}{c}, T_{2}(z)=\frac{1}{z}, T_{3}(z)=\frac{(bc-ad)z}{c^{2}}, T_{4}(z)=\frac{z+a}{c}$$
+and use problem 2.
+
+\begin{proof}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Since $c\neq 0$, then $T_{A}$ is given by
+    $$T_{A}:\C-\set{-\frac{d}{c}}\rightarrow\C$$
+    This gives us that $T_{A}(z)=\frac{az+b}{cz+d}$
+    \item
+    \item
+    \item
+    \item
+\end{enumerate}
+\end{proof}
+\end{document}1

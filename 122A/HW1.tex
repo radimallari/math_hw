@@ -1,0 +1,148 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsxtra}
+\usepackage{enumitem}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\set}[1]{\left\{ #1\right\}}
+\newenvironment{proof}{\noindent{\bf Proof.}}{\hfill $\square$\medskip}
+
+\usepackage[utf8]{inputenc}
+
+
+\title{Math 122A Homework 1}
+\author{Rad Mallari}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+Find all the cubic roots of $1-i$.
+
+\begin{proof}
+First, we let $z=1-i$ and writing this as in polar form, we have $z=1-i=\sqrt{2}e^{-i\frac{\pi}{4}}$. Therefore $z^\frac{1}{3}=(1-i)^{\frac{1}{3}}=2^{\frac{1}{6}}(e^{-i\frac{\pi}{12}+in\frac{2\pi}{3}})$ where $n\in\set{0,1,2}$ since multiples of $2\pi$ are valid. Therefore, we have roots
+$2^{\frac{1}{6}}(e^{-i\frac{\pi}{12}})$,
+$2^{\frac{1}{6}}(e^{-i\frac{\pi}{12}+i\frac{2\pi}{3}})$, and $2^{\frac{1}{6}}(e^{-i\frac{\pi}{12}+i\frac{4\pi}{3}})$.
+\end{proof}
+
+
+\section{Problem 2}
+Find
+$$z=\frac{(\sqrt{3}+i)^{12}}{(1+i)^{10}}$$
+\begin{proof}
+Rewriting the numerator and denominator in polar coordinates, we have that $z=\frac{(2e^{i\frac{\pi}{6})^{12}}}{(\sqrt{2}e^{i\frac{\pi}{4}})^{10}}$. Distributing the exponentials, we have $z=\frac{2^{12}e^{i2\pi}}{2^{5}e^{i\frac{3\pi}{4}}}$. Which simplifies to $z=2^{7}e^{i\frac{5\pi}{4}}$.
+\end{proof}
+
+
+\section{Problem 3}
+Let $w$ be the $n$-th root of $1$ (i.e. $w^{n}=1)$ different from $1$ itself. Prove
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $1+w+w^{2}+...+w^{n-1}=0$
+    \item $1+2w+3w^{2}+...+nw^{n-1}=\frac{n}{w-1}$
+\end{enumerate}
+
+\begin{proof}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item To prove this we begin by proving the following lemma:
+    $$1+z+z^{2}+...+z^{k}=\frac{1-z^{k+1}}{1-z}$$
+    Proceeding by way of induction, we look at the base case where $k=0$ which results in $1=\frac{1-z}{1-z}=1$. Now assuming $1+z+z^{2}+...+z^{k}=\frac{1-z^{k+1}}{1-z}$ is true, we must prove that $k+1$ follows, and this gives us that:
+    $$1+z+z^{2}+...+z^{k}+z^{k+1}=\frac{1-z^{k+1+1}}{1-z}$$By our assumption, we can the replace the first $k$ terms to get
+    $$\frac{1-z^{k+1}}{1-z}+z^{k+1}=\frac{1-z^{k+1+1}}{1-z}$$Multiplying by $(1-z)$ to both sides we get that $$1-z^{k+1}+z^{k+1}-z^{k+1+1}=1-z^{k+1+1}$$ which implies $0=0$ thereby proving our lemma. Now we let $w=z$ and we have
+    $$1+w+w^{2}+...+w^{n-1}+w^{n}=\frac{1-w^{n+1}}{1-w}$$
+    Since we were given that $w^{n}=1$, we can substitute this to get
+    $$1+w+w^{2}+...+w^{n-1}+1=\frac{1-w}{1-w}=1$$ then subtracting $1$ to both sides, we get $1+w+w^{2}+...+w^{n-1}=0$ thereby proving \textbf{(a)}.
+    \item To prove this, we an algebraic method and we let $y = 1+2w+3w^{2}+...+nw^{n-1}$. Now multiplying by $w$ to both sides we get that $yw=w+2w^{2}+3w{3}+...+nw^{n-1}+nw^{n}$. By subtracting $y$ and $yw$, we get
+    $$y-yw=1+w+w^{2}+...+nw^{n-1}-(n-1)w^{n-1}-nw^{n}$$
+    which simplifies to $y-yw=1+w+w^{2}+...+w^{n-1}-nw^{n}$. By \textbf{(a)}, we know that the terms up to $n-1$ is $0$ and we are left with $y-yw=-nw^{n}$ which is equivalent to $y=\frac{n}{w-1}$. Since $y=1+2w+3w^{2}+...+nw^{n-1}$, we know that $$1+2w+3w^{2}+...+nw^{n-1}=\frac{n}{w-1}$$
+\end{enumerate}
+\end{proof}
+
+
+\section{Problem 4}
+Let $a,b\in \C$
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Prove that if $\lvert a\lvert<1$ and $\lvert b\rvert<1$, then
+    $$\left|\frac{a-b}{1-\overline{a}{b}}\right|<1$$
+    \item Prove that if either $\lvert a\rvert=1$ or $\lvert b\rvert=1$, then
+    $$\left|\frac{a-b}{1-\overline{a}b}\right|=1$$
+\end{enumerate}
+
+\begin{proof}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item We can rewrite our inequality to be
+    $$\left|\frac{a-b}{1-\overline{a}{b}}\right|=\frac{|a-b|}{|1-\overline{a}b|}<1$$
+    Which implies that $|a-b|<|1-\overline{a}b|$. The modulus is always positive, we can square both sides of the inequality to get $|a-b|^{2}<|1-\overline{a}b|^{2}$. This is equivalent to:
+    $$(a-b)(\overline{a-b})<(1-ab)(\overline{1-\overline{a}b})$$
+    By properties of the conjugate we have that
+    $$(a-b)(\overline{a}-\overline{b})<(1-\overline{a}b)(1-a\overline{b})$$
+    Then distributing we get
+    $$a\overline{a}-a\overline{b}-b\overline{a}+b\overline{b}<1-a\overline{b}-\overline{a}b-\overline{a}b+|a|^{2}|b|^{2}$$
+    $$a\overline{a}+b\overline{b}<1+|a|^{2}|b|^{2}$$
+    $$|a|^{2}+|b|^{2}<1+|a|^{2}|b|^{2}$$
+    Now letting $\alpha=|a|^{2}$ and $\beta=|b|^{2}$ where $\alpha,\beta \in [0,1)$ we have that $\alpha+\beta\leq 1+\alpha\beta$ which is equivalent to $\alpha-\alpha\beta\leq 1-\beta$ which simplifies to $\alpha(1-\beta)\leq 1-\beta$
+    \item By properties of modulus, we know that $|a|=a\overline{a}=1$. Therefore, we can write our inequality as $$\left|\frac{a-b}{1-\overline{a}b}\right|=\left|\frac{a-b}{a\overline{a}-\overline{a}b}\right|=\left|\frac{1}{a}\right |$$
+\end{enumerate}
+\end{proof}
+
+
+\section{Problem 5}
+Express $\cos(4\theta)$ in terms of $\cos(\theta)$ and $\sin(\theta)$.
+
+\begin{proof}
+By DeMoivre's formula, we have that
+$$\cos(4\theta)+i\sin(4\theta)=(\cos(\theta)+i\sin(\theta))^{4}$$
+The right hand side simplifies to
+$$(\cos(\theta)+i\sin(\theta))^{4}=(\cos^{4}\theta-6\cos^{2}\theta\sin^{2}\theta+\sin^{4}\theta)+i(4\cos^{3}\sin\theta-4\cos\theta\sin^{3}\theta)$$
+\end{proof}
+
+
+\newpage
+\section{Problem 6}
+Establish the formula
+$$\frac{1}{2}+\cos(\theta)+\cos(2\theta)+...+\cos(n\theta)=\frac{\sin((\frac{n+1}{2})\theta)}{2\sin(\frac{\theta}{2})}$$
+
+\begin{proof}
+$\frac{1}{2}+\cos(\theta)+\cos(2\theta)+...+\cos(n\theta)$ is equivalent to the real part of $1+e^{i\theta}+e^{2i\theta}+...+e^{in\theta}=1+e^{i\theta}+(e^{i\theta})^{2}+...+(e^{i\theta})^{n}$. Using the lemma proven in \textbf{Problem 3(a)}, we can simplify this to be Re$[\frac{1-e^{i\theta(n+1)}}{1-e^{i\theta}}]=$ Re$[\frac{e^{i\theta(n+1)}-1}{e^{i\theta}-1}]$. Factoring out an $e^{i\frac{\theta}{2}}$ yields
+$$Re\left[\frac{\frac{(e^{i(n+\frac{1}{2})\theta}-e^{-i\frac{\theta}{2}})}{2i}}{\frac{(e^{i\frac{\theta}{2}}-e^{-i\frac{\theta}{2}})}{2i}}\right]$$
+$$=\frac{1}{\sin(\frac{\theta}{2})} \text{ Re} \left[\frac{e^{i(n+\frac{1}{2})\theta}-e^{-i\frac{\theta}{2}}}{2i}\right]$$. Since $\sin\theta=\frac{e^{-i\theta}-e^{-i\theta}}{2i}$, we are left with
+$$\frac{1}{2}+\cos(\theta)+\cos(2\theta)+...+\cos(n\theta)=\frac{1}{\sin(\frac{\theta}{2})}\text{ Re}\left[\frac{\sin(\frac{n+1}{2}\theta)}{2i}\right]=\frac{\sin((\frac{n+1}{2})\theta)}{2\sin(\frac{\theta}{2})}$$
+\end{proof}
+
+
+\section{Problem 7}
+Give a necessary and sufficient condition for $z_{1},z_{2},z_{3}\in\C$ to lie on a straight line.
+
+\begin{proof}
+$z_{3}$ belongs to a $L$ line passing through $z_{1}, z_{2}$ and $L$ is the set $\set{z=\theta z_{1}+(1-\theta)z_{2}: \theta\in\R}$. If $z_{3}\in L$ then there exists $\theta\in\R$ such that $z_{3}=z_{1}+(1-\theta)z_{2}$ is true and the converse follows.
+\end{proof}
+
+
+\section{Problem 8}
+**Prove that $z_{1},z_{2},z_{3}\in\C$ are the vertices of an equilateral triangle if and only if
+$$z_{1}^{2}+z_{2}^{2}+z_{3}^{2}=z_{1}z_{2}+z_{2}z_{3}+z_{3}z_{1}$$.
+
+\begin{proof}
+Suppose that we have $z_{1},z_{2},z_{3}$ that satisfy $z_{1}^{2}+z_{2}^{2}+z_{3}^{2}=z_{1}z_{2}+z_{2}z_{3}+z_{3}z_{1}$, and we have a number $z_{0}\in\C$. We claim that $w_{1} = z_{1}-z_{0}$, $w_{2}=z_{2}-z_{0}$, $w_{3}=z_{3}-z_{0}$. This implies that $w_{1}^{2}+w_{2}^{2}+w_{3}^{2}=w_{1}w_{2}+w_{1}w_{3}+w_{2}w_{3}$, and $(z_{1}-z_{0})^{2}+(z_{2}-z_{0})^{2}+(z_{3}-z_{0})^{2}=(z_{1}-z_{0})+(z_{3}-z_{0})(z_{1}-z_{0})+(z_{2}-z_{0})(z_{3}-z_{0})$. Furthermore, we claim that with the same previous condition, then for all $\theta\in\R$, $e^{i\theta}z_{1},e^{i\theta}z_{2}, e^{i\theta}z_{3}$ also satisfy $ z_{1}^{2}+z_{2}^{2}+z_{3}^{2}=z_{1}z_{2}+z_{2}z_{3}+z_{3}z_{1}$. To prove this, we consider
+$$w_{1}=z_{1}-\frac{z_{1}+z_{2}+z_{3}}{3}$$
+$$w_{2}=z_{2}-\frac{z_{1}+z_{2}+z_{3}}{3}$$
+$$w_{3}=z_{3}-\frac{z_{1}+z_{2}+z_{3}}{3}$$
+We note that $w_{1},w-{2},w_{3}$ satisfy our condition and $w_{1}+w_{2}+w_{3}=0\textbf{ (1)}$ and $w_{1}=r_{1},w_{2}=r_{2}e^{i\theta_{2}}, w_{3}=r_{3}e^{i\theta_{3}}\textbf{ (2)}$. Squaring $w_{1}+w_{2}+w_{3}=0$, we get that $w_{1}^{2}+w_{2}^{2}+w_{3}^{2}+2w_{1}w_{2}+2w_{1}w_{3}+2w_{2}w_{3}=0$ which implies that $w_{1}^{2}+w_{2}^{2}+w_{3}^{2}=w_{1}w_{2}+w_{2}w_{3}+w_{1}w_{3}=0\textbf{ (3)}$. So by \textbf{(1), (2), (3)} we conclude that $r_{1}=r_{2}=r_{3}$ and $\theta_{1}=\frac{2\pi}{3}$, $\theta_{2}=\frac{4\pi}{3}$ which is an equilateral triangle.
+\end{proof}
+\\
+
+
+Prove $f: \mathbb{C}\sim\mathbb{R}^{2}\rightarrow \mathbb{C}\sim\mathbb{R}^{2}$
+
+\begin{proof}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Maps the line $x=a_{0}$ onto $$u=a_{0}^{2}-\frac{v^{2}}{4a_{0}^{2}}$$
+    $$u=a_{0}^{2}-(\frac{v}{2a_{0}})^{2}\text{ where $v=2a_{0}y$}$$
+    $$u=a_{0}^{2}-\frac{v^{2}}{4a_{0}^{2}}$$
+\end{enumerate}
+\end{proof}
+\end{document}

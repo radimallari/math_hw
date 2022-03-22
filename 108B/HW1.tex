@@ -1,0 +1,163 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsxtra}
+\usepackage{enumitem}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\set}[1]{\left\{ #1\right\}}
+\newenvironment{proof}{\noindent{\bf Proof.}}{\hfill $\square$\medskip}
+
+\usepackage[utf8]{inputenc}
+
+
+\title{Math 108B Homework 1}
+\author{Rad Mallari}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+Prove that if $U_{1}, U_{2}, ..., U_{m}$ are subspaces of $V$ invariant under $T$, then $U_{1}+U_{2}+...+U_{m}$ is invariant under $T$. Here
+$$U_{1}+U_{2}+...+U_{m}=\set{y_{1}+y_{2}+...+y_{m}:y_{j}\in U_{j}, 1\leq j\leq m}$$
+
+\begin{proof}
+Setting $x=U_{1}+U_{2}+...+U_{m}$, then $T(x)=T(U_{1}+U_{2}+...+U_{m})$. Since we know that $T\in\mathcal{L}(V)$ we can write this as $T(x)=T(U_{1})+T(U_{2})+...+T(U_{m})$. Furthermore, we know that $U_{1}, U_{2}, ..., U_{m}$ are subspaces of $V$ invariant under $T$, therefore, $T(x)=T(U_{1})+T(U_{2})+...+T(U_{m})\subseteq U_{1}+U_{2}+...+U_{m}=x$. And so, we can conclude that $T(x)\subseteq x$, i.e. invariant under $T$.
+\end{proof}
+
+
+\section{Problem 2}
+Prove that the intersection of any collection of subspaces of $V$ invariant under $T$ is invariant under $T$.
+
+\begin{proof}
+If we have a set of subspaces of $V$, say $\set{U_{m}}$, that are invariant under $T$ and we take an element $u$ in the intersection of all $U_{m}$, then similar to \textbf{Problem 1} since $T\in\mathcal{L}(V)$, $Tu\in U_{m}$ for all $m$. Therefore, the all intersection of $U_{m}$ is invariant under $T$.
+\end{proof}
+
+
+\section{Problem 3}
+Suppose $U$ is a subspace of $V$ that is invariant under every $T$. Prove that $U=\set{0}$ or $V$.
+
+\begin{proof}
+By way of contradiction, suppose we have $U\neq\set{0}\text{ or }V$, and we let $x_{1}\in U\setminus\set{0}$ and $x_{2}\not\in U$. Extending a basis $\set{x_{1},b_{1},b_{2},...,b_{n}}$ of $V$ and defining $T$ as $T(x_{1})=x_{2}$ where $T(b_{m})=0$ for $m=1,...,n$. Then $T\in\mathcal{L}(V)$ and $T$ maps $x_{1}\in U$ to an element not in $U$ and we conclude that $U$ is not invariant under $T$.
+\end{proof}
+
+
+\section{Problem 4}
+Suppose $S,T\in \mathcal{L}(V)$ such that $ST=TS$. Prove that the subspace
+$$\text{null}(\lambda I-T)=\set{x\in V:(\lambda I-T)x=0}$$
+is invariant under S for every $\lambda\in F$.
+
+\begin{proof}
+Taking an element $u\in\text{null}(T-\lambda I)$, we have that $$(T-\lambda I)(Su)=TSu-\lambda Su=0$$
+$$TSu-\lambda Su= STu-\lambda Su=0$$
+$$S(Tu-\lambda u)=0$$
+by linearity of $T$. Therefore, $Su\in\text{null}(T-\lambda I)$ and
+$\text{null}(T-\lambda I)$ is invariant of $S$ for every $\lambda\in F$.
+\end{proof}
+
+
+\section{Problem 5}
+Let
+$$V=\set{(a,b):a,b\in F}$$
+so $n=2$. Define $T$ by $T(a,b)=(b,a)$. Find eigenvalues and eigenvectors of $T$.
+
+\begin{proof}
+Taking the standard basis $v=\set{(1,0),(0,1)}$, then $T(0,1)=0(1,0)+1(0,1)$ and $T(1,0)=1(1,0)+0(0,1)$, and so $T=\set{(0,1),(1,0)}$. The characteristic equation then is
+$$
+\begin{vmatrix}
+0-\lambda & 1\\
+1 & 0-\lambda
+\end{vmatrix}
+$$
+Which is equal to $\lambda^{2}-1=0\Rightarrow\lambda=\pm 1$. For $\lambda=1$, we can let $x=\begin{bmatrix}x_{1}\\x_{2}\end{bmatrix}$. Using $(T-I\lambda)x=0$ and using row reduction, we will get a free variable. Letting the free variable be $x_{2}$ results in our eigenvector $x=\set{x_{2}\begin{bmatrix}1\\1\end{bmatrix}:x_{2}\in\R}$. Doing the similar process for $\lambda=-1$, we get the eigenvector $x=\set{x_{2}\begin{bmatrix}-1\\1\end{bmatrix}:x_{2}\in\R}$
+\end{proof}
+
+
+\section{Problem 6}
+Let
+$$V=\set{(a,b,c):a,b,c\in F}$$
+so $n=3$. Define $T$ by $T(a,b,c)=(2b,0,5c)$. Find eigenvalues and eigenvectors of $T$.
+
+\begin{proof}
+Similarly to \textbf{Problem 5}, we have the standard basis $$v=\set{(1,0,0),(0,1,0),(0,0,1)}$$
+We then have our matrix for $T=\set{(0,2,0), (0,0,0), (0,0,5)}$. To find the eigenvalues then is given by $|T-\lambda I|$ which is
+$$
+\begin{vmatrix}
+0-\lambda&2&0\\
+0&0-\lambda&0\\
+0&0&5-\lambda
+\end{vmatrix}
+$$
+This yields the characteristic polynomial $\lambda^{3}-5\lambda^{2}=\lambda^{2}(\lambda-5)=0\Rightarrow\lambda =0\text{ (multiplicity 2)}, 5$. Now for $\lambda=5$, we again use $(T-I\lambda)x=0$ where $x=\begin{bmatrix}x_{1}\\x_{2}\\x_{3}\end{bmatrix}$. Again, we get a free variable and let $x_{2}=x_{3}=0$, which results in our eigenvector $x=\begin{bmatrix}0\\0\\1\end{bmatrix}$. For $\lambda=0$
+\end{proof}
+
+
+\section{Problem 7}
+Suppose
+$$Tx_{1}=Tx_{2}=...=Tx_{n}=x_{1}+x_{2}+...+x_{n}$$
+Find all eigenvalues and eigenvectors of $T$. (Hint: When is $Tx=0$?)
+
+\begin{proof}
+We have that:
+$$Tx_{1}=x_{1}+x_{2}+...+x_{n}$$
+$$Tx_{2}=x_{1}+x_{2}+...+x_{n}$$
+$$...$$
+$$Tx_{n}=x_{1}+x_{2}+...+x_{n}$$
+and we have the matrix $M$ for the transformation is
+$$\begin{bmatrix}
+1&1&...&1\\
+1&1&...&1\\
+&&...\\
+1&1&...&1
+\end{bmatrix}$$
+Therefore, our eigenvalues are $\lambda_{1}=0$, $\lambda_{2}=0$ , ..., $\lambda_{n-1}=0$,$\lambda_{n}=n$. And so our eigenvectors are:
+$$(A-\lambda_{i})x_{i}=0$$
+That is $x_{1}=(1,-1,0,...,0)$, $x_{2}=(1,0,-1,0,...,0)$, ..., $x_{n-1}=(1,0,...,0,-1)$, and $x_{n}=(1,1,...,1)$
+\end{proof}
+
+
+\section{Problem 8}
+Suppose the dimension of the subspace $\text{range}(T)=k$. Prove that $T$ has at most $k+1$ distinct eigenvalues.
+
+\begin{proof}
+Assume $T$ has $k+2$ distinct eigenvalues, we claim that $\text{range}(T)\geq k+1$. Let $\lambda_{1}, \lambda_{2},...,\lambda_{k+2}$ be distinct eigenvalues of $T$ and $y_{1},y_{2},...,y_{k+2}$ be the vectors of $T$ which are linearly independent. Since at most one of the eigenvalues is $0$, there are at least $k+1$ of the vectors is in $\text{range}(T)$ implying that $T$ has at most $k+1$ distinct eigenvalues.
+\end{proof}
+
+
+\section{Problem 9}
+Suppose $T$ is invertible and $0\neq\lambda\in F$. Prove that $\lambda$ is an eigenvalue of $T$ if and only if $1/\lambda$ has an eigenvalue of $T^{-1}$.
+
+\begin{proof}
+Since $T$ is invertible, we know that it is injective, and so $(\lambda I - T)$ is invertible. Therefore, every eigenvalue of $T\neq 0$. Furthermore, there exists an $x\neq 0$ such that $Tx=\lambda x\Rightarrow T^{-1}Tx=\lambda xT^{-1}\Rightarrow \frac{x}{\lambda}=xT^{-1}$
+\end{proof}
+
+
+\section{Problem 10}
+Suppose $S,T\in\mathcal{L}(V)$. Prove that $ST$ and $TS$ have the same eigenvalues.
+
+\begin{proof}
+To prove this, suppose we have an eigenvalue $\lambda$ of $ST$, then there exists a vector $x\neq 0$ such that $STx=\lambda x$. Now, letting $y=Tx$, we have that $TSy=\lambda y$.
+\end{proof}
+
+
+\section{Problem 11}
+Suppose every non-zero vector in $V$ has and eigenvector of $T$. Prove that $T=\lambda I$ for some $\lambda\in F$.
+
+\begin{proof}
+
+\end{proof}
+
+
+\section{Problem 12}
+Suppose that $T$ has $n$ distinct eigenvalues and that $S\in\mathcal{L}(V)$ has the same eigenvectors as $T$. Prove that $ST=TS$.
+
+\begin{proof}
+
+\end{proof}
+
+
+\end{document}

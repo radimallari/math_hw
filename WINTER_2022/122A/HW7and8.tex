@@ -1,0 +1,416 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsxtra}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\set}[1]{\left\{ #1\right\}}
+\newenvironment{proof}{\noindent{\bf Proof.}}{\hfill $\square$\medskip}
+
+\usepackage[utf8]{inputenc}
+
+
+\title{Math 122A Homework 7 and 8}
+\author{Rad Mallari}
+
+\begin{document}
+\maketitle
+
+
+\section{Problem 1}
+Let $D_{1}(z_{0})=\set{z\in\C:|z-z_{0}|<1}$. Let $f,g:D_{1}(z_{0})\to\C$ be two analytic functions on $D_{1}(z_{0})$. Prove that if
+$$f^{(n)}(z_{0})=g^{(n)}(z_{0}),\quad n=0,1,2,3,...$$
+then $f(z)=g(z)$, $\forall z\in D_{1}(z_{0})$.
+
+\begin{proof}
+    By our given, we know there is a unique Taylor Series expansion of $f(z)$ and $g(z)$ centered around $z_{0}$ such that
+    $$f(z)=\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{f^{(n)}(z_{0})}{n!} \quad\text{and}\quad g(z)=\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{g^{(n)}(z_{0})}{n!}$$
+    where $n=0,1,2,3,...$ therefore, equating the two we have that
+    $$\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{f^{(n)}(z_{0})}{n!}=\sum_{n=0}^{\infty}(z-z_{0})^{n}\frac{g^{(n)}(z_{0})}{n!}$$
+    This reduces to
+    $$f^{(n)}(z_{0})=g^{(n)}(z_{0})$$
+    Which is exactly what we want.
+\end{proof}
+
+
+\newpage
+\section{Problem 2}
+Let $D_{1}(z_{0})=\set{z\in\C:|z-z_{0}|<1}$. Let $f:D_{1}(z_{0})\to\C$ be an analytic function on $D_{1}(z_{0})$ \underline{such that is has a zero of $N\in\N$ at $z_{0}$}, i.e.
+$$f(z_{0})=f'(z_{0})=...=f^{N-1}(z_{0})=0,\quad f^{n}(z_{0})\neq0$$
+\begin{enumerate}[label=\textbf{(\roman*)}]
+    \item Prove that there exists $g:D_{1}(z_{0})\to\C$ analytic on $D_{1}(z_{0})$ with $g(z_{0})\neq0$ and
+          $$f(z)=(z-z_{0})^{N}g(z)$$
+    \item There exists $\delta>0$ such that if $0<|z-z_{0}|<\delta$ such that $f(z)\neq0$. (The zeros of a non-trivial analytic function are isolated)
+\end{enumerate}
+
+\begin{proof}
+    \begin{enumerate}[label=\textbf{(\roman*)}]
+        \item Since we are given that
+              $$f(z_{0})=f'(z_{0})=...=f^{N-1}(z_{0})=0,\quad f^{n}(z_{0})\neq0$$
+              and letting $z_{0} =0$, we know that we can Taylor expand $f(z)$ such that:
+              $$f(z)=\underbrace{\sum_{n=0}^{N-1}\frac{f^{(n)}(z_{0})}{n!}(z-z_{0})^{n}}_\text{=0 (by definition)}+\sum_{k=N}^{\infty}\frac{f^{(k)}(z_{0})}{k!}(z-z_{0})^{k}$$
+              where the remaining nonzero sum terms consists of analytic functions. Factoring out a $(z-z_{0})^{N}$ yields:
+              $$f(z)=(z-z_{0})^{N}\cdot\sum_{k=0}^{\infty}\frac{f^{(k)}(z_{0})}{k!}(z-z_{0})^{k}$$
+              Finally, letting $g(z)=\sum_{k=0}^{\infty}\frac{f^{(k)}(z_{0})}{k!}(z-z_{0})^{k}$ we conclude:
+              $$f(z)=(z-z_{0})^{N}\cdot g(z_{0})$$
+        \item Taking $f(z)$ in \textbf{Problem 2(i)}, we know that after the first zero terms of the Taylor expansion, we have
+              $$f(z)=(z-z_{0})^{N}\cdot g(z_{0})$$
+              where $g(z)$ is analytic, therefore continuous.
+              Clearly, the first term of $g(0)\neq 0$ and is a constant and the following terms are nonzero by definition. So, it follows that there must exist a nonzero $\delta>0$ such that $\left|z-z_{0}\right|<\delta$ which implies that $\left|g(z)\right|\neq0$. Clearly, $(z-z_{0})^{N}\neq0$ so the zeros of a non-trivial analytic function are isolated.
+    \end{enumerate}
+\end{proof}
+
+
+\newpage
+\section{Problem 3}
+Let $f(z)=\sin(\frac{\pi}{z})$. Thus $f(\frac{1}{n})=0$. Does this contradict the result in \textbf{Problem 2}?
+
+\begin{proof}
+    We notice that $\frac{\pi}{z}$ is not analytic for any disk $\left|z-z_{0}\right|<1$. Therefore, we fail the condition of \textbf{Problem 2(i)}. 
+\end{proof}
+
+
+\newpage
+\section{Problem 4}
+Find the order of each of the zeros of the given functions:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $(z^{2}-4z+4)^{2}$
+    \item $z^{2}(1-\cos(z))$
+    \item $e^{2z}-3e^{z}-4$
+\end{enumerate}
+
+\begin{proof}
+    Functions $f$ that are analytic at a point $z_{0}$ has a zero of order $m$ at $z_{0}$ if and only if there is a function $g$, which is analytic and nonzero at $z_{0}$ such that
+    $$f(z)=(z-z_{0})^{m}g(z)$$
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item Therefore, we can factor simplify this to get
+              $$((z-2)^{2})^{2}=(z-2)^{4}$$
+              which makes it clear that we have a $g(z)=0$ and $z_{0}=2$, from which we can conlude we have a zero $m=4$.
+        \item Using the Taylor exapnsion of $\cos z$ about $z_{0}=0$, we have that:
+              \begin{equation}
+                  \begin{split}
+                      z^{2}(1-\cos(z))&=z^{2}\left[1-\left(1-\frac{z^{2}}{2!}+\frac{z^{4}}{4!}-\frac{z^{6}}{6!}+...\right)\right]\\
+                      &=z^{2}\left(\frac{z^{2}}{2!}-\frac{z^{4}}{4!}+\frac{z^{6}}{6!}+...\right)\\
+                      &=z^{4}\left(\frac{1}{2!}-\frac{z^{2}}{4!}+\frac{z^{4}}{6!}+...\right)\quad\text{(factoring out a }z^{2}\text{)}
+                  \end{split}
+              \end{equation}
+              From here, we have the form we wanted where we let our multiplicand be $(z-z_{0})=(z-0)^{4}$, and letting $g(z)$ be the multiplier which is $\frac{1}{2!}$ when $z_{0}=0$, i.e. nonzero. Therefore, our $m$ or the order of zero is $4$. Furthermore, we have a zero of order $2$ at $z=2\pi n$ where $n\in\Z$ since the derivative of $(1-\cos(z))$ is $0$ at $z=2\pi n$  where $n\in\Z$
+        \item Similar to \textbf{(a)}, we can factor this to get $(e^{z}-4)(e^{z}+1)$. Here we can solve for $z$ individually, and get $e^{z}=4\Rightarrow z=\ln(4)$, so we have a zero of order $1$ at $\ln(4)$. Also, $e^{z}=-1\Rightarrow z=\ln(-1)=i\pi +2\pi n$ where $n\in \Z$ giving us a zero of order $1$ at $i\pi$.
+    \end{enumerate}
+\end{proof}
+
+
+\newpage
+\section{Problem 5}
+Locate the isolated singularity of the given function and tell whether it is a removable singularity, a pole, or an essential singularity.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item
+          \begin{flushleft}
+              $\begin{aligned}
+                      \frac{e^{z}-1}{z}
+                  \end{aligned}$
+          \end{flushleft}
+    \item
+          \begin{flushleft}
+              $\begin{aligned}
+                      \frac{z^{2}}{\sin(z)}
+                  \end{aligned}$
+          \end{flushleft}
+    \item
+          \begin{flushleft}
+              $\begin{aligned}
+                      \frac{e^{z}-1}{e^{2z}-1}
+                  \end{aligned}$
+          \end{flushleft}
+    \item
+          \begin{flushleft}
+              $\begin{aligned}
+                      \frac{z^{4}-2z^{2}+1}{(z-1)^{2}}
+                  \end{aligned}$
+          \end{flushleft}
+\end{enumerate}
+
+\begin{proof}
+    If a function $f$ has an isolated singular point at $z_{0}$, then it's Laurent series form is:
+    $$f(z)=\sum_{n=0}^{\infty}a_{n}(z-z_{0})+\frac{b_{1}}{z-z_{0}}+\frac{b_{2}}{(z-z_{0})^{2}}+....+\frac{b_{n}}{(z-z_{0})^{n}}+...$$
+    When all $b_{n}=0$, then we have a removable singular point $z_{0}$. If we have $n\geq1$, where the $b_{n}$ terms are nonzero, and $n$ is finite, then we have a pole of order $n$. Finally if we have an infinite number of $b_{n}$, which are nonzero, then $z_{0}$ is an essential singular point of $f$.
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item This has a singularity at $z_{0}=0$, therefore taking the Taylor expansion of $e^{z}$ about $z_{0}$ gives:
+              \begin{equation}
+                  \begin{split}
+                      \frac{e^{z}-1}{z}&=\frac{\left(1+z+\frac{z^{2}}{2!}+\frac{z^{3}}{3!}+...\right)-1}{z}\quad\text{(subtracting $1$)}
+                      \\
+                      &=\frac{z+\frac{z^{2}}{2!}+\frac{z^{3}}{3!}+...}{z}\quad\text{(dividing by $z$)}
+                      \\
+                      &=1+\frac{z}{2!}+\frac{z^{2}}{3!}+\frac{z^{3}}{4}+...
+                  \end{split}
+              \end{equation}
+              Here it's clear that we do not have $b$ terms since we do not have terms where $(z-z_{0})$ is the denominator. Therefore, $z_{0}=0$ is a removable singular point.
+        \item We know that $z=0$ for $z_{0}=0$. Therefore, expanding about $z_{0}$, we get
+              \begin{equation}
+                  \begin{split}
+                      \frac{z^{2}}{\sin(z)}&=\frac{z^{2}}{z-\frac{z^{3}}{3!}+\frac{z^{5}}{5!}-...}\\
+                      &=\frac{z^{2}}{z\left(1-\frac{z^{2}}{3!}+\frac{z^{4}}{5!}-...\right)}\quad\text{(factoring a $z$ in the denominator)}\\
+                      &=z\cdot \frac{1}{\left(1-\frac{z^{2}}{3!}+\frac{z^{4}}{5!}-...\right)}\\
+                      &=z\cdot (1+\frac{z^{2}}{3!}+\frac{z^{4}}{5!}+...)\\
+                      &=z+\frac{z^{2}}{3!}+\frac{z^{4}}{5!}+...
+                  \end{split}
+              \end{equation}
+              And again, since the our Laurent expansion contains no $b_{n}$ terms where $(z-z_{0})$ is in the denominator, so $z=0$ is a a removable singular point. Additionally, when we have $z_{0}=\pi n$ where $n\in\Z\setminus\set{0}$, we have a pole of order $1$ since $\sin(\pi n)$ is zero by a degree greater than the numerator. 
+        \item For this, we have a pole of order $1$ at $z_{0}=2i\pi n$ where $n\in\Z$ for $e^{z}-1$ since $e^{z}=1$ at $x=0$ and $y=2i\pi n$. Similarly, we have a pole of order $1$ for $e^{2z}-1$ at $z_{0}=i\pi n$ where $n\in\Z$ since $e^{2z}=1$ at $x=0$ and $2y=2i\pi n$. 
+        \item Factoring out $z^{2}$ from the first two terms in the numerator yields:
+        \begin{equation}
+            \begin{split}
+                \frac{z^{4}-2z^{2}+1}{(z-1)^{2}}&=\frac{z^{2}(z^{2}-2+1)}{(z-1)^{2}}\\
+                &=\frac{z^{2}(z-1)(z+1)}{(z-1)^{2}}\\
+                &=\frac{z^{2}(z+1)}{(z-1)}
+            \end{split}
+        \end{equation}
+        Here it's clear that we have a we have a removable point at $z=1$.
+    \end{enumerate}
+\end{proof}
+
+
+\newpage
+\section{Problem 6}
+Find the Laurent series for a given function about the point $z=0$ and find the residue at that point.
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item
+          \begin{flushleft}
+              $\begin{aligned}
+                      \frac{e^{z}-1}{z}
+                  \end{aligned}$
+          \end{flushleft}
+    \item
+          \begin{flushleft}
+              $\begin{aligned}
+                      \frac{z}{(\sin(z))^{2}}
+                  \end{aligned}$
+          \end{flushleft}
+    \item
+          \begin{flushleft}
+              $\begin{aligned}
+                      \frac{1}{e^{z}-1}
+                  \end{aligned}$
+          \end{flushleft}
+    \item
+          \begin{flushleft}
+              $\begin{aligned}
+                      \frac{1}{1-\cos(z)}
+                  \end{aligned}$
+          \end{flushleft}
+\end{enumerate}
+In \textbf{(c)} and \textbf{(d)} compute only three terms of the Laurent series.
+
+\begin{proof}
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item We can rewrite this as:
+        $$\frac{e^{z}-1}{z}=\frac{1}{z}(e^{z}-1)$$
+        The Laurent series of $e^{z}$ at $z=0$ is:
+        $$e^{z}=1+z+\frac{z^{2}}{2!}+\frac{z^{3}}{3!}+...$$
+        Therefore the Taylor expansion of $e^{z}$:
+        \begin{equation}
+            \begin{split}
+                \frac{1}{z}(e^{z}-1)&=\frac{1}{z}\left(z+\frac{z^{2}}{2!}+\frac{z^{3}}{3!}+...\right)\\
+                &=1+\frac{z}{2!}+\frac{z^{2}}{3!}+...
+            \end{split}
+        \end{equation}
+        Since the principal part of the series is $0$, our $\text{Res}(f,0)=0$
+        \item Multiplying by $\frac{z}{z}$ to our equation give us:
+        $$\frac{z}{(\sin(z))^{2}}=\frac{z}{\sin(z)}\cdot\frac{z}{\sin(z)}\cdot\frac{1}{z}$$
+        We notice $\frac{z}{\sin(z)}$ is analytic about $0$, and so there exists a Taylor expansion where:
+        $$\frac{z}{\sin(z)}=a_{0}+a_{1}z+a_{2}z^{2}+...$$
+        Multiplying $\sin(z)$ to get:
+        $$z=\sin(z)(a_{0}+a_{1}z+a_{2}z^{2}+...)$$
+        Expanding $\sin(z)$ yields:
+        $$z=(z-\frac{z^{3}}{3!}+\frac{z^{5}}{5!}-...)(a_{0}+a_{1}z+a_{2}z^{2}+...)$$
+        When multiplying out, we note that for the coefficients of each power: at power of $0\Rightarrow 0=0$, at power of $1\Rightarrow 1=a_{0}$, at power of $2\Rightarrow 0=a_{1}$, at power of $3\Rightarrow 0=a_{2}-\frac{a_{0}}{3!}\Rightarrow a_{2}=\frac{1}{3!}$, at power of $4\Rightarrow 0=a_{3}-\frac{a_{1}}{3!}$,...
+        This gives us that:
+        $$\frac{z}{\sin(z)}=(1+\frac{1}{6}z^{2}+...)$$
+        Going back to our original equation, we get:
+        \begin{equation}
+            \begin{split}
+                \frac{z}{\sin(z)}\cdot\frac{z}{\sin(z)}\cdot\frac{1}{z}&=\left(1+\frac{1}{6}z^{2}+...\right)\cdot\left(1+\frac{1}{6}z^{2}+...\right)\cdot\frac{1}{z}\\
+                &=(1+\frac{1}{3}z^{2}+\frac{1}{36}z^{4}+...)\cdot\frac{1}{z}\\
+                &=\frac{1}{z}+\frac{1}{3}z^{2}+\frac{1}{36}z^{3}+...
+            \end{split}
+        \end{equation}
+        From here we see, that the first term of the principal part is $\frac{1}{z}$, therefore our residue is the coffecient $1$, i.e. $\text{Res}(f,0)=1$
+        \item $e^{z}$ has a Taylor expansion:
+        $$e^{z}=1+z+\frac{z^{2}}{2!}+\frac{z^{3}}{3!}+...+\frac{z^{(n)}}{n!}+....$$
+        Therefore, $e^{z}-1$ is given by:
+        \begin{equation}
+            \begin{split}
+                e^{z}-1&=z+\frac{z^{2}}{2!}+\frac{z^{3}}{3!}+...+\frac{z^{(n)}}{n!}+....\\
+                &=z\left(1+\frac{z}{2!}+\frac{z^{2}}{3!}+...+\frac{z^{(n-1)}}{n!}+...\right)\\
+            \end{split}
+        \end{equation}
+        And so $\frac{1}{1-e^{z}}$ can be rewritten as:
+        $$\frac{1}{e^{z}-1}=\frac{1}{z}\cdot\underbrace{\frac{1}{\left(1+\frac{z}{2!}+\frac{z^{2}}{3!}+...+\frac{z^{(n-1)}}{n!}+...\right)}}_\text{$g(0)=1$ therefore analytic at $0$}$$
+        Therefore, the $g(z)$ has some Taylor expansion given by:
+        $$\frac{1}{\left(1+\frac{z}{2!}+\frac{z^{2}}{3!}+...+\frac{z^{(n-1)}}{n!}+...\right)}=(a_{0}+a_{1}z+a_{2}z^{2}+...)$$
+        $$1=\left(1+\frac{z}{2!}+\frac{z^{2}}{3!}+...+\frac{z^{(n-1)}}{n!}+...\right)\cdot(a_{0}+a_{1}z+a_{2}z^{2}+...)$$
+        Then similar to \textbf{Problem 5(b)}, we can expand by matching the coefficients with respect to their power on the left side. We list this as: at power $0\Rightarrow 1=a_{0}1\Rightarrow a_{0}=1$, at power $1\Rightarrow 0=a_{0}\frac{1}{2!}+a_{1}\Rightarrow 0=\frac{1}{2}+a_{1}$ at power $0=a_{2}+a_{1}\frac{1}{2!}+a_{0}\frac{1}{3!}\Rightarrow a_{2}=\frac{1}{12}$, ...
+        And so we get that:
+        \begin{equation}
+            \begin{split}
+                \frac{1}{e^{z}-1}&=\frac{1}{z}\cdot\left(1-\frac{1}{2}z+\frac{1}{12}z^{2}+...\right)\\
+                &=\frac{1}{z}-\frac{1}{2}+\frac{1}{12}z^{2}+...
+            \end{split}
+        \end{equation}
+        And again, the only principal part term of the principal part of our Laurent series has a coefficient of $1$ so our $\text{Res}(f,0)=1$
+        \item The Taylor expansion of 
+        $$\cos(z)=1-\frac{z^{2}}{2!}+\frac{z^{4}}{4!}-\frac{z^{6}}{6!}+...$$
+        Therefore, our equation becomes:
+        \begin{equation}
+            \begin{split}
+                \frac{1}{1-\cos(z)}&=\frac{1}{1-\left(1-\frac{z^{2}}{2!}+\frac{z^{4}}{4!}-\frac{z^{6}}{6!}+...\right)}\\
+                &=\frac{1}{\frac{z^{2}}{2!}-\frac{z^{4}}{4!}+\frac{z^{6}}{6!}-...}\\
+                &=\frac{2}{z^{2}}\cdot\frac{1}{\underbrace{\left(1-\frac{2!z^{2}}{4!}+\frac{2!z^{4}}{6!}-...\right)}}_\text{$g(z)\neq0$ at $z=0$, so $g(z)$ is analytic}
+            \end{split}
+        \end{equation}
+        Since $g(z)$ is analytic, there exists some Taylor expansion where:
+        $$1=\left(1-\frac{2!z^{2}}{4!}+\frac{2!z^{4}}{6!}-...\right)(a_{0}+a_{1}z+a_{2}z^{2}+...)$$
+        By the same method as \textbf{Problem (b) and (c)}, we can expand by matching the coefficients with respect to their power on the left side: for power $0\Rightarrow 1=1a_{0}\Rightarrow a_{0}=1$, for power $1\Rightarrow 0=a_{1}\Rightarrow a_{1}=0$, for power $2\Rightarrow 0=\left(\frac{2!}{4!}\right)a_{0}+a_{2}\Rightarrow a_{2}=-\frac{2!}{4!}$, ...
+        Therefore, \textbf{Equation (9)} becomes:
+        \begin{equation}
+            \begin{split}
+                \frac{1}{1-\cos(z)}&=\frac{2!}{z^{2}}(1-\frac{2!z^{2}}{4!}+...)\\
+                &=\frac{2!}{z^{2}}-1+...
+            \end{split}
+        \end{equation}
+        Here, we do no have a principal term of $\frac{1}{z}$, therefore, $\text{Res}(f,0)=0$.
+    \end{enumerate}
+\end{proof}
+
+
+\newpage
+\section{Problem 7}
+Find the residue of $f(z)=\frac{1}{1+z^{n}}$ at the point $z_{0}=e^{i\frac{\pi}{n}}$
+
+\begin{proof}
+$f(z)$ have singularities at $1+z^{n}=0\Rightarrow z^{n}=-1$. Using polar coordinates, we know that $z=-1=e^{i\pi}$, therefore $z^{n}=e^{\frac{i\pi}{n}+\frac{2\pi}{n}}$. It follows that we have singularities at $z_{1}=e^{\frac{i\pi}{n}}$, $z_{2}=e^{i(\frac{\pi}{n}+\frac{2\pi}{n})}$, ..., $z_{n}=e^{i(\frac{\pi}{n}+\frac{2\pi(n-1)}{n})}$
+Therefore, our $f(z)$ is
+$$f(z)=\frac{1}{(z-z_{1})(z-z_{2})...(z-z_{n})}=\frac{1}{(z-z_{1})}\cdot\underbrace{\frac{1}{(z-z_{2)(z-z_{3})...(z-z_{n})}}}_\text{$g(z)\neq0$ at $z_{1}$, therefore analytic}$$
+Where from here, it's clear that $z_{1},...,z_{n}$ are all simple poles. The power series of $g(z)$ about $z_{1}$ is of the form:
+$$g(z)=g(z_{1})+g'(z_{1})(z-z_{1})+g''(z_{1})\frac{(z-z_{1})^{2}}{2!}+...$$
+By definition, the residue is given by:
+$$\text{Res}(f,z_{1})=\lim_{z\to z_{1}}(z-z_{1})f(z)=b_{1}$$
+Therefore, plugging in our values:
+\begin{equation}
+    \begin{split}
+        \text{Res}(f,z_{1})&=\lim_{z\to z_{1}}(z-z_{1})f(z)\\
+        &=\lim_{z\to z_{1}}\frac{(z-z_{1})}{1+z^{n}}\\
+        &=\lim_{z\to z_{1}}\frac{1}{\frac{1+z^{n}}{z-z_{1}}}\\
+        &=\frac{1}{nz_{1}^{n-1}}\quad\text{(By L'Hospital's Rule)}
+    \end{split}
+\end{equation}
+\end{proof}
+
+
+\newpage
+\section{Problem 8}
+Calculate:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item
+          \begin{flushleft}
+              $\begin{aligned}
+                      \int_{-\infty}^{\infty}\frac{x^{2}}{(1+x^{2})(4+x^{2})}dx
+                  \end{aligned}$
+          \end{flushleft}
+    \item
+          \begin{flushleft}
+              $\begin{aligned}
+                      \int_{-\infty}^{\infty}\frac{dx}{(1+x^{2})^{2}}(=\frac{\pi}{2})
+                  \end{aligned}$
+          \end{flushleft}
+    \item
+          \begin{flushleft}
+              $\begin{aligned}
+                      \int_{-\infty}^{\infty}\frac{x\sin(ax)}{x^{2}+b^{2}}dx(=\pi e^{-ab})
+                  \end{aligned}$
+          \end{flushleft}
+    \item
+          \begin{flushleft}
+              $\begin{aligned}
+                      \int_{-\infty}^{\infty}\frac{\sin(x)}{x}dx(=\pi)
+                  \end{aligned}$
+          \end{flushleft}
+    \item
+          \begin{flushleft}
+              $\begin{aligned}
+                      \int_{0}^{2\pi}\frac{dt}{2+\cos^{2}(t)}
+                  \end{aligned}$
+          \end{flushleft}
+\end{enumerate}
+
+\begin{proof}
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item This can rewritten as the improper integral:
+        $$\int_{-R}^{R}\frac{x^{2}}{(1+x^{2})(4+x^{2})}dx+\int_{C_{R}}\frac{z^{2}}{(1+z^{2})(4+z^{2})}dz$$
+        It follows that:
+        \begin{equation}
+            \begin{split}
+                \int_{-\infty}^{\infty}\frac{x^{2}}{(1+x^{2})(4+x^{2})}dx&=2i\pi\sum_{k=1}^{n}\text{Res}_{z=z_{k}}f(z)\\
+                &=2i\pi(\text{Res}_{z=i}f(z_{i})+\text{Res}_{z=2i}f(z_{2i}))\\
+                &=2i\pi(\lim_{z\to i}\frac{(z-1)z^{2}}{(z-1)(z+1)(z^{2}+4)}+\lim_{z\to2i}\frac{(z-2i)z^{2}}{(z^{2}+1)(z+2i)(z-2i)})\\
+                &=2i\pi(-\frac{1}{6i}+\frac{1}{3i})\\
+                &=2i\pi(-\frac{1}{6i}+\frac{2}{6i})\\
+                &=\frac{\pi}{3}
+            \end{split}
+        \end{equation}
+        \item Similarly, we have:
+        \begin{equation}
+            \begin{split}
+                \int_{-\infty}^{\infty}\frac{dx}{(1+x^{2})^{2}}&=\text{Res}_{z=i}f(z)\\
+                &=\lim_{z\to i}\frac{d}{dz}\left(\frac{(z-i)^{2}}{(z+i)^{2}(z-i)^{2}}\right)\\
+                &=2i\pi\lim_{z\to i}\frac{-2}{(z+i)^{3}}\\
+                &=2i\pi\left(\frac{-2}{4i}\right)\\
+                &=\frac{\pi}{2}
+            \end{split}
+        \end{equation}
+        \item This is given by:
+        \begin{equation}
+            \begin{split}
+                \int_{-\infty}^{\infty}\frac{x\sin(ax)}{x^{2}+b^{2}}dx&=\text{Res}_{z=bi}\frac{(z-bi)e^{iaz}}{(z+bi)(z-bi)}\\
+                &=2i\pi\lim_{z\to bi}\frac{(z-bi)e^{iaz}}{(z+bi)(z-bi)}\\
+                &=2i\pi\frac{e^{-ab}}{2ib}\\
+                &=\frac{\pi e^{-ab}}{b}
+            \end{split}
+        \end{equation}
+        **Not sure why there's a b in the denominator, I followed the same steps in class 3/8/22.
+        \item Letting $\sin(z)=\frac{e^{ix}-e^{-ix}}{2i}$, then using the same technique:
+        \begin{equation}
+            \begin{split}
+                \int_{-\infty}^{\infty}\frac{\sin(x)}{x}dx&=\text{Res}_{z=0}\frac{1}{2i}\frac{ze^{iz}}{z}-\text{Res}_{z=0}\frac{1}{2i}\frac{ze^{-iz}}{z}\\
+                &=2i\pi\left[\lim_{z\to0}\frac{1}{2i}\frac{ze^{iz}}{z}-\lim_{z\to0}\frac{1}{2i}\frac{ze^{-iz}}{z}\right]\\
+                &=2i\pi\left[\frac{1}{2i}e^{0}-0\right]\\
+                &=\pi
+            \end{split}
+        \end{equation}
+        \item We know that $\cos(t)=\frac{e^{it}+e^{-it}}{2}$. Parameterizing $z$ implies $z(t)=\gamma(t)=e^{it}$ where $\gamma\in[0,2\pi]$, and $dz(t)=ie^{it}dt\Rightarrow dt=\frac{dz}{ie^{it}}=frac{dz}{iz}$.Substituting $\cos(z)$ turns our function into:
+        \begin{equation}
+            \begin{split}
+                \int_{0}^{2\pi}\frac{dt}{2+\cos^{2}(t)}&=\oint_{\left|z\right|=1}\frac{1}{2+\left(\frac{z+\frac{1}{z}}{2}\right)^{2}}\frac{dz}{iz}\\
+                &=\oint_{|z|=1}\frac{4}{8+\left(z+\frac{1}{z}\right)^{2}}\frac{dz}{iz}\\
+                &=\frac{1}{i}\oint_{|z|=1}\frac{4}{8+z^{2}+2+\frac{1}{z^{2}}}\frac{dz}{z}\\
+                &=-i\oint_{|z|=1}\frac{4z}{z^{4}+10z^{2}+1}dz
+            \end{split}
+        \end{equation}
+        Letting $u=z^{2}$, our equation becomes:
+        \begin{equation}
+            \begin{split}
+                -i\oint_{|z|=1}\frac{4z}{z^{4}+10z^{2}+1}dz&=-i\oint_{|z|=1}\frac{4u^{-1}}{u^{2}+10u+1}dz\\
+                &=-i\oint_{|z|=1}\frac{4u^{-1}}{[u+(-5+2\sqrt{6})][u+(-5-2\sqrt{6})]}dz
+            \end{split}
+        \end{equation}
+    \end{enumerate}
+\end{proof}
+\end{document}

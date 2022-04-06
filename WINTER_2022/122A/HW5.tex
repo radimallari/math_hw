@@ -1,0 +1,170 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsxtra}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\set}[1]{\left\{ #1\right\}}
+\newenvironment{proof}{\noindent{\bf Proof.}}{\hfill $\square$\medskip}
+
+\usepackage[utf8]{inputenc}
+
+
+\title{Math 122A Homework 5}
+\author{Rad Mallari}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+Let $z_{0}\in\C$ be any interior point to any positive oriented simple closed curve $C$.
+Prove
+$$\oint_{C}\frac{dz}{z-z_{0}}=2\pi i,\quad\oint_{C}\frac{dz}{(z-z_{0})^{n+1}}=0, \quad n=0,1,2,3,...$$
+
+\begin{proof}
+Suppose we have an $f$ in $A\subseteq\C\to\C$, is analytic on $A$. Letting $C=\gamma$ and be defined as $\gamma:[a,b]\to A$, and assuming $f$ is analytic on and inside $\gamma$, then parameterizing it as
+$$\oint_{\gamma}f(z)dz=0=\int_{a}^{b}f(\gamma(t))\dot{\gamma}(t)dt$$
+Then letting $\gamma$ be a circle centered at $z=z_{0}$ with radius $R>0$, we can get our wanted result. To do this we let $\gamma:[0,2\pi]\to\C$, where $t\to z_{0}+Re^{it}$, so $\gamma(t)=z_{0}+Re^{it}$ and $\dot{\gamma(t)}=iRe^{it}$. Therefore,
+$$\oint_{\gamma}f(z)dz=\int_{0}^{2}\frac{\dot{\gamma}(t)}{\gamma(t)-z_{0}}=\int_{0}^{2\pi}\frac{iRe^{it}}{Re^{it}}dt=i\int_{0}^{2\pi}dt=2\pi i$$
+For the second one, we use the same suppositions and get
+$$\oint_{\gamma}\frac{dz}{(z-z_{0})^{n+1}}=\oint_{|z-z_{0}|=r}=\int_{0}^{2\pi}\frac{ie^{it}dt}{(re^{it})^{n+1}}=\frac{i}{r^{n}}\int_{0}^{2\pi}e^{-i(n+1)t}dt$$
+$$=\frac{i}{r^{n}}\int_{0}^{2\pi}e^{-i(n+1)t}dt=\frac{i}{r^{n}}\left[\frac{e^{2\pi i(n+1)}}{i(n+1)}-\frac{e^{0}}{i(n+1)}\right ]=0$$
+\end{proof}
+
+
+\section{Problem 2}
+Let $C$ be the contour of the circle $\left |z-i\right |=2$ in the positive sense. Find
+\begin{enumerate}[align=left, label=\textbf{(\alph*)}]
+    \item $\oint_{C}\frac{dz}{z^{2}+4}$
+    \item $\oint_{C}\frac{e^{z}}{z-\frac{\pi i}{2}}$
+    \item $\oint_{C}\frac{\cos(z)}{(z^{2}+16)z}$
+    \item $\oint_{c}\frac{dz}{2z+1}$
+\end{enumerate}
+
+\begin{proof}
+To prove these, we use the Cauchy theorem
+$$f(z_{0})=\frac{1}{2\pi i}\oint_{\gamma}\frac{f(z)}{z-z_{0}}dz$$
+Where $f$ must be analytic inside and $z_{0}$ must be inside the curve. Therefore,
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Letting $f(z)=\frac{1}{z+2i}$, we have that
+    $$f(2i)=\frac{1}{2\pi i}\oint_{\gamma}\frac{f(z)}{z-2i}dz$$
+    $$2\pi i\left(\frac{1}{4i}\right)=\oint_{\gamma}\frac{f(z)}{z-2i}dz$$
+    $$\frac{\pi}{2}=\oint_{\gamma}\frac{f(z)}{z-2i}dz$$
+    \item For this we let $f(z)=1$ and $z_{0}=\frac{\pi}{2}$ giving us
+    $$f(\frac{\pi}{2})=\frac{1}{2\pi i}\oint_{\gamma}\frac{f(z)}{z-i\frac{\pi }{2}}dz$$
+    $$2\pi ie^{i\frac{\pi}{2}}=\oint_{\gamma}\frac{f(z)}{z-i\frac{\pi}{2}}dz$$
+    By DeMoivre's formula, we know that $e^{i\frac{\pi}{2}}=\cos(\frac{\pi}{2})+i\sin(\frac{\pi}{2})=i$, therefore we can further simplify and get
+    $$2\pi i^{2}=\oint_{\gamma}\frac{f(z)}{z-i\frac{\pi}{2}}dz$$
+    $$-2\pi=\oint_{\gamma}\frac{f(z)}{z-i\frac{\pi}{2}}dz$$
+    \item Factoring out the denominator gives us
+    $$\oint_{C}\frac{\cos(z)}{(z^{2}+16)z}=\oint_{\gamma}\frac{\cos(z)}{(z+4i)(z-4i)z}dz$$
+    Therefore, we know we have singularities at $z=\pm 4i, 0$. It's clear that since our circles has radius $2$, we only need to worry about $z=0$, therefore we can let $f(z)=\frac{\cos(z)}{(z-4i)(z+4i)}$ and now the formula becomes
+    $$f(0)=\frac{1}{2\pi i}\oint_{\gamma}\frac{f(z)}{(0-4i)(0+4i)}dz$$
+    $$\frac{1}{16}=\frac{1}{2\pi i}\oint_{\gamma}\frac{f(z)}{z-0}dz$$
+    $$\frac{\pi i}{8}=\frac{1}{2\pi i}\oint_{\gamma}\frac{f(z)}{z-0}dz$$
+    \item Finally, for this we let $f(z)=-\frac{1}{2}$, then
+    $$f(\frac{1}{2})=\frac{1}{2\pi i}\oint_{\gamma}\frac{dz}{z-z_{0}}$$
+    $$2\pi i\frac{1}{2}=\oint_{\gamma}\frac{dz}{z-z_{0}}$$
+    $$\pi i=\oint_{\gamma}\frac{dz}{z-z_{0}}$$
+\end{enumerate}
+\end{proof}
+
+
+\newpage
+\section{Problem 3}
+For $z\in\C$ and $\left |z\right |\neq 3$, denote $C$ the contour of the circle $\left |z\right |=3$ in the positive sense and define
+$$g(z)=\oint_{C}\frac{2w^{2}-w-2}{w-z}dw$$
+Find values of $g(2)$ and $g(3+2i)$.
+
+\begin{proof}
+Similar to the suppositions of \textbf{Problem 2}, we let $w=z$, $z=z_{0}$, $g(z)=2z^{2}-z-2$ giving us $g(2)$ as
+$$g(2)=\frac{1}{2\pi i}\oint_{\gamma}\frac{f(z)}{z-z_{0}}dz$$
+$$8\pi i=\oint_{\gamma}\frac{f(z)}{z-z_{0}}dz$$
+and for $g(3+2i)$, we get
+$$g(3+2i)=\frac{1}{2\pi i}\oint_{\gamma}\frac{f(z)}{z-z_{0}}dz$$
+$$0=\frac{1}{2\pi i}\oint_{\gamma}\frac{f(z)}{z-z_{0}}dz$$
+$$0=\oint_{\gamma}\frac{f(z)}{z-z_{0}}dz$$
+\end{proof}
+
+
+\newpage
+\section{Problem 4}
+Assuming that the given contour is positive oriented, compute
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $\oint_{\left |z\right |=3}\frac{(e^{z}+z)}{z-2}dz$
+    \item $\oint_{\left |z\right |=3}\frac{e^{z}}{z^{2}}$
+    \item $\oint_{\left |z\right |=3}\frac{dz}{z^{2}+z+1}$
+    \item $\oint_{\left |z\right |=3}\frac{dz}{z^{2}-1}$
+\end{enumerate}
+DEFINITION: A $f:\C\to\C$ is an ENTIRE function if $f$ is analytic in all $\C$
+
+\begin{proof}
+To prove these, we use the Cauchy theorem
+$$f(z_{0})=\frac{1}{2\pi i}\oint_{\gamma}\frac{f(z)}{z-z_{0}}dz$$
+Where $f$ must be analytic inside and $z_{0}$ must be inside the curve. Therefore,
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Letting $f(z)=e^{z}+z$, we get that
+    $$f(2)=\frac{1}{2\pi i}\oint_{\gamma}\frac{f(z)}{z-2}dz$$
+    $$(2\pi i)(e^{2}+2)=\oint_{\gamma}\frac{f(z)}{z-2}dz$$
+    \item Using
+    $$f'(z_0)=\frac{n!}{2\pi i}\oint_{\gamma}\frac{f(z)}{(z-z_{0})^{n+1}}dz$$
+    If we let $f(z)=e^{z}$, this implies that
+    $$f'(0)=\frac{1}{2\pi i}\oint_{\gamma}\frac{f(z)}{z^{2}}dz$$
+    $$1=\frac{1}{2\pi i}\oint_{\gamma}\frac{f(z)}{z^{2}}dz$$
+    $$2\pi i=\oint_{\gamma}\frac{f(z)}{z^{2}}dz$$
+    \item Using the quadratic formula, we can factor the denominator to get
+    $$\oint_{\left |z\right|=3}\frac{dz}{(z-(\frac{-1+i\sqrt{3}}{2}))(z-(\frac{-1-i\sqrt{3}}{2}))}$$
+    Here it's clear that our singularities are at $z=\frac{-1\pm i\sqrt{3}}{2}$ which are both in the curve. Now by deformation, we can split this curve into $4$ curves $\gamma_{1}$, $\gamma_{2}$, $\gamma_{3}$, and $\gamma_{4}$ as half circles centered around our singualrities. Since $\gamma_{2}$ and $\gamma_{3}$ are vertical lines going in the opposite directions, we know that these part of of the curve adds to zero. This leaves us with
+    $$\frac{1}{2\pi i}\left [\oint_{\gamma_{1}}\frac{f_{1}(z)}{z-\frac{-1+i\sqrt{3}}{2}}+\oint_{\gamma_{4}}\frac{f_{4}(z)}{z-\frac{-1-i\sqrt{3}}{2}}\right ]$$
+    Where $f_{1}(z)=\frac{1}{z-\frac{-1-i\sqrt{3}}{2}}$ and $f_{4}(z)=\frac{1}{z-\frac{-1+i\sqrt{3}}{2}}$. Solving the integrals individually using the same process as \textbf{Problem 2}, we get
+    $$\frac{1}{2\pi i}\left [\frac{1}{i\sqrt{3}}-\frac{1}{i\sqrt{3}}\right]=0$$
+    \item Since the singularites are on the contour, we have not yet learned the tools to solve this problem.
+\end{enumerate}
+\end{proof}
+
+
+\newpage
+\section{Problem 5}
+Prove that if $f$ is entire and there exists $z_{0}\in\C$ and $r>0$ such that
+$$f(\C)\cap\set{z\in\C:\left |z-z_{0}\right |<r}=\emptyset$$
+then $f$ is a constant function.
+
+\begin{proof}
+To show this, we can consider the function $g(z)=\frac{1}{f(z)-z_{0}}$. Since $f(z)-z_{0}\neq 0$, and $f(\C)\cap\set{z\in\C:\left |z-z_{0}\right |<r}=\emptyset$, we know that $g(z)$ is entire. Furthermore, $|f(z)-z_{0}|\geq r$ implies that $|g(z)|=\left |\frac{1}{f(z)-z_{0}}\right |=\frac{1}{|f(z)-z_{0}|}\leq\frac{1}{r}$ and therefore, $g(z)$ is bounded. Then, by Liouville's Thorem, we know that $g(z)$ is constant and we can solve for $f(z)$ to get that
+$$g\cdot f(z)-g\cdot z_{0}=1$$
+$$f(z)=\frac{1+(g\cdot z_{0})}{g}$$
+Hence $f(z)$ is constant.
+\end{proof}
+
+
+\section{Problem 6}
+Identify all entire functions $f$ such that $\forall z\in\C: \left |f(z)\right |\leq 2\left |z\right |$.
+
+\begin{proof}
+Similar to the proof of Liouville's Theorem, it is enough to show that $f''(z_{0})=0$. Then we using Cauchy's Third Theorem
+$$f''(z_{0})=\frac{2!}{2\pi i}\oint_{\C_{R}}\frac{f(z)}{(z-z_{0})^{3}}$$
+Parameterizing our curve using
+$$\gamma(t)=z_{0}+Re^{eit}\qquad \dot{\gamma}(t)=iRe^{et}\qquad \gamma:[0,2\pi]\to\C$$
+Giving us
+$$f''(z_{0})=\frac{2!}{2\pi i}\int_{0}^{2\pi}\frac{f(\gamma(t))}{(\gamma(t)-z_{0})^{3}}\dot{\gamma}(t)dt$$
+$$f''(z_{0})=\frac{1}{2\pi i}\int_{0}^{2\pi}\frac{f(z_{0}+Re^{it})}{R^{3}e^{3it}}iRe^{it}dt$$
+$$f''(z_{0})=\frac{1}{\pi}\int_{0}^{2\pi}\frac{f(z_{0}+Re^{it})}{R^{2}e^{2it}}dt$$
+Taking the absolute value yields
+$$|f''(z_{0})|=\left |\frac{2}{\pi}\int_{0}^{2\pi}\frac{f(z_{0}+Re^{it})}{R^{2}e^{2it}}dt \right |$$
+$$\leq\frac{2}{\pi R^{2}}\int_{0}^{2\pi}\left |f(z_{0}+Re^{it})dt \right |$$
+Then for our problem we want to show that
+$$\frac{2}{\pi R^{2}}\int_{0}^{2\pi}\left |f(z_{0}+Re^{it})dt \right |\leq\frac{2}{\pi R^{2}}\int_{0}^{2\pi}2\left |z+Re^{it} \right |dt$$
+$$\leq\frac{4}{\pi R^{2}}\int_{0}^{2}(|z|+R)dt=\frac{4|z|}{r}+\frac{4}{R}$$
+So
+$$f''(z)\leq \frac{4|z|}{R^{2}}+\frac{4}{R}$$
+Moving all the terms to the left side and dividing by $|z|$ yields
+$$\left (f''(z)-\frac{4}{R}\right )\frac{1}{|z|}\leq \frac{4}{R^{2}}=0$$
+Since $R$ is arbitrary and $|f''(z_{0})|$ is independent of $R$, we know that $R\to\infty$ implies that $|f''(z_{0})|=0$ and that $f''(z_{0})=0\quad \forall z_{0}\in\C$. Therefore, we can conclude that $f'(z_{0})=c_0$ which implies that $f(z_{0})$ is of the form $f(z_{0})=c_{0}+b$.
+\end{proof}
+\end{document}

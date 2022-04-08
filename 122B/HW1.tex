@@ -23,7 +23,7 @@
 \maketitle
 
 \section{Problem 1}
-Let $P(z)$ denote a polynomial of degree $d/geq1$. Define
+Let $P(z)$ denote a polynomial of degree $d\geq1$. Define
 $$M(r)=\sup_{|z|=r}|P(z)|,\quad r>0$$
 Show that both functions
 $$r\mapsto M(r),\quad r\mapsto -r^{-d}M(r)$$
@@ -39,7 +39,12 @@ Compute the integral
 $$\int_{|z|=3}\sin(\frac{1}{z})dz$$
 
 \begin{proof}
-
+We know that the Taylor expansion of $\sin(z)$ about $z=0$ is given by:
+$$\sin(z)=z-\frac{z^{3}}{3!}+\frac{z^{5}}{5!}-\dots$$
+Therefore
+$$\sin(\frac{1}{z})=\frac{1}{z}-\frac{1}{3!z^{3}}+\frac{1}{5!z^{5}}-\dots$$
+From this, we see that the $\text{Res}(\sin(\frac{1}{z}),0)=1$, therefore, by the Residue theorem,
+$$\int_{|z|=3}\sin(\frac{1}{z})dz=2\pi i\cdot\text{Res}(\sin(\frac{1}{z}),0)=2\pi i$$
 \end{proof}
 
 
@@ -47,6 +52,6 @@ $$\int_{|z|=3}\sin(\frac{1}{z})dz$$
 (Correct statement). Let $n$ be a positive integer and let $f(z)$ be an entire function satisfying the inequality $|f(z)|>|z|^{n}$, for $|z|>1$. Prove that $f$ is a polynomial
 
 \begin{proof}
-    
+We know that by \textbf{Theorem 6.11} in the book, we know that if a function $f$ is entire and $f(z)\to\infty$ as $z\to\infty$, then $f$ is a polynomial. 
 \end{proof}
 \end{document}

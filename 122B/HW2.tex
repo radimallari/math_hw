@@ -16,7 +16,7 @@
 \usepackage[utf8]{inputenc}
 
 
-\title{Math 122B Homework 1}
+\title{Math 122B Homework 2}
 \author{Rad Mallari}
 
 \begin{document}
@@ -54,6 +54,10 @@ Show that the function $\sqrt{z^{2}-1}$ can be defined, and it is analytic, on t
 minus the closed interval $[-1,1]$.
 
 \begin{proof}
-
+Letting $f(z)=e^{\frac{1}{2}\log(z^{2}-1)}$, we must prove that $f$ is continuous in $\C\setminus(-\infty, 1)$.
+To do this, we use Morera's Theorem which states that if $f$ is continuous on an open set $D$,
+and $\int_{\Gamma}f(z)dz=0$ where $\Gamma$ is the boundary of a closed rectangle in $D$, then
+$f$ is continuous on $D$. Since $f$ have singularities along $\pm 1$, then $f(z)$ is continuous 
+along $\C\setminus(-\infty, 1)$. Furthermore, $f$ is analytic in the domain since
 \end{proof}
 \end{document}

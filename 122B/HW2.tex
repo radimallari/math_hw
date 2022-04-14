@@ -27,7 +27,16 @@ Prove that for any positive integer $n$,
 $$\text{Res}_{0}(1-e^{-z})^{-n}=1$$
 
 \begin{proof}
-
+Letting $f(z)=\frac{1}{(1-e^{-z})^{n}}$, we have singularities at
+$$e^{-z}=1\implies z=2\pi ik,\quad k\in\Z$$
+By using the using the Residue Theorem, we can compute the integral:
+$$\frac{1}{2\pi i}\int_{C}\frac{dz}{(1-e^{-z})^{n}}=\text{Res}_{0}\left(\frac{1}{(1-e^{-z})^{n}}\right)$$
+By way of substitution, we can let $w=(1-e^{-z})$ which implies $dw=e^{-z}$, and our equation becomes
+$$\frac{1}{2\pi i}\int_{C}\frac{dz}{(1-e^{-z})^{n}}=\frac{1}{2\pi i}\int_{C}\frac{dw}{w^{n}(1-w)}=\text{Res}_{0}\left(\frac{dw}{w^{n}(1-w)}\right)$$
+Here it's clear that we have a pole of order $n$ at $w=0$. Solving for the right hand side, we have that:
+$$\text{Res}_{0}\left(\frac{dw}{w^{n}(1-w)}\right)=1$$ 
+So we can conclude:
+$$\frac{1}{2\pi i}\int_{C}\frac{dz}{(1-e^{-z})^{n}}=\text{Res}_{0}\left(\frac{1}{(1-e^{-z})^{n}}\right)=\text{Res}_{0}\left(\frac{dw}{w^{n}(1-w)}\right)=1$$
 \end{proof}
 
 \section{Problem 2}
@@ -35,7 +44,9 @@ Show that Rouche's Theorem remains valid if the condition: $|f|>|g|$ on $\gamma$
 $|f|\geq|g|$ and $f+g$ does not vanish on $\gamma$.
 
 \begin{proof}
-    
+Restating Rouche's Theorem as:
+$$|f(z)-g(z)|<|g(z)|$$
+Would tell us that there are no zeros in $\gamma$. Furthermore, if $|f(z)|\leq|g(z)|$, then we know that the number of zeros in $f=\alpha\cdot g$ where $\alpha$ is some constant. Replacing $|f|>|g|$ with $|f|\geq|g|$ tell us $|f|>|g|$ or $|f|=|g|$. Since $f+g$ does not vanish on $\gamma$, $f,g$ have an equal number of zeros in $\gamma$. Therefore Rouche's Theorem is valid with the condition $|f|\geq|g|$
 \end{proof}
 
 \section{Problem 3}

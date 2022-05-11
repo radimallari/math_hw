@@ -32,7 +32,9 @@ $$A=\begin{bmatrix}
 is positive definite.
 
 \begin{proof}
-
+Letting $\alpha=4$, we have that a symmetric matrices, and using $A\cdot x=\lambda\cdot x$,
+we find that the eigenvalues are $\lambda=5,4,1$. Therefore, since we have a symmetric matrix
+with positive eigenvalues, $A$ is positive definite by definition.
 \end{proof}
 
 \section{Problem 2}
@@ -40,6 +42,25 @@ Let $A$ and $B$ be $n\times n$ matrices. Prove that
 $$||A+B||_{\infty}\leq||A||_{\infty}+||B||_{\infty}$$
 
 \begin{proof}
+We know by triangle inequality that 
+$$||u_{i}+v_{i}||\leq||u_{i}||+||v_{i}||$$
+Meanwhile, definition of infinity norm is given by:
+$$||v||_{\infty}:=\lim_{p\to\infty}||v||_{p}=\max\set{|v_{i}|,i=1,2,...,n}$$
+Furthermore, it is obvious that
+$$||A_{i}+B_{i}||\leq\max\set{|A_{i}+B_{i}|,i\in\N}$$
+where $A_{i}$ and $B_{i}$ are the components of $A,B$ respectively. Similarly,
+$$||A_{i}||+||B_{i}||\leq \max\set{A_{i},i\in\N}+\max\set{B_{i},i\in\N}$$
+Therefore, by triangle inequality:
+\begin{equation}
+    \begin{split}
+        ||A_{i}+B_{i}||&\leq\max\set{|A_{i}+B_{i}|,i\in\N}\\
+        &\leq||A_{i}||+||B_{i}||\\
+        &\leq\max\set{A_{i},i\in\N}+\max\set{B_{i},i\in\N}
+    \end{split}
+\end{equation}
+Which, by the second and last inequality, along with the definition of infinity norms,
+imply that
+$$||A+B||_{\infty}\leq||A||_{\infty}+||B||_{\infty}$$
 
 \end{proof}
 
@@ -54,7 +75,22 @@ $$A=\begin{bmatrix}
 Find $||A||_{1}$ and $||A||_{\infty}$.
 
 \begin{proof}
-
+We define $||A||_{1}=\max_{j}\sum_{i=1}^{n}|a_{ij}|$ therefore:
+\begin{equation}
+    \begin{split}
+        ||A||_{1}&=\max(|2|+|1|+|-5|,|1|+|2|+|1|,|-10|+|1|+|4|)\\
+        &=\max(8,4,15)\\
+        &=15
+    \end{split}
+\end{equation}
+And $||A||_{\infty}=\max_{i}\sum_{j=1}^{n}|a_{ij}|$, therefore:
+\begin{equation}
+    \begin{split}
+        ||A||_{1}&=\max(|2|+|1|+|-10|,|1|+|2|+|1|,|-5|+|1|+|4|)\\
+        &=\max(13,4,11)\\
+        &=13
+    \end{split}
+\end{equation}
 \end{proof}
 
 
@@ -62,7 +98,11 @@ Find $||A||_{1}$ and $||A||_{\infty}$.
 Let $S$ be a nonsingular $n\times n$ matrix and let $||\cdot||$ be an induced matrix norm. Prove that $||S^{-1}AS||$ defines a matrix norm for all $n\times n$ matrices $A$.
 
 \begin{proof}
-
+If $||\cdot||$ is an induced matrix norm, then we know that
+$$\lVert Ax\rVert\leq\lVert A\rVert\lVert x\rVert$$
+and 
+$$\lVert AB\rVert\leq\lVert A\rVert\lVert B\rVert$$
+Then letting $x$ be an arbitraty matrix..?
 \end{proof}
 
 
@@ -70,7 +110,12 @@ Let $S$ be a nonsingular $n\times n$ matrix and let $||\cdot||$ be an induced ma
 Let $I$ be the $n\times n$ identity matrix. Prove that $||I||=1$ for all induced norms.
 
 \begin{proof}
-
+We know that for some arbitrary vector $x$, $||Ix||=||x||$, and using the definition from 
+the previous problem, clearly:
+$$||I||=\max_{x\neq0}\frac{||x||}{||x||}=1$$
+and
+$$||I||=\max{||x||=1}||Ix||=||I||$$
+Thereby satisfying the definition in the previous problem.
 \end{proof}
 
 
@@ -78,7 +123,17 @@ Let $I$ be the $n\times n$ identity matrix. Prove that $||I||=1$ for all induced
 Prove that the condition number of a nonsingular $n\times n$ matrix $A$ is at least $1$, i.e. $1\leq||A||||A^{-1}||$, for all induced matrix norms.
 
 \begin{proof}
-
+The condition number of a matrix $A$ is defined as:
+$$\kappa(A)=||A||||A^{-1}||$$
+By \textbf{Theorem 9.3(b)}, which states that if $||\cdot||$ is an induced matrix norm, then 
+$||AB||\leq||A||||B||$, so we know that
+\begin{equation}
+    \begin{split}
+        ||A||||A^{-1}||&\geq||AA^{-1}||\\
+        &=||I||\\
+        &=1
+    \end{split}
+\end{equation}
 \end{proof}
 
 
@@ -91,7 +146,10 @@ $$A=\begin{bmatrix}
 Find $||A||_{2}$.
 
 \begin{proof}
-
+We define $||A||_{2}$ as the square root of the largest eigenvalue of $A^{T}A$, but if $A^{T}=A$, then 
+$||A||_{2}$ is simply the largest eigenvalue. Using the same equation in \textbf{Problem 1}, we find
+that the eigenvalues of $A$ in this problem are $\lambda=4,2$. Since $A^{T}=A$, it must be the case that
+$\max\lambda=4=||A||_{2}$.
 \end{proof}
 
 
@@ -103,15 +161,46 @@ $$A=\begin{bmatrix}
     \end{bmatrix}$$
 
 \begin{proof}
-
+By the same process as \textbf{Problem 3}, we find $||A||_{1}$ using:
+\begin{equation}
+    \begin{split}
+        ||A||_{1}&=\max(1+|1-\epsilon|,1+\epsilon+1)\\
+        &=\max(1+|1-\epsilon|,2+\epsilon)
+        =2+\epsilon\quad(\text{for } \epsilon>0)
+    \end{split}
+\end{equation}
+Now, $A^{-1}$ is
+$$A^{-1}=\frac{1}{\epsilon^{2}}\begin{bmatrix}
+    1&-1-\epsilon\\
+    -1+\epsilon&1
+\end{bmatrix}$$
+So, $||A^{-1}||$ is given by
+\begin{equation}
+    \begin{split}
+        ||A^{-1}||_{1}&=\max\left(\left|\frac{1}{\epsilon^{2}}\right|+\left|\frac{1}{\epsilon^{2}}-\frac{1}{\epsilon}\right|,\left|\frac{1}{\epsilon^{2}}+\frac{1}{\epsilon}\right|+\left|\frac{1}{\epsilon^{2}}\right|\right)\\
+        &=\frac{2}{\epsilon^{2}}+\frac{1}{\epsilon}
+    \end{split}
+\end{equation}
+Therefore, our condition number is
+$$\kappa_{1}(A)=||A||_{1}||A^{-1}||_{1}=(2+\epsilon)\left(\frac{2}{\epsilon^{2}}+\frac{1}{\epsilon}\right)$$
 \end{proof}
 
 
 \section{Problem 9}
-Prove that the ocndition number satisfies the proper $\kappa(\lambda A)=\kappa(A)$ for all nonzero $\lambda$, scalar.
+Prove that the condition number satisfies the property $\kappa(\lambda A)=\kappa(A)$ for all nonzero $\lambda$, scalar.
 
 \begin{proof}
-
+By definition, the left side of the equation is
+$$\kappa(\lambda A)=\lVert\lambda A\rVert\lVert\frac{1}{\lambda}A^{-1}\rVert$$
+Since $\lambda$ is a scalar, by \textbf{9.5(iii)} in the textbook,
+\begin{equation}
+    \begin{split}
+    \lVert\lambda A\rVert\lVert\frac{1}{\lambda}A^{-1}\rVert&=\lvert\lambda\rvert\lVert A\rVert\lvert\frac{1}{\lambda}\rvert\lVert A^{-1}\rVert\\
+    &=\lvert\frac{\lambda}{\lambda}\rvert\lVert A\rVert\lVert A^{-1}\rVert\\
+    &=\lVert A\rVert\lVert A^{-1}\rVert\\
+    &=\kappa(A)\quad(\text{by definition of condition number})
+    \end{split}
+\end{equation}
+Thereby proving the property $\kappa(\lambda A)=\kappa(A)$
 \end{proof}
-
 \end{document}

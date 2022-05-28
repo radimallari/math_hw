@@ -85,40 +85,22 @@ BCOR5mm, % Binding correction
 
 A statement requiring citation \cite{Figueredo:2009dg}.
 
-Given an $n\times m$ non-negative matrix $A$, NMF aims to express $A$ as two similarly non-negative matrices of smaller dimensions, $W$ and $H$.
-Note that when referring to a non-negative matrix, we are discussing a matrix in which all its entries are real and greater than or equal to zero.
-$W$ is an $m\times r$ matrix consisting of $k$ basis elements of $A$ and $H$  is a $r\times n$ matrix consisting of the coefficients, or weights, related to the entries of $W$.
-We denote some $r>0$ as the inner dimension of $W$ and $H$ and the smallest such instance where $r$ holds is called the \emph{factorization rank}.
-While there are several ways to compute this rank to be discussed later, it is important to note that $r$ must be at least the size of the rank of $A$.
-Because our resulting NMF is a nonnegative approximation, $W,H$ (holding the same properties) may not be unique either.
-Nonetheless, we utilize methods for measuring the error of our approximations.
+Given an $n\times m$ non-negative matrix $A$, NMF aims to express $A$ as two similarly non-negative matrices of smaller dimensions, $W$ and $H$. Note that when referring to a non-negative matrix, we are discussing a matrix in which all its entries are real and greater than or equal to zero. $W$ is an $m\times k$ matrix consisting of $k$ \textit{basis elements} of $A$ and $H$ is a $k\times n$ matrix consisting of the coefficients, or \textit{weights}, related to the entries of $W$. We denote some $r>0$ as the inner dimension of $W$ and $H$ and the smallest such instance where $r$ holds is called the \emph{factorization rank}. Because our resulting NMF is a nonnegative approximation, $W,H$ (holding the same properties) may not be unique either. Nonetheless, we utilize methods for measuring the error of our approximations.
 
 %----------------------------------------------------------------------------------------
 %	COST FUNCTIONS
 %----------------------------------------------------------------------------------------
 
 \section{Cost Functions}
-As mentioned above, the problem of complexity with NMF arises out of the fact that its algorithms attempt to replicate the original matrix, namely $A$.
-Thus, the product of $WH$ will be a representation of $A$ and not an exact replica.
-As a result, we implement various methods to go about solving an NMF problem.
-One of the most common ways to execute this is by using a cost function of which there are several.
-They share a common goal in that they attempt to minimize the error between our original matrix and the product of our factorization.
-One useful method is accomplished by minimizing the square of the Euclidean distance.
-This is also often referred to as minimizing the Frobenius norm as it relates specifically to matrices.
+As mentioned above, the reason NMF is so complex is because its algorithms attempt to replicate the original matrix, namely $A$. Thus, the product of $WH$ will be a representation of $A$, and not an exact replica. As a result, we implement various methods to go about solving an NMF problem. One of the most common ways to execute this is by using a cost function, of which there are several. Cost functions share a common goal of attempting to minimize the error between our original matrix and the product of our factorization.
+One useful method is accomplished by minimizing the square of the Euclidean distance,  which is often referred to as minimizing the Frobenius norm as it relates specifically to matrices. See the Frobenius norm below:
 $$\lVert A-WH\rVert^{2}_{F}=\sum_{ij}(A-WH)_{ij}$$
-This measure is often chosen because it is not as expensive as other cost functions in terms of calculation.
-It also has a key property in that it remains invariant under rotations/orthogonal transformations.
-Second, it accounts for the presence of Gaussian noise.
-%----remove this sentence?
-(It is also recognized as the Euclidean norm because it compiles all the rows/columns of a matrix and concatenates them to produce one vector.) <- Delete??
-%-----
-Here, one uses iterative update rules to exchange a randomized $WH$ matrix with one that has a smaller error.
-We continue to do this until the error meets a predetermined requirement.
+This measure is often chosen because it is not as expensive as other cost functions in terms of calculation. Additionally, it has a key property in that it remains invariant under rotations/orthogonal transformations. Secondly, it accounts for the presence of Gaussian noise and is recognized as the Euclidean norm because it compiles all the rows/columns of a matrix and concatenates them to produce one vector.  While applying the frobenius norm, iterative update rules are used to exchange a randomized WH matrix with one that has a smaller error. We continue to do this until the error meets a predetermined requirement.
 An alternative norm used in the process of decomposition is the Kullback Liebler divergence:
-
-%----needs citation
+% cite this
 $$D_{KL}(A\vert WH):=\sum_{i=1}^{m}\sum_{j=1}^{n}((WH)_{ij}-A_{ij}\log(WH)_{ij})+\sum_{i=1}^{m}\sum_{j=1}^{n}(A_{ij}\log A_{ij}-A_{ij})$$
-%----needs more explanation
+
+% needs more explanation
 
 %----------------------------------------------------------------------------------------
 %	MULTIPLICATIVE UPDATE RULE
@@ -126,20 +108,9 @@ $$D_{KL}(A\vert WH):=\sum_{i=1}^{m}\sum_{j=1}^{n}((WH)_{ij}-A_{ij}\log(WH)_{ij})
 
 \section{Multiplicative Update Rule}
 
-%Reference to Figure~\vref{fig:gallery}. % The \vref command specifies the location of the reference
-%
-%\begin{figure}[tb]
-%\centering
-%\includegraphics[width=0.5\columnwidth]{GalleriaStampe}
-%\caption[An example of a floating figure]{An example of a floating figure (a reproduction from the \emph{Gallery of prints}, M.~Escher,\index{Escher, M.~C.} from \url{http://www.mcescher.com/}).} % The text in the square bracket is the caption for the list of figures while the text in the curly brackets is the figure caption
-%\label{fig:gallery}
-%\end{figure}
-
-% cite Lee and Seung paper?
-A popular approach to NMF problems is the multiplicative update rule created by Lee and Seung.
-The multiplicative update rule became popularized because of its simplicity;
-however, it's criticized for its slow convergence and because there is no guarantee of convergence to a stationary point which is necessary to find a local minimum.
-% also cite
+% cite this (Use Lee and Seung's paper??)
+A common approach to NMF problems is Lee and Seung's multiplicative update rule. The multiplicative update rule became popular due to its simplicity, however, it is criticized for its slow convergence and lack of guarantee of convergence to a stationary point, which is necessary to find a local minimum.
+% cite this
 The Formula is given by:
 $$W\leftarrow W\cdot\frac{(VH^{T})}{(WHH^{T})}$$
 $$H\leftarrow H\cdot\frac{(W^{T}V)}{W^{T}WH}$$
@@ -179,8 +150,6 @@ In any case, NMF provides a decomposition of rank r as follows:
 %needs citation
 $$A(i,j)\approx\sum_{k=1}^{r}W(i,k)\cdot\sum H(k,j)$$
 Note that in the above $A$ is our $j$-th document, $W$ our $k$-th topic, and $H$ conveys the relevance of a topic in a given document.
-
-
 
 \begin{figure}[tb]
     \centering

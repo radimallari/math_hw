@@ -1,6 +1,6 @@
 \deactivateaddvspace 
-\contentsline {figure}{\numberline {1}{\ignorespaces Face Decomposition Using NMF}}{3}{figure.caption.1}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Result of NMF\relax }}{3}{figure.caption.2}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Face Decomposition Using NMF}}{3}{figure.caption.4}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Result of NMF\relax }}{3}{figure.caption.5}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Pre NMF image.}}}{3}{subfigure.2.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Post NMF k = 35.}}}{3}{subfigure.2.2}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

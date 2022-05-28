@@ -43,7 +43,6 @@ BCOR5mm, % Binding correction
 \author{\spacedlowsmallcaps{Piper Morris, Brandon Bonifaz-Reyes \& Rad Mallari\textsuperscript{1}}} % The article author(s) - author affiliations need to be specified in the AUTHOR AFFILIATIONS block
 
 %---------------------------------------
-
 \begin{document}
 \renewcommand{\sectionmark}[1]{\markright{\spacedlowsmallcaps{#1}}} % The header for all pages (oneside) or for even pages (twoside)
 \lehead{\mbox{\llap{\small\thepage\kern1em\color{halfgray} \vline}\color{halfgray}\hspace{0.5em}\rightmark\hfil}} % The header style
@@ -153,7 +152,10 @@ Note that in the above $A$ is our $j$-th document, $W$ our $k$-th topic, and $H$
     \label{fig:application}
 \end{figure}
 %----------------------------------------
-
+\newpage
+\section{Conclusion}
+As a result of our research, we established NMF as it differs from other useful factorization methods in the field of mathematics and machine learning. NMF utilizes important cost functions such as the Frobenius norm in an attempt to minimize the error accrued in the various algorithms NMF implements. This allows us to effectively express a given matrix $A$ as the product of two matrices, $WH$. The multiplicative update rule is one solution to the minimization problem that NMF presents. We discussed several ways of computing NMF, a crucial piece to learning algorithms in the industry. While computationally complex, NMF has shown to be relatively easy to implement. The application we created, while seemingly meaningless, can be used in powerful implementations such as facial recognition as outlined in section 4. We explored image processing and text mining, but some further subjects are voice and music recognition since they are expressed as positive matrices in a computer.
+\newpage
 %----------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------

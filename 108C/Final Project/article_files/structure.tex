@@ -45,6 +45,8 @@ dottedtoc % Dotted lines leading to the page numbers in the table of contents
 
 \usepackage{varioref} % More descriptive referencing
 
+\usepackage{sectsty}
+
 %----------------------------------------------------------------------------------------
 %	THEOREM STYLES
 %---------------------------------------------------------------------------------------
@@ -72,3 +74,10 @@ pdfkeywords={}, % PDF Keywords
 pdfcreator={pdfLaTeX}, % PDF Creator
 pdfproducer={LaTeX with hyperref and ClassicThesis} % PDF producer
 }
+
+%----------------------------------------------------------------------------------------
+%	SECTION STYLES
+%---------------------------------------------------------------------------------------
+\titleformat*{\section}{\Huge\bfseries}
+\titleformat*{\subsection}{\Huge\bfseries}
+

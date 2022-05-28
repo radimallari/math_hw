@@ -96,50 +96,47 @@ This measure is often chosen because it is not as expensive as other cost functi
 An alternative norm used in the process of decomposition is the Kullback Liebler divergence\cite{inproceedings}:
 % cite this
 $$D_{KL}(A\vert WH):=\sum_{i=1}^{m}\sum_{j=1}^{n}((WH)_{ij}-A_{ij}\log(WH)_{ij})+\sum_{i=1}^{m}\sum_{j=1}^{n}(A_{ij}\log A_{ij}-A_{ij})$$
+Where $D_{KL}(A|WH)$ is a scalar cost function and the new goal is to minimize the scalar cost function, i.e.
+$$\min_{W,H}D_{KL}(A|WH)$$
 
 %----------------------------------------
 %	MULTIPLICATIVE UPDATE RULE
 %----------------------------------------
 \section{Multiplicative Update Rule}
-
-% cite this (Use Lee and Seung's paper??)
 A common approach to NMF problems is Lee and Seung's multiplicative update rule. The multiplicative update rule became popular due to its simplicity, however, it is criticized for its slow convergence and lack of guarantee of convergence to a stationary point, which is necessary to find a local minimum.
-% cite this
 The formula is given by\cite{algorithms}:
 $$W\leftarrow W\cdot\frac{(VH^{T})}{(WHH^{T})}$$
 $$H\leftarrow H\cdot\frac{(W^{T}V)}{W^{T}WH}$$
-This is a result of a proof that is beyond the scope of this paper, but application is surprisingly simple as discussed in the following section.
+This solves the minimization problem from the previous section. It is a result of a proof that is beyond the scope of this paper, but application is surprisingly simple as discussed in the following section.
 %----------------------------------------
 
 %----------------------------------------
 %	APPLICATIONS
 %----------------------------------------
 \section{Applications}
-We created an application of NMF which decomposes an image matrix, then returns $W$, $H$, and the resulting $WH$ which then is plotted and shown. Since $WH$ and are not exact, we see that the image return is only approximately the original image~\vref{fig:application}. The script\textsuperscript{2} is written using Python, and deploys the multiplicative update rule to iterate until the error between the original matrix $A$ and $W,H$ are less than a specified error or a specified number of iterations. From here we can talk about implications of these results:
+We created an application of NMF which decomposes an image matrix, then returns $W$, $H$, and the resulting $WH$ which then is plotted. Since $WH$ are not exact, we see that the image return is only approximately the original image~\vref{fig:application}. The script\textsuperscript{2} is written using Python, and deploys the multiplicative update rule to iterate until the error between the original matrix $A$ and $W,H$ are less than a specified error or a specified number of iterations. From here the following will convey the implications of the results.
 
 \let\thefootnote\relax\footnotetext{\textsuperscript{2} \url{https://github.com/radimallari/108C_Final_Project}}
 
 \subsection{Facial Recognition}
-Assuming we have a collection of the same face, we can flatten each image to a single vector and this would be our training set, denoting it by $X_{1},X_{2},...,X_{n}$ respectively. The collection of these flattened images could be written as matrix $X$, i.e.
+Assuming we have a collection of the same face, we can flatten each image to a single vector. This would be our training set, denoted by $X_{1},X_{2},...,X_{n}$ respectively. The collection of these flattened images could be written as matrix $X$, i.e.
 $$X=\begin{bmatrix}
         \vdots & \vdots &       & \vdots \\
         X_{1}  & X_{2}  & \dots & X_{N}  \\
         \vdots & \vdots &       & \vdots
     \end{bmatrix}$$
-By applying NMF to this matrix, we have $X=WH$, we can identify prominent features on the face with the $W$ matrix and their weights with $H$. By taking an image matrix outside of the set, then applying NMF, say $X'=W'H'$, we can use the result of the training data to find the best fit of $W'H'$, in otherwords, a rough estimation on who the new image matrix is.
+By applying NMF to this matrix, we have $X\approx WH$, we can identify prominent features on the face with the $W$ matrix and their weights with $H$. By taking an image matrix outside of the set, then applying NMF to the new image matrix, say $X'\approx W'H'$, we can compare and find the best fit to the collection of original $WH$ pairs. This allows us to predict approximately what the new image is most similar to in the collection of $WH$ pairs.
 \subsection{Image Processing}
-NMF often begins its canonical relationship with the real world in the field of image processing. We take a simple image of a face with p pixels, and reduce the dimensions of the data to a single vector such that the ith entry represents the ith pixel. Then we can allow the rows of our matrix A to represent the p pixels and n columns respectively output one image. The process of NMF, as we have defined it, will produce W and H to be multiplied, where the columns of W embody the basis images and H gives instruction on how to sum up the aforementioned images. All this to reconstruct an approximation of the originally provided face (See Figure~\vref{fig:facedecomp}).
+NMF often begins its canonical relationship with the real world in the field of image processing. We take a simple image of a face with $p$ pixels, and reduce the dimensions of the data to a single vector such that the $i$-th entry represents the $i$-th pixel. Then, we can allow the rows of our matrix $A$ to represent the $p$ pixels and $n$ columns respectively to output one image. The process of NMF will provide $W$ and $H$ such that the columns of $W$ embody the basis images while $H$ gives instructions on how to add up the aforementioned images. This summation process allows us to reconstruct an approximation of the originally provided face\cite{colyer_2019}. In this example of image processing, we can understand basis images to be learned key features of the face. (See Figure~\vref{fig:facedecomp}).
 
 \subsection{Text Mining}
 We utilize NMF in the field of topic recovery/document classification.
-Let each column of A correspond to a text and each row relate to a keyword.
-Construct every $(i,j)$-th entry in such a way where it represents every time a given word $(i)$ comes up in a document $(j)$.
-%needs citation
+In this context, one is tasked with extracting useful information from a dataset that is high-dimensional and unstructured Let each column of $A$ correspond to a text and each row relate to a keyword.
+Construct every $(i,j)$-th entry in such a way where it represents every time a given word $(i)$ comes up in a document $(j)$. \cite{colyer_2019}
 This is a type of quality of term frequency construction in such a model, namely the bag-of-words model, where each document being analyzed has its respective set of words. The ordering of words here is not accounted for.
 The concept of sparseness appears once more in A due to the nature of texts/documents which only use a portion of the dictionary. In any case, NMF provides a decomposition of rank $k$ as follows:
-%needs citation
 $$A(i,j)\approx\sum_{k=1}^{r}W(i,k)\cdot\sum H(k,j)$$
-Note that in the above $A$ is our $j$-th document, $W$ our $k$-th topic, and $H$ conveys the relevance of a topic in a given document.
+Note that in the above $A$ is our $j$-th document, $W$ our $k$-th topic, and $H$ conveys the relevance of a topic in a given document. The intuition here is that our method of factorization applies \textit{weight} to words with more or less necessity.
 
 \begin{figure}[tb]
     \centering
@@ -155,8 +152,12 @@ Note that in the above $A$ is our $j$-th document, $W$ our $k$-th topic, and $H$
     \caption{Result of NMF}
     \label{fig:application}
 \end{figure}
-% ---------------------------------------
+%---------------------------------------
 
+\newpage
+\section{Conclusion}
+
+\newpage
 %----------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------

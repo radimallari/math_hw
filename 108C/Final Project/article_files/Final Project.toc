@@ -5,4 +5,5 @@
 \contentsline {subsection}{\numberline {4.1}{Facial Recognition}}{2}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}{Image Processing}}{2}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}{Text Mining}}{3}{subsection.4.3}%
+\contentsline {section}{\numberline {5}{Conclusion}}{4}{section.5}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

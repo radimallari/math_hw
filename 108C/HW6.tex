@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsxtra}
+\usepackage{enumitem}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\set}[1]{\left\{ #1\right\}}
+\newenvironment{proof}{\noindent{\bf Proof.}}{\hfill $\square$\medskip}
+
+\usepackage[utf8]{inputenc}
+
+
+
+\title{Math 108C Homework 6}
+\author{Rad Mallari}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+Let $S$ be a symmetric matrix and let $\lambda_{1}$ and $\lambda_{2}$ be two distinct eigenvalues of $S$. Show that the corresponding eigenspaces are orthogonal.
+
+\begin{proof}
+Taking two arbitrary eigenvectors $u$ and $v$, corresponding to each eigenvalue, we have the following:
+$$Su=\lambda_{1}u\quad Sv=\lambda_{2}v$$
+For the eigenspaces to be orthogonal, it must be the case that $u\cdot v=0$ and
+so:
+\begin{equation}
+    \begin{split}
+        \lambda_{1}(u\cdot v)&=(\lambda_{1}u)\cdot v\\
+        &=Su\cdot v=(Su)^{T}v\\
+        &=u^{T}S^{T}v\\
+        &=u^{T}Sv\quad\text{(by symmetry of $S$)}\\
+        &=u^{T}\lambda_{2}v\\
+        &=\lambda_{2}(u\cdot v) 
+    \end{split}
+\end{equation}
+From here, we see that $\lambda_{1}(u\cdot v)=\lambda_{2}(u\cdot v)$ which implies $(\lambda_{1}-\lambda_{2})(u\cdot v)=0$. We know that $\lambda_{1}\neq\lambda_{2}\Rightarrow\lambda_{1}-\lambda_{2}=0$, therefore $u\cdot v$ must be $0$, implying they are orthogonal.
+\end{proof}
+
+\newpage
+\section{Problem 5}
+Show that if $S$ is positive definite, then $S$ is invertible and its inverse is also positive definite.
+
+\begin{proof}
+Since $S$ is a positive definite, we let $S=QDQ^{T}$ where $D$ are the diagonal entries. $QDQ^{T}$ here are invertible which implies that $S$ is invertible as it is a product of invertible matrices. Now 
+$$S^{-1}=QD^{-1}Q^{T}$$
+Is a postive definite matrix as well since $D^{-1}$ has positive diagonal entries.
+\end{proof}
+
+
+\section{Problem 7}
+For what numbers $b$ is the following matrix positive semi-definite?
+$$A=\begin{bmatrix}
+    2&-1&b\\
+    -1&2&-1\\
+    b&-1&2
+\end{bmatrix}$$
+
+\begin{proof}
+    Letting $b=2$, we have a semi-positive definite matrix.
+\end{proof}
+\end{document}

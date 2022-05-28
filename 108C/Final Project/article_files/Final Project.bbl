@@ -1,10 +1,13 @@
 \begin{thebibliography}{1}
 
-\bibitem{Figueredo:2009dg}
-A.~J. Figueredo and P.~S.~A. Wolf.
-\newblock Assortative pairing and life history strategy - a cross-cultural
-  study.
-\newblock {\em Human Nature}, 20:317--330, 2009.
+\bibitem{algorithms}
+Seung Lee.
+\newblock Algorithms for non-negative matrix factorization.
+
+\bibitem{inproceedings}
+Zhirong Yang, He~Zhang, Zhijian Yuan, and Erkki Oja.
+\newblock Kullback-leibler divergence for nonnegative matrix factorization.
+\newblock volume 6791, pages 250--257, 06 2011.
 
 \bibitem{colyer_2019}
 Adrian Colyer.

@@ -27,8 +27,17 @@ Suppose $f$ is a rational function of the form $f=P/Q$ where the polynomials $P$
 $\deg Q-\deg P\geq 2$. Show that the sum of the residues of $f$ is zero.
 
 \begin{proof}
-    
+Letting $R_{0}$ be a radius such that all the poles of $f$ are inside the circle $\gamma:|z|=R_{0}$.
+Then by the Residue Theorem we have:
+$$\int_{\gamma}f(z)dz=2\pi i\sum_{k=1}^{m}n(\gamma,z_{k})\text{Res}(f;z_{k})$$
+for $\gamma>R_{0}$, and so $n(\gamma,z_{k})=1$. Now we let $Q(z)=\alpha_{0}+\alpha_{1}z+\dots+\alpha_{n}z^{n}$,
+and $P(z)=\beta_{0}+\beta_{1}z+\dots+\beta_{m}z^{m}$, and divide out $\gamma$ to $|P(z)|$ and $|Q(z)|$ giving us:
+$$\left|\int_{\gamma}f(z)dz\right|\leq\left(\frac{\gamma^{m}}{\gamma^{n}}\frac{\beta_{m}}{\alpha_{n}}\right)4\pi \gamma$$
+From here we see that if $n-(m+1)\geq 1\Rightarrow n-m\geq 2$, then $\int_{C_{R}}f(z)dz\rightarrow 0$
+as $\gamma$ tends to infinity. Therefore we can conclude that if $\deg Q-\deg P\geq 2$ would result in
+$\int_{C_{R}}f(z)dz=0=2\pi i\text{Res}(f;z_{k})$.
 \end{proof}
+
 
 
 \section{Problem 2}
@@ -37,13 +46,83 @@ $$\sum_{n=1}^{\infty}\frac{1}{n^{2}+1}$$
 $$\sum_{n=1}^{\infty}\frac{1}{n^{4}}$$
 $$\sum_{n=1}^{\infty}\frac{(-1)^{n}}{n^{2}+1}$$
 
+
 \begin{proof}
-    
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item We can use
+                $$\sum_{\substack{n=-\infty\\n\neq z_{k}}}^{\infty}f(n)=-\sum_{k}\text{Res}(f(z)\pi\cot\pi z,z_{k})$$
+                where $C_{N}$ is a simple closed contour, $n$ are integers inside $C_{N}$, $z_{k}$ are poles of $f$. In our case, then, we have:
+                $$2\sum_{n=1}^{\infty}\frac{1}{n^{2}+1}=-\sum_{k=1}^{3}\text{Res}\left(\frac{\pi\cot(\pi z)}{1+z^{2}},z_{k}\right)$$
+                Before solving for the residues, we know that $\cot z$ has a Laurent expansion about $0$ given by:
+                $$\cot z=\frac{1}{z}-\frac{z}{3}-\frac{1}{45}z^{3}+...$$
+                Using this, we can expand $\frac{\pi\cot\pi z}{1+z^{2}}$ about $0$ and get:
+                \begin{equation}
+                    \begin{split}
+                        \frac{\pi\cot\pi z}{1+z^{2}}&=\frac{1}{1+z^{2}}\left(\frac{1}{z}-\frac{\pi^{2}}{3}-\frac{\pi^{4}z^{3}}{45}+...\right)\\
+                        &=\frac{1}{z+z^{2}}-\frac{\pi^{2}z}{3(1+z^{2})}-\frac{\pi^{4}z^{3}}{45(1+z^{2})}-...\\
+                        &=\frac{1}{z}+\frac{-1}{1+z}-\frac{\pi^{2}z}{3(1+z^{2})}-\frac{\pi^{4}z^{3}}{45(1+z^{2})}-...
+                    \end{split}
+                \end{equation}
+                This implies that $\text{Res}(\frac{\pi\cot(\pi z)}{1+z^{2}},0)=1$ giving us our residue at $z_{1}=0$. Now for the poles at $z=\pm i$, since they are simple poles, we know that the residues is given by:
+                $$\text{Res}(f,z)=\lim_{z\to z_{0}}(z-z_{0})f(z)$$
+                This tells us that for $z_{2}=i$ and $z_{3}=-i$:
+                $$\text{Res}(f,z_{2})=\lim_{z\to i}\frac{\pi\cot(i\pi)}{z+i}=\frac{\pi\cot(i\pi)}{2i}$$
+                $$\text{Res}(f,z_{3})=\lim_{z\to -i}\frac{\pi\cot(-i\pi)}{z-i}=\frac{\pi\cot(i\pi)}{2i}$$
+                Therefore,
+                $$2\sum_{n=1}^{\infty}\frac{1}{n^{2}+1}=-\left(1+\frac{\pi\cot(\pi i)}{i}\right)$$
+                To simplify the second term, we recall
+                $$\cot(z)=\frac{ie^{iz}+ie^{-iz}}{e^{iz}-e^{-iz}}$$
+                Substituting this to our equation yields:
+                \begin{equation}
+                    \begin{split}
+                        2\sum_{n=1}^{\infty}\frac{1}{n^{2}+1}&=-\left(1+\frac{\pi i\left(\frac{e^{-\pi}+e^{\pi}}{e^{-\pi}-e^{\pi}}\right)}{i}\right)\\
+                        &=-\frac{1}{2}\left(1+\pi\frac{e^{-\pi}+e^{\pi}}{e^{-\pi}-e^{\pi}}\right)
+                    \end{split}
+                \end{equation}
+        \item We can rewrite this summation as:
+        $$\sum_{n=1}^{\infty}\frac{1}{n^{4}}=\frac{1}{2}\sum_{\substack{n=-\infty\\n\neq0}}^{\infty}\frac{1}{n^{4}}$$
+        Then by the same theorem as \textbf{(a)}, we have that
+        $$\sum_{n=1}^{\infty}\frac{1}{n^{4}}=-\frac{1}{2}\text{Res}\left(\frac{\pi\cot\pi z}{z^{4}},0\right)$$
+        We know that we have a singularity at $z=0$ and the Laurent expansion about $z=0$ for $\frac{\pi\cot\pi z}{z^{4}}$ is given by:
+        $$\frac{\pi\cot(\pi z)}{z^{4}}=\frac{1}{z^{5}}-\frac{\pi^{2}}{3z^{3}}-\frac{\pi^{4}}{45z}-...$$
+        Therefore,
+        $$\text{Res}\left(\frac{\pi\cot\pi z}{z^{4}},0\right)=-\frac{\pi^{4}}{45}$$
+        and we can conclude that 
+        $$\sum_{n=1}^{\infty}\frac{1}{n^{4}}=\frac{\pi^{4}}{90}$$
+        \item Lastly, by Residue Theorem, we know
+        $$\sum_{\substack{n=-\infty\\n\neq z_{k}}}^{\infty}(-1)f(n)=-\sum_{k}\text{Res}(\pi f(z)\csc\pi z, z_{k})$$
+        Then in this case,
+        $$1+2\sum_{n=1}^{\infty}\frac{(-1)^{n}}{n^{2}+1}=-\sum_{z=\pm i}\text{Res}\left(\frac{\pi}{(\sin\pi z)(z^{2}+1)},z_{k}\right)$$
+        Finding our residues for $z_{1}=i$, $z_{2}=-i$, we have:
+        \begin{equation}
+            \begin{split}
+                \text{Res}\left(\frac{\pi}{(\sin\pi z)(z^{2}+1)},z_{1}\right)&=(z-i)\lim_{z\to i}\frac{\pi}{(\sin\pi z)(z+i)(z-i)}\\
+                &=\frac{\pi}{(\sin i\pi)(2i)}
+            \end{split}
+        \end{equation}
+        and
+        \begin{equation}
+            \begin{split}
+                \text{Res}\left(\frac{\pi}{(\sin\pi z)(z^{2}+1)},z_{2}\right)&=(z+i)\lim_{z\to-i}\frac{\pi}{(\sin\pi z)(z+i)(z-i)}\\
+                &=\frac{\pi}{(\sin i\pi)(2i)}
+            \end{split}
+        \end{equation}
+        So we know that:
+        \begin{equation}
+            \begin{split}
+            -\sum_{z=\pm i}\text{Res}\left(\frac{\pi}{(\sin\pi z)(z^{2}+1)},z_{k}\right)&=\frac{\pi}{i(\sin i\pi)}\\
+            &=\frac{2\pi}{e^{\pi}-e^{-\pi}}\quad\left(\text{by }\sin x=\frac{e^{ix}-e^{-ix}}{2i}\right)
+            \end{split}
+        \end{equation}
+        Therefore, we can conclude that
+        $$\sum_{n=1}^{\infty}\frac{(-1)^{n}}{n^{2}+1}=-\frac{1}{2}+\frac{2\pi}{e^{\pi}-e^{-\pi}}$$
+    \end{enumerate}
+
 \end{proof}
 
 
 \section{Problem 3}
-Let $U$ be an open set of the complex plane. Find conditios on $U$ assuring that:
+Let $U$ be an open set of the complex plane. Find conditions on $U$ assuring that:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item The function $z\mapsto z^{2}$, $z\in U$, is one to one.
     \item The function $z\mapsto \cos(z)$, $z\in U$, is one to one.
@@ -51,7 +130,8 @@ Let $U$ be an open set of the complex plane. Find conditios on $U$ assuring that
 
 \begin{proof}
     \begin{enumerate}[label=\textbf{(\alph*)}]
-        \item 
+        \item We define a function $f$ to be one to one if for all arbitrary $z_{1}, z_{2}$ in some region
+        $D$, $f(z_{1})\neq f(z_{2})$. This condition only fails for $z=0$, so any open set $U\subset\C\setminus0$ is valid.
         \item 
     \end{enumerate}
 \end{proof}

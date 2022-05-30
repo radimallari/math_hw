@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsxtra}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\set}[1]{\left\{ #1\right\}}
+\newenvironment{proof}{\noindent{\bf Proof.}}{\hfill $\square$\medskip}
+
+\usepackage[utf8]{inputenc}
+
+
+\title{Math 122B Homework 4}
+\author{Rad Mallari}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+Verify directly that the function $f(z)=z^{2}+z+1$ is injective in a neighborhood of the point $z=0$.
+
+\begin{proof}
+A function $f(z)$ is locally one to one around $z_{0}$ if it is analytic at $z_{0}$ and $f'(z_{0})\neq0$.
+Clearly $f(z)$ is analytic at $0$, meanwhile $f'(0)=0^{2}+0+1\neq0$, therefore $f(z)$ is injective about $z=0$.
+\end{proof}
+
+
+\section{Problem 2}
+Find the image of the square $|\mathfrak{R}z|<1$, $|\mathfrak{I}z|<1$, under the exponential map $z\mapsto e^{z}$.
+
+\begin{proof}
+Letting $z=x+iy$, we can rewrite our exponential map as $e^{z}=e^{x}e^{iy}$. Defining $z$ this way,
+we know that $\mathfrak{R}z=x$, meanwhile $\mathfrak{I}z=y$. Therefore, we have a square region
+$-1\leq x\leq 1$ and $-1\leq y\leq 1$. Now we can rewrite our mapping as $w=\rho e^{i\phi}$, where
+$\rho=e^{x}$ and $\phi=y$. This tells us that our mapping is a circle around $0$ with radius $1$.
+\end{proof}
+
+
+\section{Problem 3}
+Describe a conformal map of the infinite band $-2<\mathfrak{R}z<1$, onto the unit disk.
+
+\begin{proof}
+    
+\end{proof}
+
+
+\section{Problem 4}
+Find all conformal mappings $h(z)$ from the upper-half plane to itself satisfying $f(i)=i$.
+
+\begin{proof}
+    
+\end{proof}
+\end{document}

@@ -23,16 +23,25 @@
 \maketitle
 
 \section{Problem 1}
-Find a conformal mapping of the upper half-plane onto a equilateral triangle
+Find a conformal mapping of the upper half-plane onto a equilateral triangle.
 
 \begin{proof}
+Similar to \textbf{Section 13.3} in the book, we can use
+\begin{equation}
+    \begin{split}
+        f(z)=\int_{0}^{z}f'(\zeta)d\zeta&=\int_{0}^{z}\frac{1}{(\zeta-1)^{\frac{2}{3}}(\zeta+1)^{\frac{2}{3}}}d\zeta\\
+        &=\int_{0}^{z}\frac{1}{(\zeta^{2}-1)^{\frac{2}{3}}}
+    \end{split}
+\end{equation}
+$$$$
 
 \end{proof}
 
 
 \section{Problem 2}
-Suppose $f$ is an entire function mappaing a rectangle to a rectangle.
+Suppose $f$ is an entire function mapping a rectangle to a rectangle.
 Prove that $f(z)=az+b$, where $a\neq0$ and $b$ are complex numbers.
+
 
 \begin{proof}
 
@@ -49,10 +58,13 @@ Prove that there exists a conformal mapping of $R$ onto $R$ which takes $z_{1}$ 
 
 
 \section{Problem 4}
-Let $R$ be an open, simply connected domain, differen than the entire complex $\C$.
+Let $R$ be an open, simply connected domain, different than the entire complex $\C$.
 Prove that there exists no conformal mapping of $\C$ onto $R$.
 
 \begin{proof}
-
+Since $R$ is an open, simply connected domain, it must be the case that there exists a comformal
+map $f$ from $R$ to our domain $D$ by the Riemann Mapping theorem. Say there exists a map
+$g$ from $\C$ to $R$, then $f\circ g$ is a comformal map from $C$ to $D$, and since it is bounded,
+it must be constant. This tells us that $g$ is not injective, thereby contradiction.
 \end{proof}
 \end{document}

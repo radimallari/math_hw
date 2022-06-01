@@ -23,11 +23,20 @@
 \maketitle
 
 \section{Problem 1}
-Let $a>0$ be a positive parameter. Find the image of the exterior of the unit circle by the comformal mapp
+Let $a>0$ be a positive parameter. Find the image of the exterior of the unit circle by the comformal map
 $$w=az+\frac{1}{z}$$
 
 \begin{proof}
-    
+Letting $z=re^{it}$, we get that $w=a(re^{it})+\frac{1}{re^{it}}$. Since $e^{it}=\cos(t)+i\sin(t)$, we can rewrite our comformal map as:
+\begin{equation}
+    \begin{split}
+        w&=ar(\cos(t)+i\sin(t))+r(\cos(-t)+i\sin(-t))\\
+        &=r\left[a(\cos(t)+i\sin(t))+\cos(t)-i\sin(t)\right]\\
+        &=r\cos(t)(a+1)+ir\sin(t)(a-1)\\
+        &=r\left[\cos(a+1)+i\sin(a-1)\right]
+    \end{split}
+\end{equation}
+Which describes an ellipse.
 \end{proof}
 
 
@@ -45,14 +54,33 @@ and that the supremum is attained by a function $f\in G$. Prove $f$ is one-to-on
 Let $u$ be a harmonic function. Show that $u^{2}$ is harmonic if and only if $u$ is constant.
 
 \begin{proof}
-    
+$u^{2}$ implies that 
+\begin{equation}
+    \begin{split}
+        (u^{2})_{xx}+(u^{2})_{yy}&=2u(u_{xx}+u_{yy})+2(u^{2}_{x}+u^{2}_{y})
+    \end{split}
+\end{equation}
+Since it is harmonic, $(u^{2})_{xx}+(u^{2})_{yy}=0$, therefore $u_{xx}+u_{yy}=0$ and
+\begin{equation}
+    \begin{split}
+        u^{2}_{x}+u^{2}_{y}&=0\\
+        u_{x}=u_{y}=0
+    \end{split}
+\end{equation}
+And we can san see that $u$ is constant.
 \end{proof}
 
 
 \section{Problem 4}
-Suppose the function $f=u+iv$ is analytic. Prove $uv$ is a harmonic function. Give exampels of two harmonic functions $U,V$ with the properties that $UV$ is not harmonic.
+Suppose the function $f=u+iv$ is analytic. Prove $uv$ is a harmonic function. Give example of two harmonic functions $U,V$ with the properties that $UV$ is not harmonic.
 
 \begin{proof}
-    
+Using the definition of $f$, we have
+$$f^{2}=u^{2}+2iuv-v^{2}\quad\text{and}\quad \frac{f^{2}}{2}=\frac{u^{2}}{2}+iuv-\frac{v^{2}}{2}$$
+And that the imaginary part of $\frac{^{2}}{2}$ is $uv$, while the real part is $u^{2}-v^{2}$. By 
+\textbf{Theorem 16.2}, the real and imaginary parts of a harmonic function are harmonic, therefore $uv$ is harmonic.
+
+Letting $u=x,v=x$ we have that $uv=x^{2}$. Since $u_{xx}=2$ and $v_{xy}=0$, we see that $uv$ is \textit{not} harmonic.
+Another is example is by letting $u=x$ and $v=x^{2}-y^{2}$. This implies that $uv=x^{3}-xy^{2}$, and $v_{xx}=3$ while $v_{xy}=-2y$ so $uv$ is \textit{not} harmonic.
 \end{proof}
 \end{document}

@@ -1,0 +1,176 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsxtra}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\set}[1]{\left\{ #1\right\}}
+\newenvironment{proof}{\noindent{\bf Proof.}}{\hfill $\square$\medskip}
+
+\usepackage[utf8]{inputenc}
+
+
+\title{Math 119A Homework 1}
+\author{Rad Mallari}
+
+\begin{document}
+\maketitle
+
+Notation. Let $D_{\infty}[0,1]$ be the set of infinitely differentiable, real-valued functions on the real interval $[0,1]$.
+Let $L=\set{f\in D_{\infty}[0,1]:f(0)=0}$
+
+\section{Problem 1}
+Does $\delta(f)(s)=f^{\prime}(s)$ define an injective and surjective function from $L\rightarrow L$?
+
+\begin{proof}
+In order to prove injectivity we must show that for any values, in this case functions $f_{1},f_{2}$, implies
+$f_{1}=f_{2}$ if we have $\delta(f_{1})(s)=\delta(f_{2})(s)$. Taking an integration of both sides yield
+\begin{equation}
+    \begin{split}
+        \int\delta(f_{1})(s)&=\int\delta(f_{2})(s)\\
+        f_{1}(s)=f_{2}(s)+c_{1}\quad&\text{and}\quad f_{2}(s)=f_{1}(s)+c_{2}.
+    \end{split}
+\end{equation}
+We know that we must must $f(0)=0$ for all $f\in D_{\infty}[0,1]$ which implies that $f_{1}(0)=0+c_{1}$ and $f_{2}(0)=0+c_{2}$
+which implies $f_{1}(0)=f_{2}(0)=0$ which tells us that $c_{1}=-c_{2}$. Therefore, by substituting the results of our constants 
+to the result of our integral in $(1)$ shows us that $f_{1}(s)=f_{2}(s)$ which satisfies our requirements for injectivity.
+
+To prove surjectivity, we must show that for any arbitrary function $g$, there exists and element $f\in L$ such that 
+$\delta (f)(s)=g$. Taking the integral of this yields $\int\delta (f)(s)=g\implies f(s)=\int g(s)ds$. We know that $g(0)=0$ 
+since $g\in L$ therefore, our integral becomes $f(0)=\int g(0)ds=0$, satisfying $f(0)=0$. This proves that for any $g\in L$, 
+we meet our surjectivity requirements.
+\end{proof}
+
+\newpage
+\section{Problem 2}
+Same question for $\iota(f)(t)=\int_{0}^{t}f(s)ds$.
+
+\begin{proof}
+Taking the same requierments as Problem 1, we take some value $f_{1},f_{2}$ and want to show that if 
+$\iota f_{1}(t)=\iota f_{2}(t)$ this implies that $f_{1}=f_{2}$. By definition we have that
+$$\int_{0}^{t}f_{1}(s)ds=\int_{0}^{t}f_{2}(s)ds$$
+Which taking the derivative with respect to $t$ we get
+\begin{equation}
+    \begin{split}
+        \frac{d}{dt}\left(\int_{0}^{t}f_{1}(s)ds\right)&=\frac{d}{dt}\left(\int_{0}^{t}f_{2}(s)ds\right)\\
+        f_{1}(t)&=f_{2}(t)
+    \end{split}
+\end{equation}
+This shows that $f_{1}(t)=f_{2}(t)$ for all $t\in[0,1]$.
+
+Similar to (1), we can show that $\iota(f)(t)$ is surjective by taking arbitrary element $g\in L$ such that there exists
+$f\in L$ that satisfies $\iota f(t)=g(t)$ for all $t\in[0,1]$. Taking $\iota f(t)=g(t)$, we have the following
+$$f(t)=\int_{0}^{1}g(s)ds$$
+Using our given $f(0)=0$, we have
+\begin{equation}
+    \begin{split}
+        f(0)&=\int_{0}^{1}g(0)ds\\
+        f(0)&=0
+    \end{split}
+\end{equation}
+
+
+\end{proof}
+
+\newpage
+\section{Problem 3}
+Are $\iota$ and $\delta$ inverse functions? I.e. does $\iota(\delta(f))=\delta(\iota(f))=f$ for all $f\in L$?
+
+\begin{proof}
+Yes, $\iota$ and $\delta$ inverse functions since by definition of derivatives $\delta(\int_{0}^{t}f(s)ds)=f(s)$.
+Likewise $\iota(f^{\prime}(s))=f(s)$ by definition of integrals.
+\end{proof}
+
+\section{Problem 4}
+Look at the solutions to some problems in Chapter 1 (on p. 343 of the text).
+Prove or disprove that these solutions are correct. Be sure to explain what you are doing in terms of the meaning of the words
+in the problems. Of course this problem is really several problems.
+
+\begin{proof}
+For problem 2(a), the matrix $A$ is correct as taking $x^{\prime}(0)$, we get $(k_{1}e^{0},k_{2}e^{0},k_{3}e^{0}=(k_{1},k_{2},k_{3})$.
+Which satisfies our differential equation and our initial value requirement of $x(0)=(k_{1},k_{2},k_{3})$. 
+Meanwhile, 2(b) fails since $x^{\prime}(0)$ yields $(k_{1}e^{0},-2k_{2}e^{0},0)=(k_{1},k_{2},0)$ which fails our initial value 
+requirement. Similar to 2(a), our solution satisfies both the differential equation and plugging in $x^{\prime}(0)$ gives us 
+the correct initial value.
+\end{proof}
+
+\section{Problem 5}
+Let $A$ be as in
+$$\begin{bmatrix}
+    0&-1&0\\
+    1&0&0\\
+    0&0&-\frac{1}{2}
+\end{bmatrix}$$
+Find constants $a,b,c$ such that the curve $t\rightarrow (a\cos(t),b\sin(t),ce^{-\frac{t}{2}})$ is a solution to $x^{\prime}=Ax$
+with $x(0)=(1,0,3)$.
+
+\begin{proof}
+The solution to our differential equation can be seen if by rearranging switching row 1 and row 2 to get
+$$\begin{bmatrix}
+    1&0&0\\
+    0&-1&0\\
+    0&0&-\frac{1}{2}
+\end{bmatrix}$$
+where it is obvious that our solution is $x=(k_{1}e^{t},k_{2}e^{-t},k_{3}e^{-\frac{1}{2}t})$.
+\end{proof}
+
+\newpage
+\section{Problem 6}
+Find two different matrices $A,B$ such that the curve
+$$x(t)=(e^{t},2e^{2t},4e^{2t})$$
+satisfies both the differential equations
+$$x^{\prime}Ax\quad\text{and}\quad x^{\prime}=Bx$$
+
+\begin{proof}
+Letting $A$ be 
+$$\begin{bmatrix}
+    0&0&\frac{1}{8}\\
+    2&0&0\\
+    0&2&0
+\end{bmatrix}$$
+we have the following
+$$\begin{bmatrix}
+    e^{t}\\
+    4e^{2t}\\
+    8e^{2t}
+\end{bmatrix}=\begin{bmatrix}
+    0&0&\frac{1}{8}\\
+    4&0&0\\
+    0&2&0
+\end{bmatrix}
+\begin{bmatrix}
+    e^{t}\\
+    2e^{2t}\\
+    4e^{2t}
+\end{bmatrix}$$
+Likewise taking $B$ to be
+$$\begin{bmatrix}
+    1&0&0\\
+    0&2&0\\
+    4&0&1
+\end{bmatrix}
+$$
+We satisfy the same differential equation $x^{\prime}=Bx$ as shown in the following
+$$\begin{bmatrix}
+    e^{t}\\
+    4e^{2t}\\
+    8e^{2t}
+\end{bmatrix}=
+\begin{bmatrix}
+    1&0&0\\
+    0&2&0\\
+    4&0&1
+\end{bmatrix}
+\begin{bmatrix}
+    e^{t}\\
+    2e^{2t}\\
+    4e^{2t}
+\end{bmatrix}$$
+\end{proof}
+\end{document}

@@ -25,29 +25,60 @@
 
 \section{Problem 1}
 A particle of mass \textit{m} moves in the plane $\R^{2}$ under the influence of an elastic band tying it to the origin.
-The length of the band is negligible. Hooke's law states taht the force on the particle is always directed toward
+The length of the band is negligible. Hooke's law states that the force on the particle is always directed toward
 the origin and is proportional to the distance from the origin. Write the force field and verify that it is
 conservative and central. Write the equation $F=ma$ for this case and solve it. Verify that for \textit{``most"} intial
-conditions the particle moves in an ellipse
+conditions the particle moves in an ellipse.
 
 \begin{proof}
-    
+By the given Hooke's law, we can write the force field as 
+$$F(x_{1},x_{2})=-K(x_{1},x_{2})$$
+where $K$ is a constant and $(x_{1},x_{2})\in\R^{2}$. 
+We can find the potential function $V(x_{1},x_{2})$ using integration which yields
+\begin{equation}
+    \begin{split}
+        V(x_{1},x_{2})&=-K\left(\int x_{1}dx_{1}+\int x_{2}dx_{2}\right)\\
+        &=-K\left(\frac{x_{1}^{2}+x_{2}^{2}}{2}\right)
+    \end{split}
+\end{equation}
+According to the book, a force field is conservative if $F(x)=-\text{grad }(V(x_{1},x_{2}))$. For our case we have that
+$$F(x)=-\text{grad }(V(x_{1},x_{2}))=-K\left(\frac{\partial V}{\partial x_{1}}-\frac{\partial V}{\partial x_{2}}\right)=-K(x_{1},x_{2})$$
+Which implies the force field is conservative. By the lemma in Chapter 2, section 4 in the book, a force field that is 
+conservative is central as well.
+
 \end{proof}
 
 \section{Problem 2}
 Which of the following force fields on $\R^{2}$ are conservative?
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $F(x,y)=(-x^{2},-2y^{3})$
-    \item $F(x,y)=(x^{2}-y^{2},2xy)$
-    \item $F(x,y)=(fx,y)$
+    \item 
+    \item $F(x,y)=(x,y)$
 \end{enumerate}
 
 \begin{proof}
     \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item Finding $V(x,y)$, we get
+        \begin{equation}
+            \begin{split}
+                V(x,y)&=\int -x^{2}dx+\int -2y^{3}dy\\
+                &=-\frac{x^{3}}{3}-\frac{2y^{3}}{3}
+            \end{split}
+        \end{equation}
+        Taking the gradient yields:
+        $$\text{grad }V(x,y)=(-x^{2},-2y^{3})$$
+        Which is certainly $-F(x,y)$ therefore implying that $F$ is conservative.
         \item
-        \item 
-        \item
+        \item Similarly we find $V(x,y)$ which yields
+        \begin{equation}
+            \begin{split}
+                V(x,y)&=\int xdx+\int ydy\\
+                &=\frac{x^{2}}{2}-\frac{y^{2}}{2}
+            \end{split}
+        \end{equation}
+        Which if we take the gradient will yield back $-F(x,y)$ therefore $F(x,y)$ in this case is also conservative.
     \end{enumerate}
+    
 \end{proof}
 
 \section{Problem 3}
@@ -55,7 +86,11 @@ Consider the case of a particle in a gravitational field moving directly away fr
 motion. Under what initial conditions does it eventually reverse direction?
 
 \begin{proof}
-    
+Suppose we have a particle moving upwards in one dimension, $x$, against a gravitational field at the origin at time $t=0$.
+Then it's motion can be represented as
+$$\frac{d^{2}x}{dt^{2}}=-g-k\left(\frac{dx}{dt}\right)^{2}$$
+We can solve this equation for the position with respect to $t$ by integrating the equation twice, represented by $x(t)$.
+It will reverse it's direction where the derivative of the position with respect to $t$ is zero, i.e. $\dot{x}(t)=0$.
 \end{proof}
 
 \section{Problem 4}
@@ -79,7 +114,8 @@ you must assume (proof by contradiction) that some unspecified number $M$ works 
 
 \begin{proof}
     \begin{enumerate}[label=\textbf{(\alph*)}]
-        \item
+        \item We know that since $\norm{f}_{1}=1$, then $\int_{0}^{1}|f(s)ds|=1$. Futhermore, $\int_{0}^{1}|f(s)ds|\leq\int_{0}^{1}|f(s)|ds$. So taking any values of $M\geq1$
+        bounds our $\norm{\iota(f)}_{\infty}$.
         \item 
         \item 
         \item 

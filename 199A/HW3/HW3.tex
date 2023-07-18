@@ -1,0 +1,211 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsxtra}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\set}[1]{\left\{ #1\right\}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newenvironment{proof}{\noindent{\bf Proof.}}{\hfill $\square$\medskip}
+
+\usepackage[utf8]{inputenc}
+
+
+\title{Math 119A Homework 3}
+\author{Rad Mallari}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+Prove or disprove that $x(t)=0,y(t)=3e^{2t}$ is a solution to the following
+initial value problem:
+\begin{equation}
+    \begin{split}
+        x^{\prime}&=-x,\\
+        y^{\prime}&=x+2y;\\
+        x(0)&=0,y(0)=3
+    \end{split}
+\end{equation}
+
+\begin{proof}
+    To check our solution we first check that the derivatives of $x(t)$ and $y(t)$ satisfy
+    our differential equation:
+    \begin{equation}
+        \begin{split}
+            x^{\prime}(t)&=0=x\\
+            y^{\prime}(t)&=6e^{2t}=0+2(3e^{2t})=x+2y
+        \end{split}
+    \end{equation}
+    Which shows that $x(t),y(t)$ are solutions to our differential equations.
+Now plugging in our initial values for $t=0$, we get
+\begin{equation}
+    \begin{split}
+        x(0)&=0\\
+        y(0)&=0+e^{0}=3
+    \end{split}
+\end{equation}
+Which also satisfies our initial values, therefore $x(t)=0,y(t)=3e^{2t}$ is a solution
+to our differential equation.
+\end{proof}
+
+\section{Problem 2}
+Prove or disprove that
+$$A=\begin{bmatrix}
+        \frac{5}{3} & \frac{1}{3} \\
+        2           & 0
+    \end{bmatrix}$$
+is one solution to $x^{\prime}=Ax$ where $x(t)=(e^{2t}-e^{-t},e^{2t}+2e^{-t})$.
+
+\begin{proof}
+First, $x^{\prime}(t)$ is
+$$x^{\prime}(t)=\begin{bmatrix}
+    2e^{2t}+e^{-t}\\
+    2e^{2t}-2e^{-t}
+\end{bmatrix}$$
+Now $Ax$ is
+\begin{equation}
+    \begin{split}
+        Ax&=\begin{bmatrix}
+            \frac{5}{3}&\frac{1}{3}\\
+            2&0
+        \end{bmatrix}
+        \begin{bmatrix}
+            e^{2t}-e^{-t}\\
+            e^{2t}+2e^{-t}
+        \end{bmatrix}\\
+        &=\begin{bmatrix}
+            \frac{5}{3}\left(e^{2t}-e^{-t}\right)+\frac{1}{3}\left(e^{2t}+2e^{-t}\right)\\
+            2\left(e^{2t}-e^{-t}\right)+0\left(e^{2t}+2e^{-t}\right)
+        \end{bmatrix}\\
+        &=\begin{bmatrix}
+            \frac{5}{3}e^{2t}-\frac{5}{3}e^{-t}+\frac{1}{3}e^{2t}+\frac{2}{3}e^{-t}\\
+            2e^{2t}-2e^{-t}
+        \end{bmatrix}\\
+        &=\begin{bmatrix}
+            \frac{6}{3}e^{2t}-\frac{3}{3}e^{-t}\\
+            2e^{2t}-2e^{-t}
+        \end{bmatrix}\\
+        &=\begin{bmatrix}
+            2e^{2t}-e^{-t}\\
+            2e^{2t}-2e^{-t}
+        \end{bmatrix}
+    \end{split}
+\end{equation}
+Showing that the book answer is incorrect because the first element of the resulting $Ax$
+has the incorrect sign in the second term.
+\end{proof}
+
+\section{Problem 3}
+Show that all eigenvalues are positive is the condition on eigenvalues that is equivalent to
+$\lim_{t\to\infty}\left|x(t)\right|=\infty$ for every solution $x(t)$ to $x^{\prime}=Ax$.
+
+\begin{proof}
+
+\end{proof}
+
+\section{Problem 4}
+Show that $b>0$ is an assumption required to ensure that $\lim_{t\to\infty}x(t)=0$
+for every solution $x(t)$ if $b^{2}-4c>0$.
+
+\begin{proof}
+
+\end{proof}
+
+\section{Problem 5}
+Prove or disprove that $x(t)=3e^{t}\cos2t+9e^{t}\sin2t,y(t)=3e^{t}\sin2t-9e^{t}\cos2t$
+is a solution to the following initial value problem:
+\begin{equation}
+    \begin{split}
+        x^{\prime}&=Ax,\\
+        x(0)&=(3,9);\\
+        A&=\begin{bmatrix}
+            1 & -2 \\
+            2 & 1
+        \end{bmatrix}
+    \end{split}
+\end{equation}
+
+\begin{proof}
+
+\end{proof}
+
+\section{Problem 6}
+Prove or disprove that $\dim E=\dim E_{c}$ and $\dim F\geq \dim F_{R}$ are relations
+that exist between $\dim E$ and $\dim E_{c}$ and $\dim F$ and $\dim F_{R}$ given that
+$E\subset \R^{n}$ and $F\subset C^{n}$ are subspaces.
+
+\begin{proof}
+
+\end{proof}
+
+\section{Problem 7}
+Prove or disprove that $\dim\supset R_{CR}$ is a relation between $F$ and $F_{RC}$
+given that $F\subset C^{n}$ is any subspace.
+
+\begin{proof}
+
+\end{proof}
+
+\section{Problem 8}
+Solve the following initial value problem
+\begin{enumerate}[label=(\alph*)]
+    \item \begin{equation}
+              \begin{split}
+                  x^{\prime}&=-y,\\
+                  y^{\prime}&=x;\\
+                  x(0)&=1,y(0)=1
+              \end{split}
+          \end{equation}
+\end{enumerate}
+
+\begin{proof}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+    \end{enumerate}
+\end{proof}
+
+\section{Problem 9}
+Solve the initial value problem
+
+\begin{equation}
+    \begin{split}
+        x^{\prime}&=-4y\\
+        y^{\prime}&=x;\\
+        x(0)=0,&\quad y(0)=-7
+    \end{split}
+\end{equation}
+
+\begin{proof}
+
+\end{proof}
+
+\section{Problem 10}
+Let $F\subset C^{2}$ be the subspace spanned by the vector $(1,i)$
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that $F$ is not invariant under conjugation and hence is not
+          the complexification of any subspace of $\R^{2}$
+    \item Find $F_{\R}$ and $(F_{\R})_{C}$.
+\end{enumerate}
+
+\begin{proof}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        \item
+    \end{enumerate}
+\end{proof}
+
+\section{Problem 11}
+Let $E$ be a real vector space and $T\in L(E)$. Show that $(\ker T)_{C} =\ker(T_{C})$,
+$(\text{Im } T)_{C}=\text{Im }(T_{C})$, and $(T^{-1})_{C}=(T_{C})^{-1}$ if $T$ is invertible.
+
+\begin{proof}
+
+\end{proof}
+\end{document}

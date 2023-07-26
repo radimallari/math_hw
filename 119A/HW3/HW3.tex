@@ -4,6 +4,7 @@
 \usepackage{amsxtra}
 \usepackage{amsmath}
 \usepackage{enumitem}
+\usepackage{hyperref}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\R}{\mathbb{R}}
@@ -107,7 +108,13 @@ Show that all eigenvalues are positive is the condition on eigenvalues that is e
 $\lim_{t\to\infty}\left|x(t)\right|=\infty$ for every solution $x(t)$ to $x^{\prime}=Ax$.
 
 \begin{proof}
-
+Since every eigenvalues are positive, we would have a solution to our differential equation of 
+the form
+$$x_{i}(t)=c_{i1}e^{t\lambda_{1}}+...+c_{in}e^{t\lambda_{n}};\quad i=1,...,n$$
+where $\lambda_{i}$ is the eigenvalue, $c_{i}$ constants. The limit of the norm then becomes:
+$$\lim_{t\to\infty}\sqrt{(c_{i}e^{t\lambda_{1}})^{2}+...+(c_{in}e^{t\lambda_{n}})^{2}}$$
+and since we have the summation of exponential terms raised to positive values, 
+as $t\rightarrow\infty$, our limit as well goes to infinity.
 \end{proof}
 
 \section{Problem 4}
@@ -133,24 +140,52 @@ is a solution to the following initial value problem:
 \end{equation}
 
 \begin{proof}
-
+Similar to Problem 2, we check that the initial value $t=0$ yields $(3,9)$.
+$x(0)=3e^{0}\cos(2\cdot0)+9e^{0}\sin(2\cdot0)=3$ and $y(0)=3e^{0}\sin(2\cdot 0)-9e^{0}\cos(2\cdot 0)=0$.
+So certainly, $x(0)=(3,9)$. Now checking that $x^{\prime}=Ax$, we find
+\begin{equation}
+    \begin{split}
+        Ax=&\begin{bmatrix}
+            1 & -2 \\
+            2 & 1
+        \end{bmatrix}\begin{bmatrix}
+            3e^{t}\cos(2t)+9e^{t}\sin(2t)\\
+            3e^{t}\sin(2t)-9e^{t}\cos(2t)
+        \end{bmatrix}\\
+        &=\begin{bmatrix}
+            3e^{t}\sin(2t)+21e^{t}\cos(2t)\\
+            21e^{t}\sin(2t)-3e^{t}\cos(2t)
+        \end{bmatrix}
+    \end{split}
+\end{equation}
+which is certainly equivalent to
+$$x^{\prime}(t)=3e^{t}\sin(2t)+21e^{t}\cos(2t)$$
+and
+$$y^{\prime}(t)=21e^{t}\sin(2t)-3e^{t}\cos(2t)$$
+therefore, our given $x(t)$ and $y(t)$ are solutions to our initial value problem.
 \end{proof}
 
 \section{Problem 6}
-Prove or disprove that $\dim E=\dim E_{c}$ and $\dim F\geq \dim F_{R}$ are relations
-that exist between $\dim E$ and $\dim E_{c}$ and $\dim F$ and $\dim F_{R}$ given that
-$E\subset \R^{n}$ and $F\subset C^{n}$ are subspaces.
+Prove or disprove that $\dim E=\dim E_{\C}$ and $\dim F\geq \dim F_{\R}$ are relations
+that exist between $\dim E$ and $\dim E_{\C}$ and $\dim F$ and $\dim F_{\R}$ given that
+$E\subset \R^{n}$ and $F\subset \C^{n}$ are subspaces.
 
 \begin{proof}
-
+The set $E$ in this case is a set that contains vector spaces in $R^{n}$, meanwhile, $E_{\C}$
+is the complexification of $E$ which is obtained by taking all linear combinations of vectors in $E$
+with complex coefficients, i.e.
+$$E_{\C}=\set{z\in \C^{n}|z=\sum_{i=1}^{k}\lambda_{i}z_{i},z_{i}\in E,\lambda_{i}\in C}$$
+then we see that the number of elements in $E_{\C}$ is exactly the number of elements $z_{i}\in E$,
+therefore it must be the case that $\dim E=\dim E_{\C}$. Meanwhile, by the same arguement, 
+we  know that $\dim F\geq\dim F_{\R}$ because according to the book, $\R^{n}\subset\C^{n}$.
 \end{proof}
 
 \section{Problem 7}
-Prove or disprove that $\dim\supset R_{CR}$ is a relation between $F$ and $F_{RC}$
-given that $F\subset C^{n}$ is any subspace.
+Prove or disprove that $\dim F\supset R_{\C\R}$ is a relation between $F$ and $F_{\R\C}$
+given that $F\subset \C^{n}$ is any subspace.
 
 \begin{proof}
-
+Not sure how to answer this, where did $R_{\C\R}$ come from?
 \end{proof}
 
 \section{Problem 8}
@@ -167,7 +202,32 @@ Solve the following initial value problem
 
 \begin{proof}
     \begin{enumerate}[label=(\alph*)]
-        \item
+        \item The corresponding matrix for this differential equation is
+        $$\begin{bmatrix}
+            0&-1\\
+            1&0
+        \end{bmatrix}$$
+        The characteristic polynomial for this matrix is $\lambda^{2}+1$ giving us eigenvalues of
+        $\pm i$. This gives us a solution of the form
+        $$\begin{cases}
+            x(t)&=ue^{ta}\cos(tb)-ve^{ta}\sin(tb)\\
+            y(t)&=ue^{ta}\sin(tb)+ve^{ta}\cos(tb)
+        \end{cases}$$
+        where $b=1$, $a=0$, and $u,v$ are constants. Therefore, our general solution is
+        $$\begin{cases}
+            x(t)=u\cos(t)-v\sin(t)\\
+            y(t)=u\sin(t)+v\cos(t)
+        \end{cases}$$
+        Now solving for the constants yield
+        $$\begin{cases}
+            x(0)=1=u\cos(0)-v\sin(0)\implies u=1\\
+            y(0)=1=u\sin(0)+v\cos(0)\implies v=1
+        \end{cases}$$
+        giving us the final solution to our initial value problem which is
+        $$\begin{cases}
+            x(t)=\cos(t)-\sin(t)\\
+            y(t)=\sin(t)+\cos(t)
+        \end{cases}$$
     \end{enumerate}
 \end{proof}
 
@@ -183,7 +243,27 @@ Solve the initial value problem
 \end{equation}
 
 \begin{proof}
-
+Similar to Problem 9, we have a corresponding matrix of
+$$\begin{bmatrix}
+    0&-4\\
+    1&0
+\end{bmatrix}$$
+Using a coordinate change, we can write this in a similar form of Problem 9, by using coordinates $(u,v)$
+where $x=2v$, $y=u$. This yields:
+$$\begin{cases}
+    u^{\prime}=y^{\prime}=2v\\
+    v^{\prime}=\frac{1}{2}x^{\prime}=-2u
+\end{cases}$$
+Now this is exactly the same problem as Problem 9 which gives us the general solution of
+$$\begin{cases}
+    u(t)=u_{0}\cos(2t)-v_{0}\sin(2t)\\
+    v(t)=u_{0}\sin(2t)+v_{0}\cos(2t)
+\end{cases}$$
+Where $(u(0),v(0))=(u_{0},v_{0})\implies u_{0}=-7,v_{0}=0$, giving us the solution to our initial value problem as
+$$\begin{cases}
+    x(t)=-\frac{7}{2}\sin(2t)\\
+    y(t)=-7\cos(2t)
+\end{cases}$$
 \end{proof}
 
 \section{Problem 10}
@@ -191,21 +271,35 @@ Let $F\subset C^{2}$ be the subspace spanned by the vector $(1,i)$
 \begin{enumerate}[label=(\alph*)]
     \item Prove that $F$ is not invariant under conjugation and hence is not
           the complexification of any subspace of $\R^{2}$
-    \item Find $F_{\R}$ and $(F_{\R})_{C}$.
+    \item Find $F_{\R}$ and $(F_{\R})_{\C}$.
 \end{enumerate}
 
 \begin{proof}
     \begin{enumerate}[label=(\alph*)]
-        \item
-        \item
+        \item According to \href{https://en.wikipedia.org/wiki/Invariant_subspace}{Invariant Subpaces}, for a
+        subspace $F$ to be invariant under a transformation $T$, it must follow that for all vectors $v\in F$,
+        $T(v)\in F$. The transformation, $T$, in our case is complex conjugation which takes an arbitrary vector
+        $(a,bi)\in F$ to $(a,-bi)$.
+        \item According to the book, for any subspace $F\subset C^{n}$, $F_{\R}$ is given by
+        $$F_{\R}=\set{z\in F|\sigma(z)=z}$$
+        where $\sigma$ is the conjugation operator. Therefore, for our case $F_{\R}$ would be the set of vectors
+        where elements of $F$ are a 2 dimension pair of all real numbers since the complex conjugation of reals 
+        are reals, satisfying $\sigma(z)=z$? Not sure how to answer this.
     \end{enumerate}
 \end{proof}
 
 \section{Problem 11}
-Let $E$ be a real vector space and $T\in L(E)$. Show that $(\ker T)_{C} =\ker(T_{C})$,
-$(\text{Im } T)_{C}=\text{Im }(T_{C})$, and $(T^{-1})_{C}=(T_{C})^{-1}$ if $T$ is invertible.
+Let $E$ be a real vector space and $T\in L(E)$. Show that $(\ker T)_{\C} =\ker(T_{\C})$,
+$(\text{Im } T)_{\C}=\text{Im }(T_{\C})$, and $(T^{-1})_{\C}=(T_{\C})^{-1}$ if $T$ is invertible.
 
 \begin{proof}
-
+Taking an arbitrarly element in $x\in(\ker T)_{\C}$, by definition of kernel we have $T(x)=0$. Taking the complexification
+of $T(x)$ yields $(T(x))_{\C}$=0 which implies $(T_{\C})(x)=0$ so $x\in\ker(T_{\C})$, therefore $(\ker T)_{\C} =\ker(T_{\C})$.
+Similarly, taking $x\in(\text{Im }T_{\C})$ there exists $y$ in the vector space where $T(y)=x$, implies that $(T(y))_{\C}=x_{\C}$.
+This is equivalent to $(T_{\C})(y_{\C})=x$ which implies $x\in\text{Im }(T_{\C})$ therefore $(\text{Im }T)_{\C}=(\text{Im }T_{\C})$.
+Finally, since we are given that $T$ is invertible, it must be the case that $(T\cdot T^{-1})_{\C}=I_{\C}$. This is equivalent
+to $(T_{\C})\cdot(T^{-1})_{\C}=I$. Taking $T^{-1}_{\C}$ to both sides yields 
+$(T^{-1}_{\C})\cdot(T_{\C})\cdot(T^{-1})_{\C}=(T^{-1}_{\C})\cdot I$ and simplifying gives us $(T^{-1})_{\C}=(T^{-1}_{\C})$.
 \end{proof}
+
 \end{document}

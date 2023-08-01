@@ -29,7 +29,7 @@ $$\begin{bmatrix}
         0        & -\sqrt{2} \\
         \sqrt{2} & 0
     \end{bmatrix}$$
-with basis $(0,-\sqrt{2},\sqrt{2})$, and $(1,-1,-1)$ is a two-dimensional
+with basis $(0,-\sqrt{2},\sqrt{2})$, and $(1,-2,-1)$ is a two-dimensional
 matrix $E\subset\R^{2}$ that satisfies $T\vert E$ of the form
 $\begin{bmatrix}
         a & -b \\
@@ -42,7 +42,30 @@ $$\begin{bmatrix}
 \end{bmatrix}$$
 
 \begin{proof}
-
+ Applying $T$ to our first basis yields
+ $$\begin{bmatrix}
+    1&0&1\\
+    0&0&-2\\
+    0&1&0
+ \end{bmatrix}\begin{bmatrix}
+    0\\-\sqrt{2}\\\sqrt{2}
+ \end{bmatrix}=\begin{bmatrix}
+    \sqrt{2}\\-2\sqrt{2}\\-\sqrt{2}
+ \end{bmatrix}=\sqrt{2}\begin{bmatrix}
+    1\\-2\\-1
+\end{bmatrix}$$
+Similarly, for the second basis we have
+$$\begin{bmatrix}
+    1&0&1\\
+    0&0&-2\\
+    0&1&0
+ \end{bmatrix}\begin{bmatrix}
+    1\\-2\\-1
+ \end{bmatrix}=\begin{bmatrix}
+    0\\2\\-2
+ \end{bmatrix}=2\begin{bmatrix}
+    0\\-1\\1
+ \end{bmatrix}$$
 \end{proof}
 
 \section{Problem 2}
@@ -57,7 +80,41 @@ Prove or disprove that
 is the solution to $x^{\prime}=Tx$ for the operator $T$ given in Problem 1.
 
 \begin{proof}
-
+    Taking the derivative of $x$ with respect to $t$ yields
+    \begin{equation}
+        \begin{split}
+            x_{1}^{\prime}&=Ce^{t}+\sqrt{2}B\sin(\sqrt{2}t)+A\sqrt{2}\cos(\sqrt{2}t)\\
+            x_{2}^{\prime}&=(-2\sqrt{2}B+2A)\sin(\sqrt{2}t)-(2B+2\sqrt{2}A)\sin(\sqrt{2}A)\\
+            x_{3}^{\prime}&=(-\sqrt{2}B-2A)\sin(\sqrt{2}t)+(2B-\sqrt{2}A)\cos(\sqrt{2}t)
+        \end{split}
+    \end{equation}
+    Meanwhile $Tx$ yields
+    \begin{equation}
+        \begin{split}
+            Tx&=\begin{bmatrix}
+                1 & 0 & 1  \\
+                0 & 0 & -2 \\
+                0 & 1 & 0
+            \end{bmatrix}
+            \begin{bmatrix}
+                Ce^{t}-B\cos(\sqrt{2}t)+A\sin(\sqrt{2}t)\\
+                (2B-A\sqrt{2})\cos(\sqrt{2}t)-(B\sqrt{2}+2A)\sin(\sqrt{2}t)\\
+                (B+A\sqrt{2})\cos(\sqrt{2}t)+(B\sqrt{2}-A)\sin(\sqrt{2}t)
+            \end{bmatrix}\\
+            &=\begin{bmatrix}
+                Ce^{t}-B\cos(\sqrt{2}t)+A\sin(\sqrt{2}t)+(B+A\sqrt{2})\cos(\sqrt{2}t)+(B\sqrt{2}-A)\sin(\sqrt{2}t)\\
+                -2\left((B+A\sqrt{2})\cos(\sqrt{2}t)+(B\sqrt{2}-A)\sin(\sqrt{2}t)\right)\\
+                (2B-A\sqrt{2})\cos(\sqrt{2}t)-(B\sqrt{2}+2A)\sin(\sqrt{2}t)
+            \end{bmatrix}\\
+            &=\begin{bmatrix}
+                Ce^{t}+A\sqrt{2}\cos(\sqrt{2}t)+B\sqrt{2}\sin(\sqrt{2}t)\\
+                -(2B+2\sqrt{2}A)\cos(\sqrt{2}t)+(-2B\sqrt{2}+2A)\sin(\sqrt{2}t)\\
+                (2B-A\sqrt{2})\cos(\sqrt{2}t)-(B\sqrt{2}+2A)\sin(\sqrt{2}t)
+            \end{bmatrix}
+        \end{split}
+    \end{equation}
+    Which is exactly equation $(2)$, therefore, our system of equations $x$ is the general solution to our
+    differential equation.
 \end{proof}
 
 \section{Problem 3}
@@ -67,7 +124,25 @@ $$A\lvert x\rvert\leq\lvert x\rvert_{sum}\leq B\lvert x\rvert$$
 for all $x\in\R^{n}$.
 
 \begin{proof}
-
+Substituting $A$ and $B$ gives us
+$$\lvert x\rvert\leq\lvert x\rvert_{sum}\leq \sqrt{n}\lvert x\rvert$$
+The left side of our inequality implies that for $x\in\R^{n}$:
+\begin{equation}
+    \begin{split}
+        \lvert x\rvert&\leq\lvert x\rvert_{sum}\\
+        \sqrt{x_{1}^{2}+...+x_{n}^{2}}&\leq\lvert x_{1}\rvert+...+\lvert x_{n}\rvert\\
+        x_{1}+...+x_{n}&\leq\left(\lvert x_{1}\rvert+...+\lvert x_{n}\rvert\right)^{2}\quad
+        \textbf{(squaring both sides)}
+    \end{split}
+\end{equation}
+Which is clearly true. Now for the other side we get that
+\begin{equation}
+    \begin{split}
+        \lvert x_{1}\rvert+...+\lvert x_{n}\rvert&\leq\sqrt{n}\sqrt{x_{1}^{2}+...+x_{n}^{2}}\\
+        (\lvert x_{1}\rvert+...+\lvert x_{n}\rvert)^{2}&\leq n(x_{1}^{2}+...+x_{n}^{2})
+    \end{split}
+\end{equation}
+Therefore, $B=\sqrt{n}$ is valid.
 \end{proof}
 
 \section{Problem 4}
@@ -80,15 +155,23 @@ Prove or disprove that the following
 \end{enumerate}
 are norms to the vector $(1,1)\in\R{^2}$ under following
 \begin{enumerate}[label=(\alph*)]
-    \item The Eucledian norm;
-    \item The Eucledian $B$-norm, where $B$, is the basis $\set{(1,2),(2,2)}$;
+    \item The Euclidean norm;
+    \item The Euclidean $B$-norm, where $B$, is the basis $\set{(1,2),(2,2)}$;
     \item The max norm;
     \item The $B$-max norm
 \end{enumerate}
 
 \begin{proof}
     \begin{enumerate}[label=(\alph*)]
-        \item
+        \item The Euclidean norm of a vector is define as $\sqrt{x_{1}^{2}+...+x_{n}^{2}}$. Therefore,
+        we have that $\sqrt{1^{2}+1^{2}}=\sqrt{2}$, proving (a).
+        \item The Euclidean $B$-norm is defined as $\lVert x\rVert_{B}=(t_{1}^{2}+...+t_{n}^{2})^{\frac{1}{2}}$
+        if $x=\sum_{i=1}^{n}t_{j}f_{j}$ where $B$ is a basis in $\R^{n}$, i.e. $B=\set{f_{1},...,f_{n}}$. Therefore
+        using this definition, we $n=2$ and $f_{1}=(1,2)$ and $f_{2}=(2,2)$. I do not know what $t_{j}$ is?
+        Is this the components of the vector $(1,1)$?
+        \item The max norm is defined as $\lVert x\rVert_{\max}=\max\set{\lVert x_{1}\rVert,...,\lVert x_{n}\rVert}$.
+        Therefore, since we only have one vector, $\lVert x\rVert_{\max}=1$.
+        \item The B-max norm is defined as $\lVert x\rVert_{B\max}=\max\set{\lVert t_{1}\rVert,...,\lVert t_{n}\rVert}$.
     \end{enumerate}
 \end{proof}
 
@@ -98,7 +181,42 @@ $\frac{1}{2}(\lvert x\rvert+\lvert y\rvert)+\frac{2}{3}(x^{2}+y^{2})^{\frac{1}{2
 are norms defined in $\R^{2}$.
 
 \begin{proof}
-
+Norms must be functions $N:\R^{n}\to\R$ that satisfy:
+\begin{enumerate}[label=(\arabic*)]
+    \item $N(x)\geq 0$ and $N(x)=0$ if and only if $x=0$
+    \item $N(x+y)\leq N(x)+N(y)$
+    \item $N(\alpha x)=\lvert\alpha\rvert N(x)$.
+\end{enumerate} 
+Therfore, first checking $(1)$ by letting $(x,y)=(0,0)$, we have $N(0,0)=(0^{2}+0\cdot 0+0^{2})^{\frac{1}{2}}=0\geq0$ and
+$N(0,0)=\frac{1}{2}(\lvert0\rvert+\lvert0\rvert)+\frac{2}{3}(0^{2}+0^{2})^{\frac{1}{2}}=0\geq0$ showing that both norms
+satisfy $(1)$. Now taking arbitrary values $(x_{1},y_{1})$ and $(x_{2},y_{2})$ gives us 
+$$N(x_{1}+x_{2},y_{1}+y_{2})=\left((x_{1}+x_{2})^{2}+(x_{1}+x_{2})(y_{1}+y_{2})+(y_{1}+y_{2})^{2}\right)^{\frac{1}{2}}$$
+Meanwhile, we have
+$$N(x_{1},y_{2})+N(x_{2},y_{2})=(x_{1}^{2}+x_{1}y_{1}+y_{1}^{2})^{\frac{1}{2}}+(x_{2}^{2}+x_{2}y_{2}+y_{2}^{2})^{\frac{1}{2}}$$
+Squaring both equations yields:
+$$(x_{1}+x_{2})^{2}+(x_{1}+x_{2})(y_{1}+y_{2})+(y_{1}+y_{2})^{2}$$
+and
+$$(x_{1}^{2}+x_{1}y_{1}+y_{1}^{2})+(x_{1}^{2}+x_{1}y_{1}+y_{1}^{2})(x_{2}^{2}+x_{2}y_{2}+y_{2}^{2})+(x_{2}^{2}+x_{2}y_{2}+y_{2}^{2})$$
+For the other norm we have that
+$$N(x_{1}+x_{2},y_{1}+y_{2})=\frac{1}{2}(|x_{1}+x_{2}|+|y_{1}+y_{2}|)+\frac{2}{3}((x_{1}+x_{2})^{2}+(y_{1}+y_{2})^{2})^{\frac{1}{2}}$$
+Finally, taking some arbitrary scalar $\alpha$, we get that
+\begin{equation}
+    \begin{split}
+        N(\alpha x,\alpha y)&=\left((\alpha x)^{2}+\alpha^{2}xy+(\alpha y)^{2}\right)^{\frac{1}{2}}\\
+        &=\left(\alpha^{2}(x^{2}+xy+y^{2})\right)^{\frac{1}{2}}\\
+        &=\alpha\left(x^{2}+xy+y^{2}\right)^{\frac{1}{2}}=\lvert\alpha\rvert N(x,y)
+    \end{split}
+\end{equation}
+Similarly for the second norm,
+\begin{equation}
+    \begin{split}
+        N(\alpha x,\alpha y)&=\frac{1}{2}(|\alpha x|+|\alpha y|)+\frac{2}{3}((\alpha x)^{2}+(\alpha y)^{2})^{\frac{1}{2}}\\
+        &=\frac{1}{2}(\alpha(|x|+|y|))+\frac{2}{3}(\alpha^{2}(x^{2}+y^{2}))^{\frac{1}{2}}\\
+        &=\alpha\frac{1}{2}(|x|+|y|)+\alpha\frac{2}{3}(x^{2}+y^{2})^{\frac{1}{2}}\\
+        &=\alpha\left(\frac{1}{2}(|x|+|y|)+\frac{2}{3}(x^{2}+y^{2})^{\frac{1}{2}}\right)=|a|N(x,y)
+    \end{split}
+\end{equation}
+Satisfying $(3)$.
 \end{proof}
 
 \section{Problem 6}
@@ -109,7 +227,18 @@ $$\begin{bmatrix}
     \end{bmatrix}$$
 
 \begin{proof}
-
+Uniform norm of $T$ is defined as $\lVert T\rVert=\max\set{Tx\mid\lvert x\rvert\leq 1}$. Therefore, taking
+an arbitrary vector $x=(x_{1},x_{2})$ and applying $T$, we have
+$$\begin{bmatrix}
+    3&0\\0&-4
+\end{bmatrix}\begin{bmatrix}
+    x_{1}\\x_{2}
+\end{bmatrix}=\begin{bmatrix}
+    3x_{1}\\-4x_{2}
+\end{bmatrix}$$
+Letting $x=(1,1)$, we get $\begin{bmatrix}
+    3\\-4
+\end{bmatrix}$ so certainly, $1$ is the maximum $x$ that would satisfy our definition.
 \end{proof}
 
 \section{Problem 7}
@@ -131,6 +260,76 @@ $$T\begin{bmatrix}
 
 \begin{proof}
     \begin{enumerate}[label=(\alph*)]
+        \item For $T$ to be a linear transformation, we must satisfy $T(u+v)=T(u)+T(v)$ where
+        $u,v\in L(\R^{2})$ and for some arbitrary scalar $c$, $T(cu)=cT(u)$. Therefore, taking two
+        arbitrary vectors $u=(u_{1},u_{2})\in L(\R^{2})$ and $v=(v_{1},v_{2})\in L(\R^{2})$ and we get that for 
+        \begin{equation}
+            \begin{split}
+                T(u+v)&=\begin{bmatrix}
+                    a&b\\
+                    c-3a&d-3b
+                \end{bmatrix}\begin{bmatrix}
+                    u_{1}+v_{1}\\
+                    u_{2}+v_{2}
+                \end{bmatrix}\\
+                &=\begin{bmatrix}
+                    a(u_{1}+v_{1})+b(u_{2}+v_{2})\\
+                    (c-3a)(u_{1}+v_{1})+(d-3b)(u_{2}+v_{2})
+                \end{bmatrix}\\
+                &=\begin{bmatrix}
+                    au_{1}+bu_{2}\\
+                    (c-3a)u_{1}+(d-3b)u_{2}
+                \end{bmatrix}\begin{bmatrix}
+                    av_{1}+bv_{2}\\
+                    (c-3a)v_{1}+(d-3b)v_{2}
+                \end{bmatrix}\\
+                &=\begin{bmatrix}
+                    a&b\\
+                    c-3a&d-3b
+                \end{bmatrix}\begin{bmatrix}
+                    u_{1}\\u_{2}
+                \end{bmatrix}+
+                    \begin{bmatrix}
+                        a&b\\
+                        c-3a&d-3b
+                    \end{bmatrix}
+                \begin{bmatrix}
+                    v_{1}\\v_{2}
+                \end{bmatrix}\\
+            &=T(u)+T(v)
+            \end{split}
+        \end{equation}
+        satisfying our first requirement. Now for the second requirement, we an arbitrary scalar $\lambda$ and vector
+        $u=(u_{1},u_{2})\in L(\R^{2})$, we see
+        \begin{equation}
+            \begin{split}cT(u)&=\lambda
+                \begin{bmatrix}
+                    a&b\\
+                    c-3a&d-3b
+                \end{bmatrix}\begin{bmatrix}
+                    u_{1}\\u_{2}
+                \end{bmatrix}\\
+                &=\begin{bmatrix}
+                    \lambda au_{1}+\lambda bu_{2}\\
+                    \lambda (c-3a)u_{1}+\lambda(d-3b)u_{2}
+                \end{bmatrix}\\
+                &=\begin{bmatrix}
+                    a&b\\
+                    c-3a&d-3b
+                \end{bmatrix}\begin{bmatrix}
+                    \lambda u_{1}\\\lambda u_{2}
+                \end{bmatrix}\\
+                &=\begin{bmatrix}
+                    a&b\\
+                    c-3a&d-3b
+                \end{bmatrix}
+                \lambda\begin{bmatrix}
+                    u_{1}\\u_{2}
+                \end{bmatrix}\\
+                &=T(\lambda u)
+            \end{split}
+        \end{equation}
+        satisfying our second requirement, so our our transformation $T$ is linear.
         \item
     \end{enumerate}
 \end{proof}
@@ -141,7 +340,11 @@ $$\lVert T\rVert\cdot\lVert T^{-1}\rVert\geq1$$
 for every invertible operator $T$.
 
 \begin{proof}
-
+We can prove this by letting $x$ be a non-zero vector. Then we let $u=\frac{x}{\lVert x\rVert}$, and we have that
+$\lVert T^{-1}x\rVert=\lVert T^{-1}\frac{x}{\lVert x\rVert}\rVert=\lVert T^{-1}U\rVert\leq\lVert T^{-1}\rVert\cdot\lVert u\rVert=\lVert T^{-1}\rVert$.
+On the other hand, taking $v=\frac{x}{\lVert x\rVert}$, we have $\lVert Tx\rVert=\lVert T(\frac{x}{\lVert x\rVert})\rVert=\lVert Tv\rVert\leq\lVert T\rVert\cdot\lVert v\rVert=\lVert T\rVert$.
+Therefore, since $T$ is invertible, it implies that $\lVert x\rVert=\lVert T^{-1}Tx\rVert\leq\lVert T^{-1}\rVert\cdot\lVert T\rVert x\leq\lVert T^{-1}\rVert\lVert T\rVert\cdot\lVert x\rVert$.
+Now dividing both sides by $\lVert x\rVert$, since $x$ is non-zero, we have $\lVert T\rVert\cdot\lVert T^{-1}\rVert\geq1$ proving our statement.
 \end{proof}
 
 \section{Problem 9}
